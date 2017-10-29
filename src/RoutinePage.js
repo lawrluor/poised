@@ -3,7 +3,7 @@ import { AppRegistry, StyleSheet, Text, View, Navigator } from 'react-native';
 
 import Center from '../src/Center.js';
 
-const routineItems = ['your routine is beginning...', 'measured breathing', 'limb shake out', 'visualize your performance'];
+const routineItems = ['measured breathing', 'shake out your limbs', 'visualize your performance'];
 
 class RoutinePage extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class RoutinePage extends Component {
         clearTimeout(this.timer);
         this.props.navigation.navigate('Feedback');
       }
-    }, 15000);
+    }, 10000);
   }
 
   // In the case user closes screen before the timeout fires, otherwise it would cause a memory leak that would trigger the transition regardless, breaking the user experience.
@@ -42,7 +42,7 @@ class RoutinePage extends Component {
 
   // App Title
   static navigationOptions = {
-    title: 'poised'
+    title: 'poise'
   };
 
   render() {

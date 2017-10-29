@@ -25,7 +25,7 @@ class App extends Component<{}> {
 
   // App Title
   static navigationOptions = {
-    title: 'poised'
+    title: 'poise'
   };
 
   render() {
@@ -33,7 +33,7 @@ class App extends Component<{}> {
       <View style={styles.container}>
         <View style={styles.titleWrapper}>
           <Text style={[styles.title, styles.baseText]}>
-            poised
+            poise
           </Text>
         </View>
 
@@ -46,7 +46,7 @@ class App extends Component<{}> {
         </View>
 
         <View style={styles.bodyWrapper}>
-          <Text style={[styles.bodyText, styles.baseText]}>prime yourself for performance</Text>
+          <Text style={[styles.bodyText, styles.baseText]}>perform unhindered</Text>
         </View>
       </View>
     );

@@ -19,7 +19,7 @@ class SelectionPage extends Component {
 
   // App Title
   static navigationOptions = {
-    title: 'poised'
+    title: 'poise'
   };
 
   // pass in navigation prop to each listItem
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   separator: {
     flex: 1,
     height: StyleSheet.hairlineWidth,
-    backgroundColor: '#8F8F8F'
+    backgroundColor: '#FFFFFF'
   },
   header: {
     backgroundColor: '#87AECF'

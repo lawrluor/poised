@@ -10,25 +10,25 @@ class Feedback extends Component {
 
   // App Title
   static navigationOptions = {
-    title: 'poised'
+    title: 'poise'
   };
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.titleWrapper}>
-          <Text style={[styles.title, styles.baseText]}>Did you feel calmer?</Text>
+          <Text style={[styles.title, styles.baseText]}>calmer?</Text>
         </View>
 
         <View style={styles.buttonWrapper}>
           <TouchableHighlight underlay="grey" style={styles.buttonNo} onPress={() => this.navigateToResults("No")}>
-            <Text style={[styles.bodyText, styles.baseText]}>No</Text>
+            <Text style={[styles.bodyText, styles.baseText]}>n</Text>
           </TouchableHighlight>
 
           <View style={styles.buffer}></View>
 
           <TouchableHighlight underlay="grey" style={styles.buttonYes} onPress={() => this.navigateToResults("Yes")}>
-            <Text style={[styles.bodyText, styles.baseText]}>Yes</Text>
+            <Text style={[styles.bodyText, styles.baseText]}>y</Text>
           </TouchableHighlight>
         </View>
 

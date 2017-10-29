@@ -19,7 +19,7 @@ class Results extends Component {
 
   // App Title
   static navigationOptions = {
-    title: 'poised'
+    title: 'poise'
   };
 
   render() {
@@ -50,7 +50,6 @@ class Results extends Component {
 
   // Helper function to show text based on result
   showText(result) {
-    console.log('showtextr esult', result);
     if (result==="Yes") {
       return "you're in good shape!";
     } else {
