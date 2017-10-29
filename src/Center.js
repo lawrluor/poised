@@ -6,14 +6,14 @@ class FadeInView extends Component {
   state = {
     fadeAnim: new Animated.Value(0) // set initial opacity to 0
   }
-  
+
   // Function to generate values for opacity
   componentDidMount() {
     Animated.timing(       // animate over time
       this.state.fadeAnim, // animation type
       {
         toValue: 1, // set opacity 1 (opaque)
-        duration: 1000 // set duration
+        duration: 3000 // set duration
       }
     ).start(); // start animation
   }
