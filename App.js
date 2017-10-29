@@ -9,49 +9,67 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Image,
+  Animated,
+  TouchableHighlight
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import { StackNavigator } from 'react-navigation';
+import Center from './src/Center.js';
+import RoutinePage from './src/RoutinePage.js';
 
-export default class App extends Component<{}> {
+class App extends Component<{}> {
+  // Activate native props on Center view to allow returning multiple elements
+  // https://stackoverflow.com/questions/31741705/error-invariant-violation-touchable-child-must-either-be-native-or-forward-set
+  setNativeProps(nativeProps) {
+    this._root.setNativeProps(nativeProps);
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
+        <Text style={styles.title}>
+          poised
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+
+        <TouchableHighlight style={styles.center} onPress={() => this.props.navigation.navigate('Routine')}>
+          <View ref={component => this._root = component}>
+            <Center></Center>
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+// Navigation using StackNavigator
+export const RootNavigator = StackNavigator({
+  Home: {
+    screen: App
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  Routine: {
+    screen: RoutinePage
   },
 });
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#87AECF',
+  },
+  title: {
+    flex: 3,
+    fontSize: 36,
+    textAlign: 'center',
+    margin: 10,
+    color: '#FFFFFF'
+  },
+  center: {
+    flex: 7
+  }
+});
+
+export default RootNavigator
