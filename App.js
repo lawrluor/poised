@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   Platform,
@@ -12,12 +6,14 @@ import {
   View,
   Image,
   Animated,
-  TouchableHighlight
+  TouchableHighlight,
+  Button
 } from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
 import Center from './src/Center.js';
 import RoutinePage from './src/RoutinePage.js';
+import SelectionPage from './src/SelectionPage.js';
 
 class App extends Component<{}> {
   // Activate native props on Center view to allow returning multiple elements
@@ -38,6 +34,11 @@ class App extends Component<{}> {
             <Center></Center>
           </View>
         </TouchableHighlight>
+
+        <Button style={styles.button}
+          title="Selections"
+          onPress={() => this.props.navigation.navigate('Selections')}
+        />
       </View>
     );
   }
@@ -51,6 +52,9 @@ export const RootNavigator = StackNavigator({
   Routine: {
     screen: RoutinePage
   },
+  Selections: {
+    screen: SelectionPage
+  }
 });
 
 const styles = StyleSheet.create({
@@ -68,7 +72,10 @@ const styles = StyleSheet.create({
     color: '#FFFFFF'
   },
   center: {
-    flex: 7
+    flex: 6
+  },
+  buttons: {
+    flex: 1
   }
 });
 

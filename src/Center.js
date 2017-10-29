@@ -1,32 +1,40 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Image, Animated, Navigator } from 'react-native';
 
-// Set FadeIn Class
-class FadeInView extends Component {
+// Set Pulse Class
+class PulseView extends Component {
   state = {
-    fadeAnim: new Animated.Value(0) // set initial opacity to 0
+    animPulse: new Animated.Value(1), // set initial opacity to 1
   }
 
   // Function to generate values for opacity
   componentDidMount() {
-    Animated.timing(       // animate over time
-      this.state.fadeAnim, // animation type
-      {
-        toValue: 1, // set opacity 1 (opaque)
-        duration: 3000 // set duration
-      }
-    ).start(); // start animation
+    // Begin Animation Loop, which contains sequence of fade in and fade out
+    // https://stackoverflow.com/a/44353789/6322172
+    Animated.loop(
+      Animated.sequence([
+        Animated.timing(this.state.animPulse, {
+          toValue: 0.5, // set opacity 1 (opaque)
+          duration: 2000 // set duration
+        }),
+        Animated.timing(this.state.animPulse, {
+          toValue: 1, // set opacity 1 (opaque)
+          duration: 2000 // set duration
+        })
+      ]),
+      // { iterations: 4 }
+    ).start()
   }
 
   // Render Animation
   render() {
-    let { fadeAnim } = this.state; // opposed to this.state.fadeAnim
+    let { animPulse } = this.state; // opposed to this.state.fadeAnim
 
     return (
       <Animated.View                 // Special animatable View
         style={{
           ...this.props.style,
-          opacity: fadeAnim,         // Bind opacity in style to animated value
+          opacity: animPulse,         // Bind opacity in style to animated value
         }}
       >
         {this.props.children}
@@ -39,11 +47,11 @@ class Center extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <FadeInView>
+        <PulseView>
           <Image
             source={require('../static/img/center.png')}
           />
-        </FadeInView>
+        </PulseView>
       </View>
     )
   }
