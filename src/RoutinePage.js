@@ -3,7 +3,7 @@ import { AppRegistry, StyleSheet, Text, View, Navigator } from 'react-native';
 
 import Center from '../src/Center.js';
 
-const routineItems = ['measured breathing', 'limb shake out', 'visualize your performance']
+const routineItems = ['your routine is beginning...', 'measured breathing', 'limb shake out', 'visualize your performance', 'you\'re going to do great']
 
 class RoutinePage extends Component {
 
@@ -29,18 +29,29 @@ class RoutinePage extends Component {
     clearTimeout(this.timer);
   }
 
+  // App Title
+  static navigationOptions = {
+    title: 'poised'
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>
-          {this.props.navigation.state.params.routineName}
-        </Text>
+        <View style={[styles.titleWrapper]}>
+          <Text style={[styles.baseText, styles.title]}>
+            {this.props.navigation.state.params.routineName}
+          </Text>
+        </View>
 
-        <Center></Center>
+        <View style={[styles.centerWrapper]}>
+          <Center></Center>
+        </View>
 
-        <Text style={styles.title}>
-          {routineItems[this.state.counter]}
-        </Text>
+        <View style={[styles.bodyWrapper]}>
+          <Text style={[styles.baseText, styles.bodyText]}>
+            {routineItems[this.state.counter]}
+          </Text>
+        </View>
       </View>
     )
   }
@@ -53,16 +64,36 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#87AECF',
   },
-  title: {
-    flex: 3,
-    fontSize: 36,
-    textAlign: 'center',
-    margin: 10,
+  baseText: {
+    fontFamily: 'Avenir',
     color: '#FFFFFF'
   },
-  center: {
-    flex: 7
+  title: {
+    fontSize: 48,
+    textAlign: 'center',
+    margin: 10,
+  },
+  titleWrapper: {
+    flex: 4,
+    // borderWidth: 2,
+    justifyContent: 'flex-end', // flush to bottom
+    alignItems: 'center'
+  },
+  centerWrapper: {
+    flex: 3,
+    // ,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  bodyWrapper: {
+    flex: 3
+  },
+  bodyText: {
+    fontSize: 32
+  },
+  outline: {
+    borderWidth: 2
   }
-})
+});
 
 export default RoutinePage

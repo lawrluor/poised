@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
+  StatusBar,
   Text,
   View,
   Image,
@@ -22,23 +23,27 @@ class App extends Component<{}> {
     this._root.setNativeProps(nativeProps);
   }
 
+  // App Title
+  static navigationOptions = {
+    title: 'poised'
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>
-          poised
-        </Text>
+        <View style={styles.titleWrapper}>
+          <Text style={[styles.title, styles.baseText]}>
+            poised
+          </Text>
+        </View>
 
-        <TouchableHighlight style={styles.center} onPress={() => this.props.navigation.navigate('Routine')}>
-          <View ref={component => this._root = component}>
-            <Center></Center>
-          </View>
-        </TouchableHighlight>
-
-        <Button style={styles.button}
-          title="Routines"
-          onPress={() => this.props.navigation.navigate('Selections')}
-        />
+        <View style={styles.centerWrapper}>
+          <TouchableHighlight onPress={() => this.props.navigation.navigate('Selections')}>
+            <View ref={component => this._root = component}>
+              <Center></Center>
+            </View>
+          </TouchableHighlight>
+        </View>
       </View>
     );
   }
@@ -64,18 +69,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#87AECF',
   },
-  title: {
-    flex: 3,
-    fontSize: 36,
-    textAlign: 'center',
-    margin: 10,
+  baseText: {
+    fontFamily: 'Avenir',
     color: '#FFFFFF'
   },
-  center: {
-    flex: 6
+  titleWrapper: {
+    flex: 4,
+    // borderWidth: 2,
+    justifyContent: 'flex-end', // flush to bottom
+    alignItems: 'center'
   },
-  buttons: {
-    flex: 1
+  title: {
+    fontSize: 60,
+    margin: 10,
+  },
+  centerWrapper: {
+    flex: 6,
+    // borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 

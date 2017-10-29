@@ -14,3 +14,9 @@ componentDidMount() {
   <ListItem name="Performance"></ListItem>
   <ListItem name="Sectional"></ListItem>
 </ScrollView>
+
+<TouchableHighlight style={styles.center} onPress={() => this.props.navigation.navigate('Routine')}>
+  <View ref={component => this._root = component}>
+    <Center></Center>
+  </View>
+</TouchableHighlight>

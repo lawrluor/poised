@@ -11,15 +11,14 @@ import {
 class ListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {
     return (
       <View style={styles.listItem}>
         <TouchableOpacity onPress={() => this.navigateToRoutine(this.props.routine)}>
-          <Text style={styles.itemName}>{this.props.name}</Text>
+          <Text style={[styles.itemName, styles.baseText]}>{this.props.routine}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -36,12 +35,18 @@ class ListItem extends React.Component {
 }
 
 var styles = StyleSheet.create({
+  baseText: {
+    fontFamily: 'Avenir',
+    color: '#FFFFFF'
+  },
   listItem: {
     justifyContent: 'space-between',
-    padding: 10
+    paddingLeft: 20,
+    paddingTop: 15,
+    paddingBottom: 15,
   },
   itemName: {
-    fontSize: 26,
+    fontSize: 18,
     color: 'black'
   }
 });
