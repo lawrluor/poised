@@ -17,6 +17,11 @@ class SelectionPage extends Component {
     };
   }
 
+  // App Title
+  static navigationOptions = {
+    title: 'poised'
+  };
+
   // pass in navigation prop to each listItem
   render() {
     return (

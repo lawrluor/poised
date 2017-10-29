@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import {
   Platform,
   StyleSheet,
-  StatusBar,
   Text,
   View,
   Image,
   Animated,
-  TouchableHighlight,
-  Button
+  TouchableHighlight
 } from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
@@ -44,6 +42,10 @@ class App extends Component<{}> {
             </View>
           </TouchableHighlight>
         </View>
+
+        <View style={styles.bodyWrapper}>
+          <Text style={[styles.bodyText, styles.baseText]}>prime yourself for performance</Text>
+        </View>
       </View>
     );
   }
@@ -71,11 +73,11 @@ const styles = StyleSheet.create({
   },
   baseText: {
     fontFamily: 'Avenir',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    textAlign: 'center'
   },
   titleWrapper: {
     flex: 4,
-    // borderWidth: 2,
     justifyContent: 'flex-end', // flush to bottom
     alignItems: 'center'
   },
@@ -84,10 +86,18 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   centerWrapper: {
-    flex: 6,
-    // borderWidth: 2,
+    flex: 3,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  bodyWrapper: {
+    flex: 3
+  },
+  bodyText: {
+    fontSize: 32
+  },
+  outline: {
+    borderWidth: 2
   }
 });
 

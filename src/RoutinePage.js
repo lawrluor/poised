@@ -6,7 +6,6 @@ import Center from '../src/Center.js';
 const routineItems = ['your routine is beginning...', 'measured breathing', 'limb shake out', 'visualize your performance', 'you\'re going to do great']
 
 class RoutinePage extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -75,13 +74,11 @@ const styles = StyleSheet.create({
   },
   titleWrapper: {
     flex: 4,
-    // borderWidth: 2,
     justifyContent: 'flex-end', // flush to bottom
     alignItems: 'center'
   },
   centerWrapper: {
     flex: 3,
-    // ,
     justifyContent: 'center',
     alignItems: 'center'
   },
