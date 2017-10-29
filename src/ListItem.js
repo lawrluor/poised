@@ -4,7 +4,6 @@ import {
   View,
   Image,
   Text,
-  TouchableHighlight,
   TouchableOpacity
 } from 'react-native';
 
@@ -30,7 +29,7 @@ class ListItem extends React.Component {
     this.props.navigation.navigate('Routine',
     {
       routineName: routineName // from this.state.name
-    })
+    });
   }
 }
 

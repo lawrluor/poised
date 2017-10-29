@@ -3,7 +3,7 @@ import { AppRegistry, StyleSheet, Text, View, Navigator } from 'react-native';
 
 import Center from '../src/Center.js';
 
-const routineItems = ['your routine is beginning...', 'measured breathing', 'limb shake out', 'visualize your performance', 'you\'re going to do great']
+const routineItems = ['your routine is beginning...', 'measured breathing', 'limb shake out', 'visualize your performance'];
 
 class RoutinePage extends Component {
   constructor(props) {
@@ -17,15 +17,27 @@ class RoutinePage extends Component {
   componentDidMount() {
     // Set interval so that every 5000 ms, increment counter by 1
     this.timer = setInterval(() => {
-      this.setState({
-        counter: this.state.counter + 1
-      });
-    }, 5000);
+      if (!this.finished()) {
+        this.setState({
+          counter: this.state.counter + 1
+        });
+      } else {
+        // move to final screen
+        clearTimeout(this.timer);
+        this.props.navigation.navigate('Feedback');
+      }
+    }, 15000);
   }
 
   // In the case user closes screen before the timeout fires, otherwise it would cause a memory leak that would trigger the transition regardless, breaking the user experience.
   componentWillUnmount() {
     clearTimeout(this.timer);
+  }
+
+  finished() {
+    if (this.state.counter === (routineItems.length - 1)) {
+      return true;
+    }
   }
 
   // App Title

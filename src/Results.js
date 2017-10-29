@@ -9,18 +9,12 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-import { StackNavigator } from 'react-navigation';
-import Center from './src/Center.js';
-import RoutinePage from './src/RoutinePage.js';
-import SelectionPage from './src/SelectionPage.js';
-import Feedback from './src/Feedback.js';
-import Results from './src/Results.js';
+import Center from '../src/Center.js';
+import SelectionPage from '../src/SelectionPage.js';
 
-class App extends Component<{}> {
-  // Activate native props on Center view to allow returning multiple elements
-  // https://stackoverflow.com/questions/31741705/error-invariant-violation-touchable-child-must-either-be-native-or-forward-set
-  setNativeProps(nativeProps) {
-    this._root.setNativeProps(nativeProps);
+class Results extends Component {
+  constructor(props) {
+    super(props);
   }
 
   // App Title
@@ -33,7 +27,7 @@ class App extends Component<{}> {
       <View style={styles.container}>
         <View style={styles.titleWrapper}>
           <Text style={[styles.title, styles.baseText]}>
-            poised
+            {this.showText(this.props.navigation.state.params.result)}
           </Text>
         </View>
 
@@ -46,31 +40,24 @@ class App extends Component<{}> {
         </View>
 
         <View style={styles.bodyWrapper}>
-          <Text style={[styles.bodyText, styles.baseText]}>prime yourself for performance</Text>
+          <Text style={[styles.bodyText, styles.baseText]}>
+            return to the main app
+          </Text>
         </View>
       </View>
     );
   }
-}
 
-// Navigation using StackNavigator
-export const RootNavigator = StackNavigator({
-  Home: {
-    screen: App
-  },
-  Routine: {
-    screen: RoutinePage
-  },
-  Selections: {
-    screen: SelectionPage
-  },
-  Feedback: {
-    screen: Feedback
-  },
-  Results: {
-    screen: Results
+  // Helper function to show text based on result
+  showText(result) {
+    console.log('showtextr esult', result);
+    if (result==="Yes") {
+      return "you're in good shape!";
+    } else {
+      return "you're almost there!";
+    }
   }
-});
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -109,4 +96,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default RootNavigator
+export default Results
