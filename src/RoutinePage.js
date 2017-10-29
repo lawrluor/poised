@@ -33,7 +33,7 @@ class RoutinePage extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>
-          audition routine
+          {this.props.navigation.state.params.routineName}
         </Text>
 
         <Center></Center>

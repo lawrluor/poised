@@ -36,7 +36,7 @@ class App extends Component<{}> {
         </TouchableHighlight>
 
         <Button style={styles.button}
-          title="Selections"
+          title="Routines"
           onPress={() => this.props.navigation.navigate('Selections')}
         />
       </View>
