@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   circleWrapper: {
     flex: 5,
-    // justifyContent: 'center', Flush to top
+    justifyContent: 'center',
     alignItems: 'center'
   },
   bodyText: {

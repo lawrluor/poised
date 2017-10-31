@@ -16,7 +16,7 @@ class ListItem extends React.Component {
   render() {
     return (
       <View style={styles.listItem}>
-        <TouchableOpacity onPress={() => this.navigateToRoutine(this.props.routine)}>
+        <TouchableOpacity onPress={() => this.navigateToRoutineInfo(this.props.routine)}>
           <Text style={[styles.itemName, styles.baseText]}>{this.props.routine}</Text>
         </TouchableOpacity>
       </View>
@@ -25,8 +25,8 @@ class ListItem extends React.Component {
 
   // Necessary to put navigation logic outside of render()
   // As this.props in render() doesn't refer to navigation object
-  navigateToRoutine(routineName) {
-    this.props.navigation.navigate('Routine',
+  navigateToRoutineInfo(routineName) {
+    this.props.navigation.navigate('RoutineInfo',
     {
       routineName: routineName // from this.state.name
     });

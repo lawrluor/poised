@@ -15,6 +15,7 @@ import RoutinePage from './src/RoutinePage.js';
 import SelectionPage from './src/SelectionPage.js';
 import Feedback from './src/Feedback.js';
 import Results from './src/Results.js';
+import RoutineInfo from './src/RoutineInfo.js';
 
 class App extends Component<{}> {
   // Activate native props on Center view to allow returning multiple elements
@@ -25,6 +26,7 @@ class App extends Component<{}> {
 
   // App Title
   static navigationOptions = {
+    header: null,
     title: 'poise'
   };
 
@@ -58,11 +60,14 @@ export const RootNavigator = StackNavigator({
   Home: {
     screen: App
   },
-  Routine: {
-    screen: RoutinePage
-  },
   Selections: {
     screen: SelectionPage
+  },
+  RoutineInfo: {
+    screen: RoutineInfo
+  },
+  Routine: {
+    screen: RoutinePage
   },
   Feedback: {
     screen: Feedback
