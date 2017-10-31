@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, TouchableHighlight, Navigator } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, TouchableHighlight, Navigator, Image } from 'react-native';
 
 import Center from '../src/Center.js';
 
@@ -16,24 +16,20 @@ class Feedback extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.titleWrapper}>
+        <View style={[styles.titleWrapper, styles.outline]}>
           <Text style={[styles.title, styles.baseText]}>calmer?</Text>
         </View>
 
-        <View style={styles.buttonWrapper}>
-          <TouchableHighlight underlay="grey" style={styles.buttonNo} onPress={() => this.navigateToResults("No")}>
-            <Text style={[styles.bodyText, styles.baseText]}>n</Text>
-          </TouchableHighlight>
-
-          <View style={styles.buffer}></View>
-
-          <TouchableHighlight underlay="grey" style={styles.buttonYes} onPress={() => this.navigateToResults("Yes")}>
-            <Text style={[styles.bodyText, styles.baseText]}>y</Text>
-          </TouchableHighlight>
+        <View style={[styles.bodyWrapper, styles.outline]}>
+          <Text style={[styles.bodyText, styles.baseText]}>placeholder</Text>
         </View>
 
-        <View style={styles.bodyWrapper}>
-          <Text style={[styles.bodyText, styles.baseText]}></Text>
+        <View style={[styles.circleWrapper, styles.outline]}>
+          <TouchableHighlight underlay="white" onPress={() => this.props.navigation.navigate('Selections')}>
+            <Image
+              source={require('../static/img/yes.png')}
+            />
+          </TouchableHighlight>
         </View>
       </View>
     )
@@ -65,40 +61,17 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   titleWrapper: {
-    flex: 4,
+    flex: 3,
     justifyContent: 'flex-end', // flush to bottom
     alignItems: 'center'
   },
-  buttonWrapper: {
-    flex: 6,
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingTop: 15,
-    paddingBottom: 30
-  },
-  buttonYes: {
-    flex: 2,
-    height: 80,
-    width: 80,
-    borderRadius: 40,
-    backgroundColor: '#B6C9A3',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buttonNo: {
-    flex: 2,
-    height: 80,
-    width: 80,
-    borderRadius: 40,
-    backgroundColor: '#B98888',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  buffer: {
+  bodyWrapper: {
     flex: 2
   },
-  bodyWrapper: {
-    flex: 3
+  circleWrapper: {
+    flex: 5,
+    // justifyContent: 'center', Flush to top
+    alignItems: 'center'
   },
   bodyText: {
     fontSize: 32

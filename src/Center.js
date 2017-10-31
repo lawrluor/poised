@@ -59,8 +59,10 @@ class Center extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 10,
-    backgroundColor: '#87AECF'
+    flex: 1,
+    backgroundColor: '#87AECF',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 })
 

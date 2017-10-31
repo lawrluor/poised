@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Navigator } from 'react-native';
 
+// import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import PercentageCircle from 'react-native-percentage-circle';
 import Center from '../src/Center.js';
 
-const routineItems = ['measured breathing', 'shake out your limbs', 'visualize your performance'];
+const routineItems = ['begin 10 second routines', 'measured breathing', 'shake out your limbs', 'visualize your performance'];
 
 class RoutinePage extends Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class RoutinePage extends Component {
         clearTimeout(this.timer);
         this.props.navigation.navigate('Feedback');
       }
-    }, 10000);
+    }, 5000);
   }
 
   // In the case user closes screen before the timeout fires, otherwise it would cause a memory leak that would trigger the transition regardless, breaking the user experience.
@@ -46,22 +48,25 @@ class RoutinePage extends Component {
   };
 
   render() {
+    // Access Routine name: {this.props.navigation.state.params.routineName}
     return (
       <View style={styles.container}>
-        <View style={[styles.titleWrapper]}>
-          <Text style={[styles.baseText, styles.title]}>
-            {this.props.navigation.state.params.routineName}
-          </Text>
+        <View style={[styles.titleWrapper, styles.outline]}>
+          <Text style={[styles.baseText, styles.title]}></Text>
         </View>
 
-        <View style={[styles.centerWrapper]}>
-          <Center></Center>
-        </View>
 
-        <View style={[styles.bodyWrapper]}>
+
+        <View style={[styles.bodyWrapper, styles.outline]}>
           <Text style={[styles.baseText, styles.bodyText]}>
             {routineItems[this.state.counter]}
           </Text>
+        </View>
+
+        <View style={[styles.circleWrapper, styles.outline]}>
+          <PercentageCircle radius={70} percent={50} color={"#3498db"}>
+            <Center></Center>
+          </PercentageCircle>
         </View>
       </View>
     )
@@ -89,13 +94,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end', // flush to bottom
     alignItems: 'center'
   },
-  centerWrapper: {
-    flex: 3,
+  circleWrapper: {
+    flex: 4,
     justifyContent: 'center',
     alignItems: 'center'
   },
   bodyWrapper: {
-    flex: 3
+    flex: 2
   },
   bodyText: {
     fontSize: 32

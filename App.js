@@ -37,16 +37,16 @@ class App extends Component<{}> {
           </Text>
         </View>
 
-        <View style={styles.centerWrapper}>
+        <View style={[styles.bodyWrapper, styles.outline]}>
+          <Text style={[styles.bodyText, styles.baseText]}>perform unhindered</Text>
+        </View>
+
+        <View style={[styles.circleWrapper, styles.outline]}>
           <TouchableHighlight onPress={() => this.props.navigation.navigate('Selections')}>
             <View ref={component => this._root = component}>
               <Center></Center>
             </View>
           </TouchableHighlight>
-        </View>
-
-        <View style={styles.bodyWrapper}>
-          <Text style={[styles.bodyText, styles.baseText]}>perform unhindered</Text>
         </View>
       </View>
     );
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   titleWrapper: {
-    flex: 4,
+    flex: 3,
     justifyContent: 'flex-end', // flush to bottom
     alignItems: 'center'
   },
@@ -93,13 +93,13 @@ const styles = StyleSheet.create({
     fontSize: 60,
     margin: 10,
   },
-  centerWrapper: {
-    flex: 3,
+  circleWrapper: {
+    flex: 5,
     justifyContent: 'center',
     alignItems: 'center'
   },
   bodyWrapper: {
-    flex: 3
+    flex: 2
   },
   bodyText: {
     fontSize: 32
