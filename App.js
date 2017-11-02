@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 32
   },
   outline: {
-    borderWidth: 2
+    // borderWidth: 2
   }
 });
 
