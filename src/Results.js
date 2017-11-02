@@ -35,7 +35,7 @@ class Results extends Component {
         </View>
 
         <View style={styles.circleWrapper}>
-          <TouchableHighlight onPress={() => this.props.navigation.navigate('Selections')}>
+          <TouchableHighlight style={styles.circleContainer} onPress={() => this.props.navigation.navigate('Selections')}>
             <View ref={component => this._root = component}>
               <Center></Center>
             </View>
@@ -90,6 +90,12 @@ const styles = StyleSheet.create({
   },
   outline: {
     borderWidth: 2
+  },
+  // matches size in Center.js
+  circleContainer: {
+    width: 170,
+    height: 170,
+    borderRadius: 85
   }
 });
 

@@ -46,9 +46,9 @@ class PulseView extends Component {
 class Center extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.circleContainer}>
         <PulseView>
-          <Image
+          <Image style={styles.image}
             source={require('../static/img/center.png')}
           />
         </PulseView>
@@ -62,7 +62,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#87AECF',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderRadius: 85,
+    overflow: 'hidden'
+  },
+  // borderRadius expects number as a value, you can't use percentage
+  // to make circular, set borderRadius to width/height divided by 2 (50%)
+  // hide overflow in circle view
+  image: {
+    height: 170,
+    width: 170
   }
 })
 

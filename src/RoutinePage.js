@@ -17,13 +17,11 @@ class RoutinePage extends Component {
     super(props);
 
     let begin = 0; // To access first index (0) of item and times
-    // let routineDurations = this.props.navigation.state.params.routineDurations;
-    // let routineActions = this.props.navigation.state.params.routineActions;
 
     this.state = {
       counter: begin,
       duration: routineDurations[begin],
-      percentage: 0
+      percentage: 0,
     }
   }
 
@@ -122,14 +120,15 @@ class RoutinePage extends Component {
         </View>
 
         <View style={[styles.circleWrapper, styles.outline]}>
-          <AnimatedCircularProgress
+          <AnimatedCircularProgress style={[styles.countdown, styles.outline]}
             ref='circularProgress'
-            size={120}
-            width={15}
-            fill={100}
-            tintColor="#00e0ff"
-            backgroundColor="#3d5875">
+            size={200}
+            width={5}
+            fill={0}
+            tintColor="#3d5875"
+            backgroundColor="#FFFFFF">
           </AnimatedCircularProgress>
+          <Center style={[styles.center, styles.outline]}></Center>
         </View>
       </View>
     )
@@ -169,15 +168,22 @@ const styles = StyleSheet.create({
     fontSize: 32
   },
   outline: {
-    // borderWidth: 2
+    borderWidth: 2
   },
-  button : {
+  button: {
     height: 40,
     width: 40,
     borderRadius: 20,
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  // allow for views to overlay
+  countdown: {
+    position: 'absolute'
+  },
+  center: {
+    position: 'absolute'
   }
 });
 
