@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, Navigator } from 'react-native';
 
-// import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import PercentageCircle from 'react-native-percentage-circle';
+import Sound from 'react-native-sound';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Center from '../src/Center.js';
 
+// Enable playback in silence mode
+Sound.setCategory('Playback');
+
 // change this to be imported as props from RoutineInfo
-let routineDurations = [10000, 10000, 10000, 10000];
-let routineActions = ['begin 10 second routines', 'measured breathing', 'shake out your limbs', 'visualize your performance'];
+let routineDurations = [5000, 5000, 5000, 5000];
+let routineActions = ['routine beginning...', 'measured breathing', 'shake out your limbs', 'visualize your performance'];
 
 class RoutinePage extends Component {
   constructor(props) {
@@ -24,31 +27,40 @@ class RoutinePage extends Component {
     }
   }
 
+  // App Title
+  static navigationOptions = {
+    title: 'Routine', // Access Routine name: {this.props.navigation.state.params.routineName}
+    header: null
+  };
+
   // Begin counting on page load
   componentDidMount() {
-    // Set interval so that every 5000 ms, increment counter by 1
+    // Begin playing audio
+    let music = this.playAudio();
+
+    // start initial countdown (jank)
+    this.restartCountdown(this.state.duration);
+
+    // Set interval so that every set duration, increment counter by 1
     this.timer = setInterval(() => {
-      let startTime = Date.now() // note start time of each interval
-
       if (!this.finished()) {
-
-        let duration = this.state.duration; // the duration of routine at start
-
-        this.initializeCountdown(startTime, duration);
-
         let next = this.state.counter + 1;
+        let nextDuration = routineDurations[next];
 
+        this.restartCountdown(this.state.duration);
+
+        console.log(next, nextDuration);
         this.setState({
           counter: next,
-          duration: routineDurations[next],
+          duration: nextDuration,
         });
-
       } else {
-        // move to final screen
+        // move to final screen, and clear operations
         clearTimeout(this.timer);
+        music.stop();
         this.props.navigation.navigate('Feedback');
       }
-    }, this.state.duration);
+    }, routineDurations[this.state.counter]); // BUG: This is called once and will only use the first value od Durations
   }
 
   // In the case user closes screen before the timeout fires, otherwise it would cause a memory leak that would trigger the transition regardless, breaking the user experience.
@@ -56,49 +68,45 @@ class RoutinePage extends Component {
     clearTimeout(this.timer);
   }
 
-  initializeCountdown(startTime, duration) {
-    console.log("counting down");
-    let interval = setInterval(() => {
-      let currentTime = Date.now();
-      elapsedTime = currentTime - startTime;
-
-      if (elapsedTime > duration) {
-        console.log("EXCEEDED");
-        clearInterval(interval);
-
-        this.setState({
-          percentage: 0
-        });
-
+  // use react-native-sound to play audio
+  playAudio() {
+    // Load the sound file from the app bundle
+    let music = new Sound('faure_pavane.mp3', Sound.MAIN_BUNDLE, (error) => {
+      if (error) {
+        console.log('failed to load the sound', error);
         return;
-      } else {
-        this.calculatePercentage(elapsedTime, duration);
       }
-    }, 16);
-  }
-
-  calculatePercentage(timeElapsed, duration) {
-    let percent = Math.trunc((timeElapsed / duration) * 100);
-
-    this.setState({
-      percentage: percent
+      // loaded successfully
+      console.log('duration in seconds: ' + music.getDuration() + 'number of channels: ' + music.getNumberOfChannels());
+      music.setNumberOfLoops(-1); // loop indefinitely until stop() called
+      music.play((success) => {
+        if (success) {
+          console.log('successfully finished playing');
+        } else {
+          console.log('playback failed due to audio decoding errors');
+          music.reset();
+        }
+      });
     });
 
-    console.log(timeElapsed.toString() + '/' + duration.toString() + '=' + percent.toString());
-    return percent
+    return music;
+  }
+
+  restartCountdown(duration) {
+    console.log("Countdown reset");
+    this.refs.circularProgress.performLinearAnimation(0, 0);
+
+    console.log("Countdown started");
+    this.refs.circularProgress.performLinearAnimation(100, duration); // Will fill the progress bar linearly in 8 seconds
   }
 
   finished() {
     if (this.state.counter === (routineActions.length - 1)) {
       return true;
+    } else {
+      return false;
     }
   }
-
-  // App Title
-  static navigationOptions = {
-    title: 'Routine', // Access Routine name: {this.props.navigation.state.params.routineName}
-    header: null
-  };
 
   render() {
     return (
@@ -114,9 +122,14 @@ class RoutinePage extends Component {
         </View>
 
         <View style={[styles.circleWrapper, styles.outline]}>
-          <PercentageCircle radius={50} percent={this.state.percentage} color={"blue"}>
-            <View style={styles.button}><Text>test</Text></View>
-          </PercentageCircle>
+          <AnimatedCircularProgress
+            ref='circularProgress'
+            size={120}
+            width={15}
+            fill={100}
+            tintColor="#00e0ff"
+            backgroundColor="#3d5875">
+          </AnimatedCircularProgress>
         </View>
       </View>
     )

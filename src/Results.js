@@ -17,8 +17,8 @@ class Results extends Component {
     super(props);
   }
 
-  // App Title
   static navigationOptions = {
+    header: null,
     title: 'poise'
   };
 

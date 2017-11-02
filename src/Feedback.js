@@ -8,8 +8,8 @@ class Feedback extends Component {
     super(props);
   }
 
-  // App Title
   static navigationOptions = {
+    header: null,
     title: 'poise'
   };
 
@@ -21,15 +21,25 @@ class Feedback extends Component {
         </View>
 
         <View style={[styles.bodyWrapper, styles.outline]}>
-          <Text style={[styles.bodyText, styles.baseText]}>placeholder</Text>
+          <Text style={[styles.bodyText, styles.baseText]}></Text>
         </View>
 
         <View style={[styles.circleWrapper, styles.outline]}>
-          <TouchableHighlight underlay="white" onPress={() => this.props.navigation.navigate('Selections')}>
-            <Image
-              source={require('../static/img/yes.png')}
-            />
-          </TouchableHighlight>
+          <View style={[styles.outline]}>
+            <TouchableHighlight underlay="white" onPress={() => this.navigateToResults("Yes")}>
+              <Image
+                source={require('../static/img/yes.png')}
+              />
+            </TouchableHighlight>
+          </View>
+
+          <View style={[styles.outline]}>
+            <TouchableHighlight underlay="white" onPress={() => this.navigateToResults("No")}>
+              <Image
+                source={require('../static/img/no.png')}
+              />
+            </TouchableHighlight>
+          </View>
         </View>
       </View>
     )
@@ -70,6 +80,7 @@ const styles = StyleSheet.create({
   },
   circleWrapper: {
     flex: 5,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -77,7 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 32
   },
   outline: {
-    // borderWidth: 2
+    borderWidth: 2
   }
 });
 

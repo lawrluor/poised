@@ -86,3 +86,24 @@ calculatePercentage(timeElapsed, duration) {
   console.log(timeElapsed.toString() + '/' + duration.toString() + '=' + percent.toString());
   return percent
 }
+
+// While loop Version of RoutinePage. Somehow, this.finished() is undefined
+
+console.log(!this.finished());
+while (!this.finished()) {
+  // Set interval so that every 5000 ms, increment counter by 1
+  this.timer = setInterval(() => {
+    let next = this.state.counter + 1;
+
+    this.startCountdown();
+
+    this.setState({
+      counter: next,
+      duration: routineDurations[next],
+    });
+  }, this.state.duration);
+}
+
+// move to final screen
+clearTimeout(this.timer);
+this.props.navigation.navigate('Feedback');
