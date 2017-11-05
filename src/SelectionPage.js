@@ -19,8 +19,7 @@ class SelectionPage extends Component {
 
   // App Title
   static navigationOptions = {
-    title: 'poise',
-    headerLeft: null,
+    title: 'routines',
     headerTintColor: '#00000000'
   };
 

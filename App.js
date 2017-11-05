@@ -11,11 +11,12 @@ import {
 
 import { StackNavigator } from 'react-navigation';
 import Center from './src/Center.js';
-import RoutinePage from './src/RoutinePage.js';
+import Menu from './src/Menu.js';
 import SelectionPage from './src/SelectionPage.js';
+import RoutineInfo from './src/RoutineInfo.js';
+import RoutinePage from './src/RoutinePage.js';
 import Feedback from './src/Feedback.js';
 import Results from './src/Results.js';
-import RoutineInfo from './src/RoutineInfo.js';
 
 class App extends Component<{}> {
   // Activate native props on Center view to allow returning multiple elements
@@ -44,7 +45,7 @@ class App extends Component<{}> {
         </View>
 
         <View style={[styles.circleWrapper, styles.outline]}>
-          <TouchableHighlight onPress={() => this.props.navigation.navigate('Selections')}>
+          <TouchableHighlight style={styles.circleContainer} activeOpacity={0.9} onPress={() => this.props.navigation.navigate('Menu')}>
             <View ref={component => this._root = component}>
               <Center></Center>
             </View>
@@ -74,6 +75,9 @@ export const RootNavigator = StackNavigator({
   },
   Results: {
     screen: Results
+  },
+  Menu: {
+    screen: Menu
   }
 });
 
@@ -108,6 +112,14 @@ const styles = StyleSheet.create({
   },
   bodyText: {
     fontSize: 32
+  },
+  // designed to match size in Center.js
+  circleContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 104,
+    height: 104,
+    borderRadius: 52
   },
   outline: {
     // borderWidth: 2

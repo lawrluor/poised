@@ -26,7 +26,7 @@ class Feedback extends Component {
 
         <View style={[styles.circleWrapper, styles.outline]}>
           <View style={[styles.outline]}>
-            <TouchableHighlight underlay="white" onPress={() => this.navigateToResults("Yes")}>
+            <TouchableHighlight style={styles.circleContainer} onPress={() => this.navigateToResults("Yes")}>
               <Image
                 source={require('../static/img/yes.png')}
               />
@@ -34,7 +34,7 @@ class Feedback extends Component {
           </View>
 
           <View style={[styles.outline]}>
-            <TouchableHighlight underlay="white" onPress={() => this.navigateToResults("No")}>
+            <TouchableHighlight style={styles.circleContainer} onPress={() => this.navigateToResults("No")}>
               <Image
                 source={require('../static/img/no.png')}
               />
@@ -76,6 +76,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   bodyWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
     flex: 2
   },
   circleWrapper: {
@@ -84,11 +86,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  circleContainer: {
+    width: 104,
+    height: 104,
+    borderRadius: 52,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   bodyText: {
     fontSize: 32
   },
   outline: {
-    borderWidth: 2
+    // borderWidth: 2
   }
 });
 

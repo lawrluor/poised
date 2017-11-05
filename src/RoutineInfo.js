@@ -28,19 +28,23 @@ class RoutineInfo extends Component {
     return (
       <View style={styles.container}>
         <View style={[styles.titleWrapper, styles.outline]}>
-          <Text style={[styles.title, styles.baseText]}>Routine: {routineName}</Text>
+          <Text style={[styles.title, styles.baseText]}>{routineName}</Text>
         </View>
 
         <View style={[styles.bodyWrapper, styles.outline]}>
-          <Text style={[styles.bodyText, styles.baseText]}>Length: {routineDuration} seconds </Text>
+          <Text style={[styles.bodyText, styles.baseText]}>length: {routineDuration} seconds </Text>
         </View>
 
-        <View style={styles.circleWrapper}>
-          <TouchableHighlight onPress={() => this.navigateToRoutine(this.props.routine, routineActions, routineDurations)}>
+        <View style={[styles.circleWrapper, styles.outline]}>
+          <TouchableHighlight style={[styles.circleContainer, styles.outline]} onPress={() => this.navigateToRoutine(this.props.routine, routineActions, routineDurations)}>
             <View ref={component => this._root = component}>
-              <Center><Text>Begin {this.props.routine}</Text></Center>
+              <Center></Center>
             </View>
           </TouchableHighlight>
+        </View>
+
+        <View style={[styles.bottomWrapper, styles.outline]}>
+          <Text style={[styles.bodyText, styles.baseText]}>begin routine</Text>
         </View>
       </View>
     )
@@ -103,15 +107,28 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   bodyWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
     flex: 2
   },
   circleWrapper: {
-    flex: 5,
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  // matches size in Center.js
+  circleContainer: {
+    width: 106,
+    height: 106,
+    borderRadius: 53,
     justifyContent: 'center',
     alignItems: 'center'
   },
   bodyText: {
     fontSize: 32
+  },
+  bottomWrapper: {
+    flex: 2
   },
   outline: {
     // borderWidth: 2

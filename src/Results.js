@@ -78,6 +78,8 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   bodyWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
     flex: 2
   },
   circleWrapper: {
@@ -89,13 +91,15 @@ const styles = StyleSheet.create({
     fontSize: 32
   },
   outline: {
-    borderWidth: 2
+    // borderWidth: 2
   },
   // matches size in Center.js
   circleContainer: {
-    width: 170,
-    height: 170,
-    borderRadius: 85
+    width: 104,
+    height: 104,
+    borderRadius: 52,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 

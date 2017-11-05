@@ -9,8 +9,8 @@ import Center from '../src/Center.js';
 Sound.setCategory('Playback');
 
 // change this to be imported as props from RoutineInfo
-let routineDurations = [5000, 5000, 5000, 5000];
-let routineActions = ['routine beginning...', 'measured breathing', 'shake out your limbs', 'visualize your performance'];
+let routineDurations = [10000, 10000, 10000];
+let routineActions = ['measured breathing', 'shake out your limbs', 'visualize your performance'];
 
 class RoutinePage extends Component {
   constructor(props) {
@@ -110,11 +110,7 @@ class RoutinePage extends Component {
     return (
       <View style={styles.container}>
         <View style={[styles.titleWrapper, styles.outline]}>
-          <Text style={[styles.baseText, styles.title]}></Text>
-        </View>
-
-        <View style={[styles.bodyWrapper, styles.outline]}>
-          <Text style={[styles.baseText, styles.bodyText]}>
+          <Text style={[styles.bodyText, styles.baseText]}>
             {routineActions[this.state.counter]}
           </Text>
         </View>
@@ -129,6 +125,9 @@ class RoutinePage extends Component {
             backgroundColor="#FFFFFF">
           </AnimatedCircularProgress>
           <Center style={[styles.center, styles.outline]}></Center>
+        </View>
+
+        <View style={[styles.bottomWrapper, styles.outline]}>
         </View>
       </View>
     )
@@ -152,17 +151,19 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   titleWrapper: {
-    flex: 4,
+    flex: 2,
     justifyContent: 'flex-end', // flush to bottom
     alignItems: 'center'
   },
   circleWrapper: {
-    flex: 4,
+    flex: 6,
     justifyContent: 'center',
     alignItems: 'center'
   },
-  bodyWrapper: {
-    flex: 2
+  bottomWrapper: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   bodyText: {
     fontSize: 32
