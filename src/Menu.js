@@ -16,7 +16,7 @@ class Menu extends Component {
     return (
       <View style={styles.container}>
         <View style={[styles.titleWrapper, styles.outline]}>
-          <Text style={[styles.title, styles.baseText]}>I have a:</Text>
+          <Text style={[styles.title, styles.baseText]}>I have a...</Text>
         </View>
 
         <View style={[styles.bodyWrapper, styles.outline]}>
@@ -28,7 +28,7 @@ class Menu extends Component {
             <Text style={[styles.bodyText, styles.baseText]}>Interview</Text>
           </TouchableHighlight>
 
-          <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
+          <TouchableHighlight underlayColor={'blue'} style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
             <Text style={[styles.bodyText, styles.baseText]}>Test</Text>
           </TouchableHighlight>
         </View>
@@ -53,11 +53,11 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   title: {
-    fontSize: 60,
+    fontSize: 48,
     margin: 10,
   },
   bodyText: {
-    fontSize: 32
+    fontSize: 24
   },
   titleWrapper: {
     flex: 2,
@@ -77,6 +77,8 @@ const styles = StyleSheet.create({
   button: {
     borderWidth: 1,
     borderRadius: 100,
+    borderColor: "red",
+    padding: 10
   },
   outline: {
     // borderWidth: 2

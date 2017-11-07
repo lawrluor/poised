@@ -6,6 +6,28 @@ import Center from '../src/Center.js';
 class RoutineInfo extends Component {
   constructor(props) {
     super(props);
+
+    let routineName = this.props.navigation.state.params.routineName;
+    let routineItems = this.queryRoutineItems(routineName);
+    // console.log(routineItems);
+    // console.log(routineDuration);
+    // console.log(routineDurations);
+    // console.log(routineActions);
+
+    this.state = {
+      routineName: routineName,
+      routineItems: routineItems,
+      routineDuration: this.extractDuration(Object.values(routineItems)),
+      routineDurations: Object.values(routineItems),
+      routineActions: Object.keys(routineItems),
+    }
+  }
+
+  componentDidMount() {
+    // After 5 seconds, move to routine screen
+    // this.timer = setInterval(() => {
+    //   this.navigateToRoutine(this.props.routine, this.state.routineActions, this.state.routineDurations);
+    // }, 5000);
   }
 
   // App Title
@@ -14,29 +36,18 @@ class RoutineInfo extends Component {
   };
 
   render() {
-    let routineName = this.props.navigation.state.params.routineName;
-    console.log(routineName);
-    let routineItems = this.queryRoutineItems(routineName);
-    let routineDuration = this.extractDuration(Object.values(routineItems));
-    let routineDurations = Object.values(routineItems);
-    let routineActions = Object.keys(routineItems);
-    console.log(routineItems);
-    console.log(routineDuration);
-    console.log(routineDurations);
-    console.log(routineActions);
-
     return (
       <View style={styles.container}>
         <View style={[styles.titleWrapper, styles.outline]}>
-          <Text style={[styles.title, styles.baseText]}>{routineName}</Text>
+          <Text style={[styles.title, styles.baseText]}>{this.state.routineName}</Text>
         </View>
 
         <View style={[styles.bodyWrapper, styles.outline]}>
-          <Text style={[styles.bodyText, styles.baseText]}>length: {routineDuration} seconds </Text>
+          <Text style={[styles.bodyText, styles.baseText]}>length: {this.state.routineDuration} seconds </Text>
         </View>
 
         <View style={[styles.circleWrapper, styles.outline]}>
-          <TouchableHighlight style={[styles.circleContainer, styles.outline]} onPress={() => this.navigateToRoutine(this.props.routine, routineActions, routineDurations)}>
+          <TouchableHighlight style={[styles.circleContainer, styles.outline]} onPress={() => this.navigateToRoutine(this.props.routine, this.state.routineActiins, this.state.routineDurations)}>
             <View ref={component => this._root = component}>
               <Center></Center>
             </View>

@@ -10,9 +10,9 @@ class SelectionPage extends Component {
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
       dataSource: ds.cloneWithRows([
-        'audition': ['measured breathing', 'limb shake out', 'visualize your performance'],
-        'performance': ['measured breathing', 'limb shake out', 'visualize your performance'],
-        'recording': ['measured breathing', 'limb shake out', 'visualize your performance']
+        'calming routine': ['measured breathing', 'shake out your limbs', 'visualize your performance'],
+        'positive vibes': ['highlight of your week', 'limb shake out', 'visualize your performance'],
+        'get hype': ['limb shake out', 'calming routine', 'visualize your performance']
       ])
     };
   }

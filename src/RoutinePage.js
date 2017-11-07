@@ -3,6 +3,7 @@ import { AppRegistry, StyleSheet, Text, View, Navigator } from 'react-native';
 
 import Sound from 'react-native-sound';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
+
 import Center from '../src/Center.js';
 
 // Enable playback in silence mode
@@ -20,8 +21,7 @@ class RoutinePage extends Component {
 
     this.state = {
       counter: begin,
-      duration: routineDurations[begin],
-      percentage: 0,
+      duration: routineDurations[begin]
     }
   }
 
@@ -107,30 +107,36 @@ class RoutinePage extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.container}>
-        <View style={[styles.titleWrapper, styles.outline]}>
-          <Text style={[styles.bodyText, styles.baseText]}>
-            {routineActions[this.state.counter]}
-          </Text>
-        </View>
+    if (this.state.info) {
+      return (
+        <RoutineInfo></RoutineInfo>
+      );
+    } else {
+      return (
+        <View style={styles.container}>
+          <View style={[styles.titleWrapper, styles.outline]}>
+            <Text style={[styles.bodyText, styles.baseText]}>
+              {routineActions[this.state.counter]}
+            </Text>
+          </View>
 
-        <View style={[styles.circleWrapper, styles.outline]}>
-          <AnimatedCircularProgress style={[styles.countdown, styles.outline]}
-            ref='circularProgress'
-            size={200}
-            width={5}
-            fill={0}
-            tintColor="#3d5875"
-            backgroundColor="#FFFFFF">
-          </AnimatedCircularProgress>
-          <Center style={[styles.center, styles.outline]}></Center>
-        </View>
+          <View style={[styles.circleWrapper, styles.outline]}>
+            <AnimatedCircularProgress style={[styles.countdown, styles.outline]}
+              ref='circularProgress'
+              size={200}
+              width={5}
+              fill={0}
+              tintColor="#3d5875"
+              backgroundColor="#FFFFFF">
+            </AnimatedCircularProgress>
+            <Center style={[styles.center, styles.outline]}></Center>
+          </View>
 
-        <View style={[styles.bottomWrapper, styles.outline]}>
+          <View style={[styles.bottomWrapper, styles.outline]}>
+          </View>
         </View>
-      </View>
-    )
+      );
+    }
   }
 }
 
@@ -169,7 +175,7 @@ const styles = StyleSheet.create({
     fontSize: 32
   },
   outline: {
-    borderWidth: 2
+    // borderWidth: 2
   },
   button: {
     height: 40,

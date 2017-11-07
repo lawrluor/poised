@@ -11,7 +11,6 @@ import {
 
 import { StackNavigator } from 'react-navigation';
 import Center from './src/Center.js';
-import Menu from './src/Menu.js';
 import SelectionPage from './src/SelectionPage.js';
 import RoutineInfo from './src/RoutineInfo.js';
 import RoutinePage from './src/RoutinePage.js';
@@ -25,31 +24,42 @@ class App extends Component<{}> {
     this._root.setNativeProps(nativeProps);
   }
 
-  // App Title
-  static navigationOptions = {
-    header: null,
-    title: 'poise'
-  };
-
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.titleWrapper}>
-          <Text style={[styles.title, styles.baseText]}>
-            poise
-          </Text>
+        <View style={[styles.titleWrapper, styles.outline]}>
+          <Text style={[styles.title, styles.baseText]}>I have a...</Text>
         </View>
 
         <View style={[styles.bodyWrapper, styles.outline]}>
-          <Text style={[styles.bodyText, styles.baseText]}>perform unhindered</Text>
+          <View style={[styles.buttonWrapper, styles.outline]}>
+            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
+              <Text style={[styles.bodyText, styles.baseText]}>Performance</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
+              <Text style={[styles.bodyText, styles.baseText]}>Interview</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
+              <Text style={[styles.bodyText, styles.baseText]}>Test</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
+              <Text style={[styles.bodyText, styles.baseText]}>Networking Event</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
+              <Text style={[styles.bodyText, styles.baseText]}>Presentation</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
+              <Text style={[styles.bodyText, styles.baseText]}>Date</Text>
+            </TouchableHighlight>
+          </View>
         </View>
 
-        <View style={[styles.circleWrapper, styles.outline]}>
-          <TouchableHighlight style={styles.circleContainer} activeOpacity={0.9} onPress={() => this.props.navigation.navigate('Menu')}>
-            <View ref={component => this._root = component}>
-              <Center></Center>
-            </View>
-          </TouchableHighlight>
+        <View style={[styles.bottomWrapper, styles.outline]}>
         </View>
       </View>
     );
@@ -75,9 +85,6 @@ export const RootNavigator = StackNavigator({
   },
   Results: {
     screen: Results
-  },
-  Menu: {
-    screen: Menu
   }
 });
 
@@ -93,33 +100,41 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     textAlign: 'center'
   },
-  titleWrapper: {
-    flex: 3,
-    justifyContent: 'flex-end', // flush to bottom
-    alignItems: 'center'
-  },
   title: {
-    fontSize: 60,
+    fontSize: 48,
     margin: 10,
   },
-  circleWrapper: {
-    flex: 5,
-    justifyContent: 'center',
-    alignItems: 'center'
+  bodyText: {
+    fontSize: 24,
+  },
+  titleWrapper: {
+    flex: 2,
+    justifyContent: 'flex-end', // flush to bottom
   },
   bodyWrapper: {
-    flex: 2
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flex: 7,
   },
-  bodyText: {
-    fontSize: 32
+  // span width of container
+  buttonWrapper: {
+    flex: 1,
+    justifyContent: 'space-around' // spread vertically throughout container
   },
-  // designed to match size in Center.js
-  circleContainer: {
+  bottomWrapper: {
     justifyContent: 'center',
     alignItems: 'center',
-    width: 104,
-    height: 104,
-    borderRadius: 52
+    flex: 1
+  },
+  button: {
+    borderWidth: 3,
+    borderRadius: 15,
+    borderColor: '#FFFFFF',
+    backgroundColor: 'rgba(0, 0, 0, 0.1)', // Black with 50% opacity
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   outline: {
     // borderWidth: 2
