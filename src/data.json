@@ -1,4 +1,45 @@
+Mongo Collection
+users = [{
+  "user_id": 0,
+  "username": "lawrence",
+  "name": "Lawrence Luo",
+  "password": "password",
+}]
+
+Routine
+Store just IDs if space is a concern, and cleanness. mongo has limit (16mb?)
 {
-  "Audition": ["measured breathing", "limb shake out", "visualize your performance"],
-  "Performance": ["measured breathing", "limb shake out", "visualize your performance"],
+  "routine_id": 0,
+  "user_id": 0,
+  "totalLength": 40,
+  "overallRating": 5,
+  "actions": [0, 1]
+}
+
+Write script, query:
+For all the Ratings for each routine, average all of them and assign to overallRating (nightly?)
+
+Action
+{
+  "action_id": 0,
+  "length": 10
+}
+
+db.find routines where action is 0
+
+Comment
+{
+  "comment_id": 0,
+  "user_id": 0,
+  "routine_id": 0,
+  "text": "comment text"
+}
+
+Lazy Loading: Make two queries, one to query routine by ID on view load. Then query the comments with the routine ID
+
+Ratings
+{
+    "user_id": 0,
+    "routine_id": 0,
+    "rating": 5
 }

@@ -24,6 +24,7 @@ class App extends Component<{}> {
     this._root.setNativeProps(nativeProps);
   }
 
+  // Query database for tags, and pass tag name as a prop
   render() {
     return (
       <View style={styles.container}>
@@ -33,7 +34,7 @@ class App extends Component<{}> {
 
         <View style={[styles.bodyWrapper, styles.outline]}>
           <View style={[styles.buttonWrapper, styles.outline]}>
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
+            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections', tag="Performance")}>
               <Text style={[styles.bodyText, styles.baseText]}>Performance</Text>
             </TouchableHighlight>
 
@@ -55,6 +56,10 @@ class App extends Component<{}> {
 
             <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
               <Text style={[styles.bodyText, styles.baseText]}>Date</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
+              <Text style={[styles.bodyText, styles.baseText]}>Competition</Text>
             </TouchableHighlight>
           </View>
         </View>
@@ -90,7 +95,7 @@ export const RootNavigator = StackNavigator({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 10,
+    flex: 20,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#87AECF',
@@ -108,13 +113,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   titleWrapper: {
-    flex: 2,
+    flex: 4,
     justifyContent: 'flex-end', // flush to bottom
   },
   bodyWrapper: {
     justifyContent: 'space-around',
     alignItems: 'center',
-    flex: 7,
+    flex: 15,
   },
   // span width of container
   buttonWrapper: {

@@ -27,7 +27,7 @@ class RoutinePage extends Component {
 
   // App Title
   static navigationOptions = {
-    title: 'Routine', // Access Routine name: {this.props.navigation.state.params.routineName}
+    title: "Routine",
     header: null
   };
 
@@ -107,36 +107,30 @@ class RoutinePage extends Component {
   }
 
   render() {
-    if (this.state.info) {
-      return (
-        <RoutineInfo></RoutineInfo>
-      );
-    } else {
-      return (
-        <View style={styles.container}>
-          <View style={[styles.titleWrapper, styles.outline]}>
-            <Text style={[styles.bodyText, styles.baseText]}>
-              {routineActions[this.state.counter]}
-            </Text>
-          </View>
-
-          <View style={[styles.circleWrapper, styles.outline]}>
-            <AnimatedCircularProgress style={[styles.countdown, styles.outline]}
-              ref='circularProgress'
-              size={200}
-              width={5}
-              fill={0}
-              tintColor="#3d5875"
-              backgroundColor="#FFFFFF">
-            </AnimatedCircularProgress>
-            <Center style={[styles.center, styles.outline]}></Center>
-          </View>
-
-          <View style={[styles.bottomWrapper, styles.outline]}>
-          </View>
+    return (
+      <View style={styles.container}>
+        <View style={[styles.titleWrapper, styles.outline]}>
+          <Text style={[styles.bodyText, styles.baseText]}>
+            {routineActions[this.state.counter]}
+          </Text>
         </View>
-      );
-    }
+
+        <View style={[styles.circleWrapper, styles.outline]}>
+          <AnimatedCircularProgress style={[styles.countdown, styles.outline]}
+            ref='circularProgress'
+            size={200}
+            width={5}
+            fill={0}
+            tintColor="#3d5875"
+            backgroundColor="#FFFFFF">
+          </AnimatedCircularProgress>
+          <Center style={[styles.center, styles.outline]}></Center>
+        </View>
+
+        <View style={[styles.bottomWrapper, styles.outline]}>
+        </View>
+      </View>
+    );
   }
 }
 

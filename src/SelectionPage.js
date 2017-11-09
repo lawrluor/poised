@@ -20,7 +20,6 @@ class SelectionPage extends Component {
   // App Title
   static navigationOptions = {
     title: 'routines',
-    headerTintColor: '#00000000'
   };
 
   // pass in navigation prop to each listItem
