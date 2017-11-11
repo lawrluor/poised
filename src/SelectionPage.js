@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, ListView, Navigator, FlatList } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, ListView, Navigator, FlatList } from 'react-native';
 
 import ListItem from './ListItem.js';
+import GridDisplay from './GridDisplay.js';
+import { routines } from './data';
 
 class SelectionPage extends Component {
   constructor(props) {
@@ -19,22 +21,36 @@ class SelectionPage extends Component {
 
   // App Title
   static navigationOptions = {
-    title: 'routines',
+    title: 'routines'
   };
 
   // pass in navigation prop to each listItem
   render() {
     return (
       <View style={styles.container}>
-        <ListView
-          dataSource={this.state.dataSource}
-          renderRow={(data) => this.generateItem(data)}
-          renderHeader={this.renderHeader}
-          renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
-        />
+        <ScrollView
+          contentContainerStyle={styles.scrollContent}
+          // Hide all scroll indicators
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
+        >
+          {routines.map((routine, index) => <GridDisplay
+            routine={routine}
+            onOpen={this.openRoutine}
+            key={index}
+            navigation={this.props.navigation}
+          />)}
+        </ScrollView>
       </View>
     );
   }
+
+  // <ListView
+  //   dataSource={this.state.dataSource}
+  //   renderRow={(data) => this.generateItem(data)}
+  //   renderHeader={this.renderHeader}
+  //   renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
+  // />
 
   renderHeader() {
     return (
@@ -43,18 +59,15 @@ class SelectionPage extends Component {
       </View>
     )
   }
-
-  generateItem(data) {
-    return (
-      <ListItem routine={data} navigation={this.props.navigation}></ListItem>
-    )
-  }
 }
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#87AECF',
-    flex: 1
+    flex: 1,
+    padding: 20,
+    alignItems: 'center', // center routine boxes
+    justifyContent: 'center'
   },
   baseText: {
     fontFamily: 'Avenir',

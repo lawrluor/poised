@@ -9,6 +9,19 @@ componentDidMount() {
   }, 5000);
 }
 
+<ScrollView
+  contentContainerStyle={styles.scrollContent}
+// Hide all scroll indicators
+  showsHorizontalScrollIndicator={false}
+  showsVerticalScrollIndicator={false}
+>
+  {routines.map((routine, index) => <GridDisplay
+    routine={routine}
+    onOpen={this.openRoutine}
+    key={index}
+  />)}
+</ScrollView>
+
 <ScrollView>
   <ListItem button onPress={() => console.log("Test")} name="Audition"></ListItem>
   <ListItem name="Performance"></ListItem>
@@ -20,6 +33,13 @@ componentDidMount() {
     <Center></Center>
   </View>
 </TouchableHighlight>
+
+<ListView
+  dataSource={this.state.dataSource}
+  renderRow={(data) => this.generateItem(data)}
+  renderHeader={this.renderHeader}
+  renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
+/>
 
 // CODE FOR CUSTOM COUNTDOWN ANIMATION
 

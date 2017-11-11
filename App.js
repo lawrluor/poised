@@ -17,6 +17,8 @@ import RoutinePage from './src/RoutinePage.js';
 import Feedback from './src/Feedback.js';
 import Results from './src/Results.js';
 
+import SelectionButton from './src/SelectionButton.js';
+
 class App extends Component<{}> {
   // Activate native props on Center view to allow returning multiple elements
   // https://stackoverflow.com/questions/31741705/error-invariant-violation-touchable-child-must-either-be-native-or-forward-set
@@ -34,9 +36,7 @@ class App extends Component<{}> {
 
         <View style={[styles.bodyWrapper, styles.outline]}>
           <View style={[styles.buttonWrapper, styles.outline]}>
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections', tag="Performance")}>
-              <Text style={[styles.bodyText, styles.baseText]}>Performance</Text>
-            </TouchableHighlight>
+            <SelectionButton navigation={this.props.navigation} name={"Competition"}></SelectionButton>
 
             <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
               <Text style={[styles.bodyText, styles.baseText]}>Interview</Text>
@@ -50,7 +50,7 @@ class App extends Component<{}> {
               <Text style={[styles.bodyText, styles.baseText]}>Networking Event</Text>
             </TouchableHighlight>
 
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
+            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections', navigate={navigate})}>
               <Text style={[styles.bodyText, styles.baseText]}>Presentation</Text>
             </TouchableHighlight>
 
