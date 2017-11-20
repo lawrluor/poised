@@ -6,6 +6,10 @@ import Center from '../src/Center.js';
 class Feedback extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      helpful: "Was this routine helpful?"
+    }
   }
 
   static navigationOptions = {
@@ -17,7 +21,7 @@ class Feedback extends Component {
     return (
       <View style={styles.container}>
         <View style={[styles.titleWrapper, styles.outline]}>
-          <Text style={[styles.title, styles.baseText]}>calmer?</Text>
+          <Text style={[styles.title, styles.baseText]}>{this.state.helpful}</Text>
         </View>
 
         <View style={[styles.bodyWrapper, styles.outline]}>
@@ -26,7 +30,7 @@ class Feedback extends Component {
 
         <View style={[styles.circleWrapper, styles.outline]}>
           <View style={[styles.outline]}>
-            <TouchableHighlight style={styles.circleContainer} onPress={() => this.navigateToResults("Yes")}>
+            <TouchableHighlight style={styles.circleContainer} onPress={() => this.navigateToPrevious(true)}>
               <Image
                 source={require('../static/img/yes.png')}
               />
@@ -34,7 +38,7 @@ class Feedback extends Component {
           </View>
 
           <View style={[styles.outline]}>
-            <TouchableHighlight style={styles.circleContainer} onPress={() => this.navigateToResults("No")}>
+            <TouchableHighlight style={styles.circleContainer} onPress={() => this.navigateToPrevious(false)}>
               <Image
                 source={require('../static/img/no.png')}
               />
@@ -45,12 +49,20 @@ class Feedback extends Component {
     )
   }
 
-  navigateToResults(result) {
-    console.log('result', result);
-    this.props.navigation.navigate('Results',
-    {
-      result: result
-    });
+  navigateToPrevious(result) {
+    if (result) {
+      console.log("You're going to do great!");
+      this.setState({helpful: "You're going to do great!"});
+    } else {
+      console.log("You're going to do great! But consider trying another routine.");
+      this.setState({helpful: "You're going to do great! But consider trying another routine."});
+    }
+
+    this.timer = setInterval(() => {
+      // after time period, clear timer and navigate to next screen
+      clearTimeout(this.timer);
+      this.props.navigation.navigate('Selections');
+    }, 1000);
   }
 }
 
@@ -66,7 +78,7 @@ const styles = StyleSheet.create({
     color: '#FFFFFF'
   },
   title: {
-    fontSize: 48,
+    fontSize: 22,
     textAlign: 'center',
     margin: 10,
   },
@@ -83,21 +95,21 @@ const styles = StyleSheet.create({
   circleWrapper: {
     flex: 5,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center'
   },
   circleContainer: {
-    width: 104,
-    height: 104,
-    borderRadius: 52,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // width: 104,
+    // height: 104,
+    // borderRadius: 52,
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
   bodyText: {
     fontSize: 32
   },
   outline: {
-    // borderWidth: 2
+    borderWidth: 2
   }
 });
 

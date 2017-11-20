@@ -35,11 +35,7 @@ class Results extends Component {
         </View>
 
         <View style={styles.circleWrapper}>
-          <TouchableHighlight style={styles.circleContainer} onPress={() => this.props.navigation.navigate('Selections')}>
-            <View ref={component => this._root = component}>
-              <Center></Center>
-            </View>
-          </TouchableHighlight>
+          
         </View>
       </View>
     );

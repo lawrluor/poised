@@ -2,14 +2,14 @@ export const routines = [
   {
     routine_id: 0,
     user_id: 0,
-    name: "Get Hype",
+    name: "Calming Routine",
     totalLength: 40,
     overallRating: 5,
   },
   {
     routine_id: 1,
     user_id: 0,
-    name: "Calming Routine",
+    name: "Get Hype",
     totalLength: 50,
     overallRating: 4
   },

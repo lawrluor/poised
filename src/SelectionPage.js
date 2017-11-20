@@ -5,6 +5,8 @@ import ListItem from './ListItem.js';
 import GridDisplay from './GridDisplay.js';
 import { routines } from './data';
 
+import { defaultStyles } from './styles.js';
+
 class SelectionPage extends Component {
   constructor(props) {
     super(props);
@@ -20,14 +22,18 @@ class SelectionPage extends Component {
   }
 
   // App Title
-  static navigationOptions = {
-    title: 'routines'
-  };
+  // static navigationOptions = {
+  //   title: 'Select a Routine',
+  // };
 
   // pass in navigation prop to each listItem
   render() {
     return (
       <View style={styles.container}>
+        <View style={[styles.titleWrapper, styles.outline]}>
+          <Text style={[styles.baseText, styles.titleText]}>Select a Routine</Text>
+        </View>
+
         <ScrollView
           contentContainerStyle={styles.scrollContent}
           // Hide all scroll indicators
@@ -68,6 +74,10 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center', // center routine boxes
     justifyContent: 'center'
+  },
+  titleText: {
+    fontSize: 36,
+    margin: 10,
   },
   baseText: {
     fontFamily: 'Avenir',

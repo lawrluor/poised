@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
   View,
   Image,
-  Animated,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions
 } from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
@@ -19,6 +18,8 @@ import Results from './src/Results.js';
 
 import SelectionButton from './src/SelectionButton.js';
 
+import { defaultStyles } from './src/styles.js';
+
 class App extends Component<{}> {
   // Activate native props on Center view to allow returning multiple elements
   // https://stackoverflow.com/questions/31741705/error-invariant-violation-touchable-child-must-either-be-native-or-forward-set
@@ -26,7 +27,21 @@ class App extends Component<{}> {
     this._root.setNativeProps(nativeProps);
   }
 
+  // App Title
+  static navigationOptions = {
+    title: 'App',
+    header: null
+  }
+  //   header: {
+  //     style: {
+  //       backgroundColor: 'rgba(119, 136, 153, 1)'
+  //     }
+  //   }
+    // headerStyle: 'blue', // 'rgba(119, 136, 153, 1)'
+  // };
+
   // Query database for tags, and pass tag name as a prop
+  // <View style={[defaultStyles.headerWrapper, styles.outline]}></View>
   render() {
     return (
       <View style={styles.container}>
@@ -50,16 +65,12 @@ class App extends Component<{}> {
               <Text style={[styles.bodyText, styles.baseText]}>Networking Event</Text>
             </TouchableHighlight>
 
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections', navigate={navigate})}>
+            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
               <Text style={[styles.bodyText, styles.baseText]}>Presentation</Text>
             </TouchableHighlight>
 
             <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
               <Text style={[styles.bodyText, styles.baseText]}>Date</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
-              <Text style={[styles.bodyText, styles.baseText]}>Competition</Text>
             </TouchableHighlight>
           </View>
         </View>
@@ -72,26 +83,28 @@ class App extends Component<{}> {
 }
 
 // Navigation using StackNavigator
-export const RootNavigator = StackNavigator({
-  Home: {
+export const RootNavigator = StackNavigator(
+  {
+    Home: {
     screen: App
+    },
+    Selections: {
+      screen: SelectionPage
+    },
+    RoutineInfo: {
+      screen: RoutineInfo
+    },
+    Routine: {
+      screen: RoutinePage
+    },
+    Feedback: {
+      screen: Feedback
+    },
+    Results: {
+      screen: Results
+    }
   },
-  Selections: {
-    screen: SelectionPage
-  },
-  RoutineInfo: {
-    screen: RoutineInfo
-  },
-  Routine: {
-    screen: RoutinePage
-  },
-  Feedback: {
-    screen: Feedback
-  },
-  Results: {
-    screen: Results
-  }
-});
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -119,7 +132,7 @@ const styles = StyleSheet.create({
   bodyWrapper: {
     justifyContent: 'space-around',
     alignItems: 'center',
-    flex: 15,
+    flex: 14,
   },
   // span width of container
   buttonWrapper: {
@@ -129,7 +142,7 @@ const styles = StyleSheet.create({
   bottomWrapper: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1
+    flex: 2
   },
   button: {
     borderWidth: 3,

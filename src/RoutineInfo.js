@@ -32,7 +32,8 @@ class RoutineInfo extends Component {
 
   // App Title
   static navigationOptions = {
-    title: 'Routine Info'
+    title: 'routines',
+    header: null
   };
 
   render() {
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     fontSize: 32
   },
   bottomWrapper: {
-    flex: 2
+    flex: 1
   },
   outline: {
     // borderWidth: 2

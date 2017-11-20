@@ -36,25 +36,24 @@ class GridDisplay extends Component {
       //   <ImageBackground source={{ uri: 'https://i.imgur.com/BTexHYJ.jpg' }} style={styles.image}>
       //     <Text style={[styles.name, styles.overlaidText]} numberOfLines={1}>{name}</Text>
       //   </ImageBackground>
-      <TouchableOpacity style={styles.container} onPress={() => this.navigateToRoutineInfo(name)}>
-        <View style={[styles.container, styles.outline]}>
-          <View style={[styles.imageContainer, styles.outline]}></View>
+      <TouchableOpacity style={[styles.container, styles.outline]} onPress={() => this.navigateToRoutineInfo(name)}>
+        <View style={[styles.imageContainer, styles.outline]}></View>
 
-          <View style={styles.textContainer}>
-            <View>
-              <Text style={[styles.titleText, styles.outline]}>{name}</Text>
-            </View>
-
-            <View>
-              <Text style={[styles.bodyText, styles.outline]}>Length: {convertedLength}</Text>
-              <Text style={[styles.bodyText, styles.outline]}>Rating: {overallRating}</Text>
-            </View>
+        <View style={styles.textContainer}>
+          <View style={[styles.titleContainer, styles.outline]}>
+            <Text style={[styles.titleText, styles.outline]}>{name}</Text>
           </View>
+
+          <View style={[styles.bodyContainer, styles.outline]}>
+            <Text style={[styles.bodyText, styles.outline]}>{convertedLength}</Text>
+          </View>
+
         </View>
       </TouchableOpacity>
     )
   }
 
+  //           <Text style={[styles.bodyText, styles.outline]}>Rating: {overallRating}</Text>
   //           <Image style={[styles.image, styles.outline]} source={{ uri: 'https://i.imgur.com/BTexHYJ.jpg' }}/>
 
   // takes length in seconds and converts to minutes
@@ -95,11 +94,12 @@ const styles = StyleSheet.create({
   },
   // overlay textContainer over imageContainer
   textContainer: {
-    flex: 1,
+    flex: 5,
+    flexDirection: 'row',
     backgroundColor: 'transparent',
     padding: 6,
     paddingLeft: 12,
-    paddingRight: 12
+    paddingRight: 12,
   },
   titleText: {
     ...defaultStyles.text,
@@ -107,10 +107,16 @@ const styles = StyleSheet.create({
   },
   bodyText: {
     ...defaultStyles.text,
-    fontSize: 13,
+    fontSize: 22,
   },
   overlaidText: {
     position: 'absolute',
+  },
+  titleContainer: {
+    flex: 4
+  },
+  bodyContainer: {
+    flex: 1
   },
   outline: {
     // borderWidth: 2
