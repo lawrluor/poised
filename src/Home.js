@@ -8,6 +8,8 @@ import {
   Dimensions
 } from 'react-native';
 
+import SelectionButton from './SelectionButton.js';
+
 class Home extends Component {
   render() {
     return (
@@ -48,5 +50,58 @@ class Home extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#87AECF',
+  },
+  baseText: {
+    fontFamily: 'Avenir',
+    color: '#FFFFFF',
+    textAlign: 'center'
+  },
+  title: {
+    fontSize: 48,
+    margin: 10,
+  },
+  bodyText: {
+    fontSize: 24,
+  },
+  titleWrapper: {
+    flex: 4,
+    justifyContent: 'flex-end', // flush to bottom
+  },
+  bodyWrapper: {
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flex: 14,
+  },
+  // span width of container
+  buttonWrapper: {
+    flex: 1,
+    justifyContent: 'space-around' // spread vertically throughout container
+  },
+  bottomWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 2
+  },
+  button: {
+    borderWidth: 3,
+    borderRadius: 15,
+    borderColor: '#FFFFFF',
+    backgroundColor: 'rgba(0, 0, 0, 0.1)', // Black with 50% opacity
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  outline: {
+    // borderWidth: 2
+  }
+});
 
 export default Home;

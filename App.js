@@ -15,8 +15,7 @@ import RoutineInfo from './src/RoutineInfo.js';
 import RoutinePage from './src/RoutinePage.js';
 import Feedback from './src/Feedback.js';
 import Results from './src/Results.js';
-
-import SelectionButton from './src/SelectionButton.js';
+import Menu from './src/Menu.js';
 
 import { defaultStyles } from './src/styles.js';
 
@@ -32,6 +31,8 @@ class App extends Component<{}> {
     title: 'App',
     header: null
   }
+
+  // Custom Header
   //   header: {
   //     style: {
   //       backgroundColor: 'rgba(119, 136, 153, 1)'
@@ -41,44 +42,8 @@ class App extends Component<{}> {
   // };
 
   // Query database for tags, and pass tag name as a prop
-  // <View style={[defaultStyles.headerWrapper, styles.outline]}></View>
   render() {
-    return (
-      <View style={styles.container}>
-        <View style={[styles.titleWrapper, styles.outline]}>
-          <Text style={[styles.title, styles.baseText]}>I have a...</Text>
-        </View>
-
-        <View style={[styles.bodyWrapper, styles.outline]}>
-          <View style={[styles.buttonWrapper, styles.outline]}>
-            <SelectionButton navigation={this.props.navigation} name={"Competition"}></SelectionButton>
-
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
-              <Text style={[styles.bodyText, styles.baseText]}>Interview</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
-              <Text style={[styles.bodyText, styles.baseText]}>Test</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
-              <Text style={[styles.bodyText, styles.baseText]}>Networking Event</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
-              <Text style={[styles.bodyText, styles.baseText]}>Presentation</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
-              <Text style={[styles.bodyText, styles.baseText]}>Date</Text>
-            </TouchableHighlight>
-          </View>
-        </View>
-
-        <View style={[styles.bottomWrapper, styles.outline]}>
-        </View>
-      </View>
-    );
+    <RootNavigator></RootNavigator>
   }
 }
 
@@ -86,7 +51,7 @@ class App extends Component<{}> {
 export const RootNavigator = StackNavigator(
   {
     Home: {
-    screen: App
+    screen: Home
     },
     Selections: {
       screen: SelectionPage
