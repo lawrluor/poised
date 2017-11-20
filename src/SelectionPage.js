@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, ListView, Navigator, FlatList } fro
 
 import ListItem from './ListItem.js';
 import GridDisplay from './GridDisplay.js';
+import RoutinePopup from './RoutinePopup.js';
 import { routines } from './data';
 
 import { defaultStyles } from './styles.js';
@@ -10,15 +11,27 @@ import { defaultStyles } from './styles.js';
 class SelectionPage extends Component {
   constructor(props) {
     super(props);
+  }
 
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows([
-        'calming routine': ['measured breathing', 'shake out your limbs', 'visualize your performance'],
-        'positive vibes': ['highlight of your week', 'limb shake out', 'visualize your performance'],
-        'get hype': ['limb shake out', 'calming routine', 'visualize your performance']
-      ])
-    };
+  // Set default routine for popup as the first routine, before routine is opened
+  // FAILS when there are no routines
+  state = {
+    popupIsOpen: false,
+    routine: routines[0]
+  }
+
+  openRoutine = (routine) => {
+    // updates state with routine
+    this.setState({
+      popupIsOpen: true,
+      routine
+    });
+  }
+
+  closeRoutine = () => {
+    this.setState({
+      popupIsOpen: false
+    });
   }
 
   // App Title
@@ -47,23 +60,15 @@ class SelectionPage extends Component {
             navigation={this.props.navigation}
           />)}
         </ScrollView>
+
+        <RoutinePopup
+          routine={this.state.routine}
+          isOpen={this.state.popupIsOpen}
+          onClose={this.closeRoutine}
+          navigation={this.props.navigation}
+        />
       </View>
     );
-  }
-
-  // <ListView
-  //   dataSource={this.state.dataSource}
-  //   renderRow={(data) => this.generateItem(data)}
-  //   renderHeader={this.renderHeader}
-  //   renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
-  // />
-
-  renderHeader() {
-    return (
-      <View style={styles.header}>
-        <Text style={[styles.headerText, styles.baseText]}>routines</Text>
-      </View>
-    )
   }
 }
 

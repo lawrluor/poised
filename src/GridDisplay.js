@@ -22,11 +22,13 @@ class GridDisplay extends Component {
   // Component Types
 
   static propTypes = {
-    // // Routine object with name, totalLength, and poster
+    // Routine object with name, totalLength, and poster
     // routine: PropTypes.object.isRequired,
-    // // Called when user taps on a poster
+    // Called when user taps on a poster
     // onOpen: PropTypes.func.isRequired
   }
+
+  // this.navigateToRoutineInfo(name)}>
 
   render() {
     const { routine, routine: { name, totalLength, overallRating }, onOpen } = this.props;
@@ -36,25 +38,21 @@ class GridDisplay extends Component {
       //   <ImageBackground source={{ uri: 'https://i.imgur.com/BTexHYJ.jpg' }} style={styles.image}>
       //     <Text style={[styles.name, styles.overlaidText]} numberOfLines={1}>{name}</Text>
       //   </ImageBackground>
-      <TouchableOpacity style={[styles.container, styles.outline]} onPress={() => this.navigateToRoutineInfo(name)}>
-        <View style={[styles.imageContainer, styles.outline]}></View>
+      <TouchableOpacity style={[styles.container, defaultStyles.outline]} onPress={() => onOpen(routine)}>
+        <View style={[styles.imageContainer, defaultStyles.outline]}></View>
 
         <View style={styles.textContainer}>
-          <View style={[styles.titleContainer, styles.outline]}>
-            <Text style={[styles.titleText, styles.outline]}>{name}</Text>
+          <View style={[styles.titleContainer, defaultStyles.outline]}>
+            <Text style={[styles.titleText, defaultStyles.outline]}>{name}</Text>
           </View>
 
-          <View style={[styles.bodyContainer, styles.outline]}>
-            <Text style={[styles.bodyText, styles.outline]}>{convertedLength}</Text>
+          <View style={[styles.bodyContainer, defaultStyles.outline]}>
+            <Text style={[styles.bodyText, defaultStyles.outline]}>{convertedLength}</Text>
           </View>
-
         </View>
       </TouchableOpacity>
     )
   }
-
-  //           <Text style={[styles.bodyText, styles.outline]}>Rating: {overallRating}</Text>
-  //           <Image style={[styles.image, styles.outline]} source={{ uri: 'https://i.imgur.com/BTexHYJ.jpg' }}/>
 
   // takes length in seconds and converts to minutes
   convertLength(seconds) {
@@ -117,9 +115,6 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     flex: 1
-  },
-  outline: {
-    // borderWidth: 2
   }
 });
 

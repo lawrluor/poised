@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import {
   Animated,
   Dimensions,
-  Stylesheet,
+  StyleSheet,
   Text,
   TouchableWithoutFeedback,
+  TouchableHighlight,
   View
 } from 'react-native';
+
+import { defaultStyles } from './styles.js';
 
 const { width, height } = Dimensions.get('window');
 
@@ -25,7 +28,7 @@ export default class RoutinePopup extends Component {
     }
     // isOpen prop changed from False to True (change from close before to open after)
     else if (this.props.isOpen && !nextProps.isOpen) {
-      this.animatedClose();
+      this.animateClose();
     }
   }
 
@@ -47,6 +50,8 @@ export default class RoutinePopup extends Component {
   }
 
   render() {
+    const { routine, routine: { name, totalLength, overallRating } } = this.props;
+
     // If not open, don't render
     if (!this.state.visible) {
       return null;
@@ -60,14 +65,26 @@ export default class RoutinePopup extends Component {
 
         <Animated.View
           style={[styles.modal, {
-            // Animates position on the screen
+            // Animates position on the screen sliding up or down
             transform: [{ translateY: this.state.position }, { translateX: 0 }]
           }]}
         >
-          <Text>Popup</Text>
+          <Text style={[styles.bodyText, defaultStyles.outline]}>Rating: {this.props.overallRating}</Text>
+          <TouchableHighlight style={styles.button} onPress={() => this.navigateToRoutine(name)}>
+            <Text style={[styles.bodyText, styles.baseText]}>{name}</Text>
+          </TouchableHighlight>
         </Animated.View>
       </View>
     );
+  }
+
+  navigateToRoutine(routineName) {
+    this.props.navigation.navigate('Routine',
+    {
+      routineName: routineName, // from this.state.name
+      // routineActions: routineActions,
+      // routineDurations: routineDurations
+    });
   }
 }
 

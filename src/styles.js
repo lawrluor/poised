@@ -19,5 +19,8 @@ export const defaultStyles = {
     width: width,
     height: height * 0.1,
     backgroundColor: 'rgba(119, 136, 153, 0.5)'
+  },
+  outline: {
+    borderWidth: 2
   }
 };

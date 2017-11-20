@@ -48,7 +48,7 @@ class RoutineInfo extends Component {
         </View>
 
         <View style={[styles.circleWrapper, styles.outline]}>
-          <TouchableHighlight style={[styles.circleContainer, styles.outline]} onPress={() => this.navigateToRoutine(this.props.routine, this.state.routineActiins, this.state.routineDurations)}>
+          <TouchableHighlight style={[styles.circleContainer, styles.outline]} onPress={() => this.navigateToRoutine(this.props.routine, this.state.routineActions, this.state.routineDurations)}>
             <View ref={component => this._root = component}>
               <Center></Center>
             </View>
