@@ -19,7 +19,7 @@ const baseStyles = {
 
 export const defaultStyles = {
   outline: {
-    // borderWidth: 2
+    // borderWidth: 1
   },
 
   // Text
@@ -35,6 +35,10 @@ export const defaultStyles = {
     ...baseStyles.text,
     fontSize: 14
   },
+  examineText: {
+    ...baseStyles.text,
+    fontSize: 10
+  },
 
   // Wrapper containers
   headerWrapper: {
@@ -48,6 +52,10 @@ export const defaultStyles = {
   icon: {
     height: 30,
     width: 30
+  },
+  iconSmall: {
+    height: 16,
+    width: 16
   },
   tabTitle: {
     ...baseStyles.text,

@@ -26,8 +26,7 @@ class GridDisplay extends Component {
   }
 
   render() {
-    const { routine, routine: { name, totalLength, overallRating }, onOpen } = this.props;
-    let convertedLength = this.convertLength(totalLength);
+    const { routine, routine: { name, author, convertedLength, overallRating }, onOpen } = this.props;
 
     return (
       //   Style with Image overlaid behind image, instead of background color
@@ -38,20 +37,32 @@ class GridDisplay extends Component {
       <TouchableOpacity style={[styles.container, defaultStyles.outline]} onPress={() => onOpen(routine)}>
         <View style={[styles.imageContainer, defaultStyles.outline]}></View>
 
-        <View style={styles.textContainer}>
-          <View style={[styles.titleContainer, defaultStyles.outline]}>
-            <Text style={[defaultStyles.titleText, defaultStyles.outline]}>{name}</Text>
+        <View style={styles.displayContainer}>
+          <View style={styles.textContainer}>
+            <View style={[styles.titleContainer, defaultStyles.outline]}>
+              <Text style={[defaultStyles.bodyText, defaultStyles.outline]}>{name}</Text>
+            </View>
+
+            <View style={[styles.previewContainer, defaultStyles.outline]}>
+              <Text style={[defaultStyles.paragraphText]}>Preview Text is Here for each routine, if a routine does not have preview text it truncates from the body</Text>
+            </View>
           </View>
 
-          <View style={[styles.bodyContainer, defaultStyles.outline]}>
-            <Text style={[defaultStyles.bodyText, defaultStyles.outline]}>{convertedLength}</Text>
+          <View style={styles.statsContainer}>
+            <View style={[styles.lengthContainer, defaultStyles.outline]}>
+              <Text style={[defaultStyles.bodyText, defaultStyles.outline]}>{convertedLength}</Text>
+              <Text style={[defaultStyles.bodyText, defaultStyles.outline]}>
+                <Image style={defaultStyles.iconSmall} source={require('../../static/img/icons/star.png')}></Image>
+                {overallRating}
+              </Text>
+            </View>
           </View>
         </View>
       </TouchableOpacity>
     )
   }
 
-  // takes length in seconds and converts to mm:ss, using no external libraries
+  // if given length in seconds, converts to mm:ss, using no external libraries
   convertLength(seconds) {
     let date = new Date(null);
     date.setSeconds(seconds); // total value of seconds
@@ -70,8 +81,8 @@ class GridDisplay extends Component {
 const styles = StyleSheet.create({
   container: {
     margin: 6,
-    height: height / 8, // with padding, comes to approx 4 rows per screen height
-    width: width / 1.2, // 1 column per screen width, add padding,
+    height: height / 6.5, // with padding, comes to approx 4 rows per screen height
+    width: width / 1.15, // 1 column per screen width, add padding,
   },
   imageContainer: {
     position: 'absolute',
@@ -85,23 +96,40 @@ const styles = StyleSheet.create({
     borderRadius: 10,                 // rounded corners
     ...StyleSheet.absoluteFillObject, // fill up all space in a container
   },
+  displayContainer: {
+    flex: 6,
+    backgroundColor: 'transparent',
+    padding: 6,
+    paddingLeft: 10,
+    paddingRight: 10,
+    flexDirection: 'row'
+  },
   // overlay textContainer over imageContainer
   textContainer: {
     flex: 5,
-    flexDirection: 'row',
-    backgroundColor: 'transparent',
-    padding: 6,
-    paddingLeft: 12,
-    paddingRight: 12,
+  },
+  titleContainer: {
+    flex: 1
+  },
+  // for preview text
+  previewContainer: {
+    flex: 2
+  },
+  statsContainer: {
+    flex: 1,
+    borderLeftWidth: 1,
+    borderLeftColor: 'rgba(119, 136, 153, 0.5)'
+  },
+  lengthContainer: {
+    flex: 1,
+    alignItems: 'flex-end'
+  },
+  ratingContainer: {
+    flex: 1,
+    alignItems: 'flex-end',
   },
   overlaidText: {
     position: 'absolute',
-  },
-  titleContainer: {
-    flex: 4
-  },
-  bodyContainer: {
-    flex: 1
   }
 });
 

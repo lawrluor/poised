@@ -5,6 +5,7 @@ export const routines = [
     author: "Lawrence Luo",
     name: "Calming Routine",
     totalLength: 40,
+    convertedLength: "00:40",
     overallRating: 5
   },
   {
@@ -13,6 +14,7 @@ export const routines = [
     author: "Dr. Karin Hendricks",
     name: "Get Hype",
     totalLength: 50,
+    convertedLength: "00:50",
     overallRating: 4
   },
   {
@@ -21,6 +23,7 @@ export const routines = [
     author: "Mia Yee",
     name: "Relax",
     totalLength: 30,
+    convertedLength: "00:30",
     overallRating: 4
   },
   {
@@ -28,13 +31,15 @@ export const routines = [
     user_id: 1,
     name: "Prepare",
     totalLength: 60,
-    overallRating: 3.5
+    convertedLength: "1:00",
+    overallRating: 3
   },
   {
     routine_id: 4,
     user_id: 2,
     name: "Succeed",
     totalLength: 60,
+    convertedLength: "1:00",
     overallRating: 5
   }
 ];

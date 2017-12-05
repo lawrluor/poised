@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, ScrollView, Navigator } from 'react-native';
 
 import GridDisplay from './Components/GridDisplay.js';
+import TabBar from './Components/TabBar.js';
 import RoutinePopup from './RoutinePopup.js';
 import { routines } from './data';
 
@@ -38,6 +39,7 @@ class SelectionPage extends Component {
     header: null
   };
 
+  // Last line: hide tab bar if popup is opened
   render() {
     return (
       <View style={styles.container}>
@@ -65,6 +67,8 @@ class SelectionPage extends Component {
           onClose={this.closeRoutine}
           navigation={this.props.navigation}
         />
+
+        {!this.state.popupIsOpen ? <TabBar navigation={this.props.navigation}></TabBar> : null }
       </View>
     );
   }

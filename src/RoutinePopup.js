@@ -51,12 +51,13 @@ export default class RoutinePopup extends Component {
 
   render() {
     // process props to be used in render function
-    const { routine, routine: { name, totalLength, overallRating } } = this.props;
+    const { routine, routine: { name, author, convertedLength, overallRating } } = this.props;
 
     // If not open, don't render
     if (!this.state.visible) {
       return null;
     }
+    // Rating: {overallRating} | Length:
 
     return (
       <View style={styles.container}>
@@ -72,12 +73,12 @@ export default class RoutinePopup extends Component {
           ]}
         >
           <View style={[styles.header, defaultStyles.outline]}>
-            <Text style={[defaultStyles.titleText, defaultStyles.outline]}>{name}</Text>
-            <Text style={[defaultStyles.bodyText, defaultStyles.outline]}>Rating: {overallRating} | Length: {totalLength}</Text>
+            <Text style={defaultStyles.titleText}>{name}</Text>
+            <Text style={defaultStyles.bodyText}>Created by: {author}</Text>
           </View>
 
-          <View style={[defaultStyles.outline]}>
-            <Text style={[defaultStyles.paragraphText]}>You are receiving this email because you indicated you wanted to be informed of the latest news and specials from CVS Pharmacy® ExtraCare®. You can update your email preferences here. If you prefer not to receive future emails from CVS Pharmacy ExtraCare, you can unsubscribe here, call 1-800-746-7287 or mail us at CVS Health®, Customer Relations, One CVS Drive, Woonsocket, RI 02895. Please note: If you have opted in to receive other CVS Pharmacy email communications, you will continue to receive them unless you opt out specifically for those.</Text>
+          <View style={[styles.body, defaultStyles.outline]}>
+            <Text style={defaultStyles.paragraphText}>You are receiving this email because you indicated you wanted to be informed of the latest news and specials from CVS Pharmacy® ExtraCare®. You can update your email preferences here. If you prefer not to receive future emails from CVS Pharmacy ExtraCare, you can unsubscribe here, call 1-800-746-7287 or mail us at CVS Health®, Customer Relations, One CVS Drive, Woonsocket, RI 02895. Please note: If you have opted in to receive other CVS Pharmacy email communications, you will continue to receive them unless you opt out specifically for those.</Text>
           </View>
 
           <View style={[styles.footer, defaultStyles.outline]}>
@@ -110,7 +111,6 @@ const styles = StyleSheet.create({
   },
   // Semi-transparent background below popup
   backdrop: {
-    flex: 10,
     ...StyleSheet.absoluteFillObject,   // fill up all screen
     backgroundColor: 'black',
     opacity: 0.5,
@@ -119,14 +119,17 @@ const styles = StyleSheet.create({
   modal: {
     height: height * 0.66,             // take 66% of screen height
     padding: 15,
-    backgroundColor: 'rgba(119, 136, 153, 0.9)', // solid version of transparent button
+    backgroundColor: 'rgba(119, 136, 153, 0.9)',
   },
   header: {
     flex: 2,
+    borderBottomWidth: 1,
+    borderBottomColor: "white"
   },
   body: {
-    flex: 6,
-    justifyContent: 'center'
+    flex: 8,
+    paddingTop: 10,
+    justifyContent: 'flex-start',
   },
   footer: {
     flex: 2,
