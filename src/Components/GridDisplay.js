@@ -10,7 +10,7 @@ import {
   resizeMode
 } from 'react-native';
 
-import { defaultStyles } from './styles';
+import { defaultStyles } from '../styles';
 
 // Get screen dimensions
 const { width, height } = Dimensions.get('window');

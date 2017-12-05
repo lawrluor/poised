@@ -40,7 +40,9 @@ export const defaultStyles = {
   headerWrapper: {
     width: width,
     height: height * 0.1,
-    backgroundColor: 'rgba(119, 136, 153, 1.0)'
+    backgroundColor: 'rgba(119, 136, 153, 0.0)',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   // TabBar
   icon: {

@@ -49,7 +49,7 @@ class Center extends Component {
       <View style={styles.circleContainer}>
         <PulseView>
           <Image style={styles.image}
-            source={require('../static/img/center.png')}
+            source={require('../../static/img/center.png')}
           />
         </PulseView>
       </View>

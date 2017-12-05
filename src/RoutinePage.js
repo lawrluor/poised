@@ -4,7 +4,7 @@ import { AppRegistry, StyleSheet, Text, View, Navigator } from 'react-native';
 import Sound from 'react-native-sound';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
-import Center from '../src/Center.js';
+import Center from '../src/Components/Center.js';
 
 // Enable playback in silence mode
 Sound.setCategory('Playback');

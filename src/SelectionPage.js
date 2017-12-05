@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, ListView, Navigator, FlatList } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Navigator } from 'react-native';
 
-import ListItem from './ListItem.js';
-import GridDisplay from './GridDisplay.js';
+import GridDisplay from './Components/GridDisplay.js';
 import RoutinePopup from './RoutinePopup.js';
 import { routines } from './data';
 
@@ -36,11 +35,9 @@ class SelectionPage extends Component {
 
   // App Header
   static navigationOptions = {
-    title: 'Select a Routine',
     header: null
   };
 
-  // pass in navigation prop to each listItem
   render() {
     return (
       <View style={styles.container}>

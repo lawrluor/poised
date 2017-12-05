@@ -9,7 +9,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-import Center from '../src/Center.js';
+import Center from '../src/Components/Center.js';
 import SelectionPage from '../src/SelectionPage.js';
 
 class Results extends Component {
@@ -35,7 +35,7 @@ class Results extends Component {
         </View>
 
         <View style={styles.circleWrapper}>
-          
+
         </View>
       </View>
     );

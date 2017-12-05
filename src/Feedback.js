@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, StyleSheet, Text, View, TouchableHighlight, Navigator, Image } from 'react-native';
 
-import Center from '../src/Center.js';
+import Center from '../src/Components/Center.js';
 
 class Feedback extends Component {
   constructor(props) {

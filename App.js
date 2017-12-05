@@ -9,9 +9,7 @@ import {
 } from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
-import Center from './src/Center.js';
 import SelectionPage from './src/SelectionPage.js';
-import RoutineInfo from './src/RoutineInfo.js';
 import RoutinePage from './src/RoutinePage.js';
 import Feedback from './src/Feedback.js';
 import Results from './src/Results.js';
@@ -25,7 +23,7 @@ class App extends Component<{}> {
     title: 'App',
     header: null
   }
-  
+
   render() {
     <RootNavigator></RootNavigator>
   }
@@ -39,9 +37,6 @@ export const RootNavigator = StackNavigator(
     },
     Selections: {
       screen: SelectionPage
-    },
-    RoutineInfo: {
-      screen: RoutineInfo
     },
     Routine: {
       screen: RoutinePage

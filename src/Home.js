@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
-import SelectionButton from './SelectionButton.js';
+import SelectionButton from './Components/SelectionButton.js';
 
 // TabNavigator Documentation: https://github.com/aksonov/react-native-tabs
 import Tabs from 'react-native-tabs';
@@ -17,12 +17,11 @@ import Tabs from 'react-native-tabs';
 class Home extends Component {
   constructor(props){
     super(props);
-    this.state = {page:'second'};
+    this.state = {page:'home'}; // placeholder for Tabs to work
   }
 
   // App Header
   static navigationOptions = {
-    title: 'Select a Routine',
     header: null
   };
 

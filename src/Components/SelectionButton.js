@@ -7,7 +7,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-import { defaultStyles } from './styles.js';
+import { defaultStyles } from '../styles.js';
 
 class SelectionButton extends Component {
   constructor(props) {
