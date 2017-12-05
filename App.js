@@ -20,28 +20,12 @@ import Home from './src/Home.js';
 import { defaultStyles } from './src/styles.js';
 
 class App extends Component<{}> {
-  // Activate native props on Center view to allow returning multiple elements
-  // https://stackoverflow.com/questions/31741705/error-invariant-violation-touchable-child-must-either-be-native-or-forward-set
-  setNativeProps(nativeProps) {
-    this._root.setNativeProps(nativeProps);
-  }
-
   // App Title
   static navigationOptions = {
     title: 'App',
     header: null
   }
-
-  // Custom Header
-  //   header: {
-  //     style: {
-  //       backgroundColor: 'rgba(119, 136, 153, 1)'
-  //     }
-  //   }
-    // headerStyle: 'blue', // 'rgba(119, 136, 153, 1)'
-  // };
-
-  // Query database for tags, and pass tag name as a prop
+  
   render() {
     <RootNavigator></RootNavigator>
   }

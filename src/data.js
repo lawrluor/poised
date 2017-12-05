@@ -2,13 +2,15 @@ export const routines = [
   {
     routine_id: 0,
     user_id: 0,
+    author: "Lawrence Luo",
     name: "Calming Routine",
     totalLength: 40,
-    overallRating: 5,
+    overallRating: 5
   },
   {
     routine_id: 1,
     user_id: 0,
+    author: "Dr. Karin Hendricks",
     name: "Get Hype",
     totalLength: 50,
     overallRating: 4
@@ -16,6 +18,7 @@ export const routines = [
   {
     routine_id: 2,
     user_id: 1,
+    author: "Mia Yee",
     name: "Relax",
     totalLength: 30,
     overallRating: 4

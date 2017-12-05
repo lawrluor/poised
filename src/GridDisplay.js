@@ -15,9 +15,6 @@ import { defaultStyles } from './styles';
 // Get screen dimensions
 const { width, height } = Dimensions.get('window');
 
-// How many objects to have in each row and column
-const cols = 1, rows = 3;
-
 class GridDisplay extends Component {
   // Component Types
 
@@ -28,40 +25,38 @@ class GridDisplay extends Component {
     // onOpen: PropTypes.func.isRequired
   }
 
-  // this.navigateToRoutineInfo(name)}>
-
   render() {
     const { routine, routine: { name, totalLength, overallRating }, onOpen } = this.props;
     let convertedLength = this.convertLength(totalLength);
 
     return (
+      //   Style with Image overlaid behind image, instead of background color
       //   <ImageBackground source={{ uri: 'https://i.imgur.com/BTexHYJ.jpg' }} style={styles.image}>
       //     <Text style={[styles.name, styles.overlaidText]} numberOfLines={1}>{name}</Text>
       //   </ImageBackground>
+
       <TouchableOpacity style={[styles.container, defaultStyles.outline]} onPress={() => onOpen(routine)}>
         <View style={[styles.imageContainer, defaultStyles.outline]}></View>
 
         <View style={styles.textContainer}>
           <View style={[styles.titleContainer, defaultStyles.outline]}>
-            <Text style={[styles.titleText, defaultStyles.outline]}>{name}</Text>
+            <Text style={[defaultStyles.titleText, defaultStyles.outline]}>{name}</Text>
           </View>
 
           <View style={[styles.bodyContainer, defaultStyles.outline]}>
-            <Text style={[styles.bodyText, defaultStyles.outline]}>{convertedLength}</Text>
+            <Text style={[defaultStyles.bodyText, defaultStyles.outline]}>{convertedLength}</Text>
           </View>
         </View>
       </TouchableOpacity>
     )
   }
 
-  // takes length in seconds and converts to minutes
+  // takes length in seconds and converts to mm:ss, using no external libraries
   convertLength(seconds) {
-    if (seconds < 60) {
-      return seconds + "s";
-    } else {
-      let minutes = seconds / 60;
-      return minutes + "m";
-    }
+    let date = new Date(null);
+    date.setSeconds(seconds); // total value of seconds
+    let result = date.toISOString().substr(14, 5); // substring to only take MM:SS
+    return result;
   }
 
   navigateToRoutineInfo(routineName) {
@@ -98,14 +93,6 @@ const styles = StyleSheet.create({
     padding: 6,
     paddingLeft: 12,
     paddingRight: 12,
-  },
-  titleText: {
-    ...defaultStyles.text,
-    fontSize: 22,
-  },
-  bodyText: {
-    ...defaultStyles.text,
-    fontSize: 22,
   },
   overlaidText: {
     position: 'absolute',

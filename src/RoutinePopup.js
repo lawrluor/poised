@@ -6,7 +6,7 @@ import {
   Text,
   TouchableWithoutFeedback,
   TouchableHighlight,
-  View
+  View,
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
@@ -50,6 +50,7 @@ export default class RoutinePopup extends Component {
   }
 
   render() {
+    // process props to be used in render function
     const { routine, routine: { name, totalLength, overallRating } } = this.props;
 
     // If not open, don't render
@@ -64,15 +65,27 @@ export default class RoutinePopup extends Component {
         </TouchableWithoutFeedback>
 
         <Animated.View
-          style={[styles.modal, {
-            // Animates position on the screen sliding up or down
-            transform: [{ translateY: this.state.position }, { translateX: 0 }]
-          }]}
+          style={[
+            styles.modal,
+            styles.outline,
+            {transform: [{ translateY: this.state.position }, { translateX: 0 }] },
+          ]}
         >
-          <Text style={[styles.bodyText, defaultStyles.outline]}>Rating: {this.props.overallRating}</Text>
-          <TouchableHighlight style={styles.button} onPress={() => this.navigateToRoutine(name)}>
-            <Text style={[styles.bodyText, styles.baseText]}>{name}</Text>
-          </TouchableHighlight>
+          <View style={[styles.header, defaultStyles.outline]}>
+            <Text style={[defaultStyles.titleText, defaultStyles.outline]}>{name}</Text>
+            <Text style={[defaultStyles.bodyText, defaultStyles.outline]}>Rating: {overallRating} | Length: {totalLength}</Text>
+          </View>
+
+          <View style={[defaultStyles.outline]}>
+            <Text style={[defaultStyles.paragraphText]}>You are receiving this email because you indicated you wanted to be informed of the latest news and specials from CVS Pharmacy® ExtraCare®. You can update your email preferences here. If you prefer not to receive future emails from CVS Pharmacy ExtraCare, you can unsubscribe here, call 1-800-746-7287 or mail us at CVS Health®, Customer Relations, One CVS Drive, Woonsocket, RI 02895. Please note: If you have opted in to receive other CVS Pharmacy email communications, you will continue to receive them unless you opt out specifically for those.</Text>
+          </View>
+
+          <View style={[styles.footer, defaultStyles.outline]}>
+            <TouchableHighlight style={defaultStyles.button} onPress={() => this.navigateToRoutine(name)}>
+              <Text style={[defaultStyles.bodyText]}>Begin Routine</Text>
+            </TouchableHighlight>
+          </View>
+
         </Animated.View>
       </View>
     );
@@ -90,19 +103,33 @@ export default class RoutinePopup extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 20,
     ...StyleSheet.absoluteFillObject,   // fill up all screen
     justifyContent: 'flex-end',         // align popup to start at the bottom
     backgroundColor: 'transparent',     // transparent background
   },
   // Semi-transparent background below popup
   backdrop: {
+    flex: 10,
     ...StyleSheet.absoluteFillObject,   // fill up all screen
     backgroundColor: 'black',
     opacity: 0.5,
   },
   // Popup
   modal: {
-    height: height / 2,             // take half of screen height
-    backgroundColor: 'white',
+    height: height * 0.66,             // take 66% of screen height
+    padding: 15,
+    backgroundColor: 'rgba(119, 136, 153, 0.9)', // solid version of transparent button
   },
+  header: {
+    flex: 2,
+  },
+  body: {
+    flex: 6,
+    justifyContent: 'center'
+  },
+  footer: {
+    flex: 2,
+    justifyContent: 'center'
+  }
 });

@@ -34,17 +34,18 @@ class SelectionPage extends Component {
     });
   }
 
-  // App Title
-  // static navigationOptions = {
-  //   title: 'Select a Routine',
-  // };
+  // App Header
+  static navigationOptions = {
+    title: 'Select a Routine',
+    header: null
+  };
 
   // pass in navigation prop to each listItem
   render() {
     return (
       <View style={styles.container}>
-        <View style={[styles.titleWrapper, styles.outline]}>
-          <Text style={[styles.baseText, styles.titleText]}>Select a Routine</Text>
+        <View style={[styles.titleWrapper, defaultStyles.outline]}>
+          <Text style={[defaultStyles.titleText]}>Select a Routine</Text>
         </View>
 
         <ScrollView
@@ -75,32 +76,13 @@ class SelectionPage extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#87AECF',
-    flex: 1,
+    flex: 20,
     padding: 20,
     alignItems: 'center', // center routine boxes
     justifyContent: 'center'
   },
-  titleText: {
-    fontSize: 36,
-    margin: 10,
-  },
-  baseText: {
-    fontFamily: 'Avenir',
-    color: '#FFFFFF'
-  },
-  separator: {
-    flex: 1,
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: '#FFFFFF'
-  },
-  header: {
-    backgroundColor: '#87AECF'
-  },
-  headerText: {
-    fontSize: 32,
-    padding: 15,
-    fontWeight: 'bold',
-    color: '#87AECF'
+  titleWrapper: {
+    ...defaultStyles.headerWrapper,
   }
 });
 

@@ -5,46 +5,53 @@ import {
   View,
   Image,
   TouchableHighlight,
-  Dimensions
+  Dimensions,
 } from 'react-native';
 
+import { defaultStyles } from './styles.js';
 import SelectionButton from './SelectionButton.js';
 
+// TabNavigator Documentation: https://github.com/aksonov/react-native-tabs
+import Tabs from 'react-native-tabs';
+
 class Home extends Component {
+  constructor(props){
+    super(props);
+    this.state = {page:'second'};
+  }
+
+  // App Header
+  static navigationOptions = {
+    title: 'Select a Routine',
+    header: null
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <View style={[styles.titleWrapper, styles.outline]}>
-          <Text style={[styles.title, styles.baseText]}>I have a...</Text>
+        <View style={[styles.titleWrapper, defaultStyles.outline]}>
+          <Text style={[defaultStyles.titleText]}>What's on your mind?</Text>
         </View>
 
-        <View style={[styles.bodyWrapper, styles.outline]}>
-          <View style={[styles.buttonWrapper, styles.outline]}>
+        <View style={[styles.bodyWrapper, defaultStyles.outline]}>
+          <View style={[styles.buttonWrapper, defaultStyles.outline]}>
             <SelectionButton navigation={this.props.navigation} name={"Competition"}></SelectionButton>
-
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
-              <Text style={[styles.bodyText, styles.baseText]}>Interview</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
-              <Text style={[styles.bodyText, styles.baseText]}>Test</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
-              <Text style={[styles.bodyText, styles.baseText]}>Networking Event</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
-              <Text style={[styles.bodyText, styles.baseText]}>Presentation</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight style={styles.button} onPress={() => this.props.navigation.navigate('Selections')}>
-              <Text style={[styles.bodyText, styles.baseText]}>Date</Text>
-            </TouchableHighlight>
+            <SelectionButton navigation={this.props.navigation} name={"Interview"}></SelectionButton>
+            <SelectionButton navigation={this.props.navigation} name={"Test"}></SelectionButton>
+            <SelectionButton navigation={this.props.navigation} name={"Networking Event"}></SelectionButton>
+            <SelectionButton navigation={this.props.navigation} name={"Presentation"}></SelectionButton>
+            <SelectionButton navigation={this.props.navigation} name={"Date"}></SelectionButton>
           </View>
         </View>
 
-        <View style={[styles.bottomWrapper, styles.outline]}>
+        <Tabs selected={this.state.page} style={{backgroundColor:'rgba(119, 136, 153, 1.0)'}}
+            selectedStyle={{color:'black'}} onSelect={el => this.props.navigation.navigate(el.props.page)}>
+          <Text style={defaultStyles.tabTitle} page="Selections">Find Routines</Text>
+          <Text style={defaultStyles.tabTitle} page="Saved" selectedIconStyle={{borderTopWidth:2,borderTopColor:'red'}}>My Routines</Text>
+          <Text style={defaultStyles.tabTitle} page="Info" selectedStyle={{color:'green'}}>Info</Text>
+        </Tabs>
+
+        <View style={[styles.bottomWrapper, defaultStyles.outline]}>
         </View>
       </View>
     );
@@ -58,21 +65,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#87AECF',
   },
-  baseText: {
-    fontFamily: 'Avenir',
-    color: '#FFFFFF',
-    textAlign: 'center'
-  },
-  title: {
-    fontSize: 48,
-    margin: 10,
-  },
-  bodyText: {
-    fontSize: 24,
-  },
   titleWrapper: {
-    flex: 4,
-    justifyContent: 'flex-end', // flush to bottom
+    ...defaultStyles.headerWrapper,
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   bodyWrapper: {
     justifyContent: 'space-around',
@@ -87,21 +84,8 @@ const styles = StyleSheet.create({
   bottomWrapper: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 2
+    flex: 3
   },
-  button: {
-    borderWidth: 3,
-    borderRadius: 15,
-    borderColor: '#FFFFFF',
-    backgroundColor: 'rgba(0, 0, 0, 0.1)', // Black with 50% opacity
-    padding: 10,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  outline: {
-    // borderWidth: 2
-  }
 });
 
 export default Home;
