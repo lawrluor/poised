@@ -50,9 +50,9 @@ class GridDisplay extends Component {
 
           <View style={styles.statsContainer}>
             <View style={[styles.lengthContainer, defaultStyles.outline]}>
-              <Text style={[defaultStyles.bodyText, defaultStyles.outline]}>{convertedLength}</Text>
-              <Text style={[defaultStyles.bodyText, defaultStyles.outline]}>
-                <Image style={defaultStyles.iconSmall} source={require('../../static/img/icons/star.png')}></Image>
+              <Text style={[defaultStyles.paragraphText, defaultStyles.outline]}>{convertedLength}</Text>
+              <Text style={[defaultStyles.paragraphText, defaultStyles.outline]}>
+                <Image style={defaultStyles.iconSmaller} source={require('../../static/img/icons/heart_white.png')}></Image>
                 {overallRating}
               </Text>
             </View>

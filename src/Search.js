@@ -19,12 +19,13 @@ class Search extends Component {
   render() {
     return (
       <View style={defaultStyles.container}>
-        <View style={[styles.titleWrapper, defaultStyles.outline]}>
+        <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
           <Text style={[defaultStyles.titleText]}>What's on your mind?</Text>
         </View>
 
         <View style={[styles.bodyWrapper, defaultStyles.outline]}>
           <View style={[styles.buttonWrapper, defaultStyles.outline]}>
+            <SelectionButton navigation={this.props.navigation} name={"Public Speaking"}></SelectionButton>
             <SelectionButton navigation={this.props.navigation} name={"Competition"}></SelectionButton>
             <SelectionButton navigation={this.props.navigation} name={"Interview"}></SelectionButton>
             <SelectionButton navigation={this.props.navigation} name={"Test"}></SelectionButton>
@@ -44,11 +45,6 @@ class Search extends Component {
 }
 
 const styles = StyleSheet.create({
-  titleWrapper: {
-    ...defaultStyles.headerWrapper,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
   bodyWrapper: {
     justifyContent: 'space-around',
     alignItems: 'center',

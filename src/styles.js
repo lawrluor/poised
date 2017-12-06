@@ -49,17 +49,23 @@ export const defaultStyles = {
   // Wrapper containers
   headerWrapper: {
     width: width,
-    height: height * 0.15,
+    height: height * 0.10,
     backgroundColor: 'rgba(119, 136, 153, 0.0)',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginTop: 30 // account for status bar (20px)
   },
   // TabBar
   icon: {
     height: 30,
     width: 30
   },
-  iconSmall: {
+  iconSmaller: {
+    marginTop: 1,
+    height: 12,
+    width: 12
+  },
+  iconSmallStandard: {
     height: 16,
     width: 16
   },

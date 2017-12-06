@@ -4,6 +4,7 @@ import {
   Dimensions,
   StyleSheet,
   Text,
+  Image,
   TouchableWithoutFeedback,
   TouchableHighlight,
   View
@@ -73,8 +74,18 @@ export default class RoutinePopup extends Component {
           ]}
         >
           <View style={[styles.header, defaultStyles.outline]}>
-            <Text style={defaultStyles.titleText}>{name}</Text>
-            <Text style={defaultStyles.bodyText}>Created by: {author}</Text>
+            <View style={[styles.titleContainer, defaultStyles.outline]}>
+              <Text style={defaultStyles.titleText}>{name}</Text>
+              <Text style={defaultStyles.bodyText}>By: {author}</Text>
+            </View>
+
+            <View style={[styles.statsContainer, defaultStyles.outline]}>
+              <Text style={[defaultStyles.paragraphText, defaultStyles.outline]}>{convertedLength}</Text>
+              <Text style={[defaultStyles.paragraphText, defaultStyles.outline]}>
+                <Image style={defaultStyles.iconSmaller} source={require('../static/img/icons/heart_white.png')}></Image>
+                {overallRating}
+              </Text>
+            </View>
           </View>
 
           <View style={[styles.body, defaultStyles.outline]}>
@@ -121,10 +132,18 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: 'rgba(119, 136, 153, 0.9)',
   },
+  // Header is divided horizontally into title and stats container
   header: {
     flex: 2,
+    flexDirection: 'row',
     borderBottomWidth: 1,
     borderBottomColor: "white"
+  },
+  titleContainer: {
+    flex: 5
+  },
+  statsContainer: {
+    flex: 1
   },
   body: {
     flex: 8,

@@ -22,12 +22,11 @@ class TabBar extends Component {
       <Tabs
         selected={this.state.name}
         style={{backgroundColor:'rgba(119, 136, 153, 1.0)'}}
-        selectedStyle={{fontWeight:'900'}}
         onSelect={el => this.changeTab(el)}>
 
-        <Text style={defaultStyles.tabTitle} name="Search">Search Routines</Text>
-        <Text style={defaultStyles.tabTitle} name="Selections">My Routines</Text>
-        <Text style={defaultStyles.tabTitle} name="InfoPage">Info</Text>
+        <Image source={require('../../static/img/icons/search_white.png')} style={defaultStyles.iconSmallStandard} name="Search" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
+        <Image source={require('../../static/img/icons/goal_white.png')} style={defaultStyles.iconSmallStandard} name="Selections" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
+        <Image source={require('../../static/img/icons/info_white.png')} style={defaultStyles.iconSmallStandard} name="InfoPage" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
       </Tabs>
     )
   }
@@ -37,6 +36,18 @@ class TabBar extends Component {
     if (el.props.name !== this.state.name) {
       this.props.navigation.navigate(el.props.name);
     };
+  }
+}
+
+// For future, to be able to render icon and text below it for navigation help
+class Tab extends Component {
+  render () {
+    return (
+      <View>
+        <Image source={require('../../static/img/icons/search_white.png')} style={defaultStyles.iconSmallStandard} name="Search" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
+        <Text>Search</Text>
+      </View>
+    );
   }
 }
 

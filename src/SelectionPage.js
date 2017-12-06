@@ -4,20 +4,34 @@ import { StyleSheet, Text, View, ScrollView, Navigator } from 'react-native';
 import GridDisplay from './Components/GridDisplay.js';
 import TabBar from './Components/TabBar.js';
 import RoutinePopup from './RoutinePopup.js';
-import { routines } from './data';
 
 import { defaultStyles } from './styles.js';
 
-class SelectionPage extends Component {
-  constructor(props) {
-    super(props);
-  }
+// Redux
+import { connect } from 'react-redux';
+import {
+  ActivityIndicator,
+  RefreshControl,
+  // ...others
+} from 'react-native';
 
+// Connect Redux storage and refresh actions
+@connect(
+  state => ({
+    routines: state.routines,
+    loading: state.loading
+  }),
+  dispatch => ({
+    refresh: () => dispatch({type: 'GET_ROUTINE_DATA'}),
+  })
+)
+
+class SelectionPage extends Component {
   // Set default routine for popup as the first routine, before routine is opened
   // FAILS when there are no routines
   state = {
     popupIsOpen: false,
-    routine: routines[0]
+    routine: "test"
   }
 
   openRoutine = (routine) => {
@@ -41,42 +55,71 @@ class SelectionPage extends Component {
 
   // Last line: hide tab bar if popup is opened
   render() {
-    return (
-      <View style={defaultStyles.container}>
-        <View style={[styles.titleWrapper, defaultStyles.outline]}>
-          <Text style={[defaultStyles.titleText]}>My Routines</Text>
+    console.log("Props", this.props);
+    const { routines, loading, refresh } = this.props;
+    console.log("Routines", this.props.routines);
+    // If not loaded, show loading screen
+    if (loading) {
+      // Currently bugged, not loading activityIndicator
+      return (
+        <View style={defaultStyles.container}>
+          <ActivityIndicator
+            animating={loading}
+            color="#FFFFFF"
+            style={styles.loader}
+            size="large"
+          />
         </View>
+      )
+    } else {
+      return (
+        <View style={defaultStyles.container}>
+          <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
+            <Text style={defaultStyles.titleText}>View Routines</Text>
+            <Text style={defaultStyles.examineText}>Guided exercises to prime yourself for a performance, created by users and curated by professionals.</Text>
+          </View>
 
-        <ScrollView
-          contentContainerStyle={styles.scrollContent}
-          // Hide all scroll indicators
-          showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
-        >
-          {routines.map((routine, index) => <GridDisplay
-            routine={routine}
-            onOpen={this.openRoutine}
-            key={index}
+          <ScrollView
+            contentContainerStyle={styles.scrollContent}
+            // Hide all scroll indicators
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
+            refreshControl={
+              <RefreshControl
+                refreshing={loading}
+                onRefresh={refresh}
+                tintColor="#FFFFFF"
+              />
+            }
+          >
+            {routines.map((routine, index) => <GridDisplay
+              routine={routine}
+              onOpen={this.openRoutine}
+              key={index}
+              navigation={this.props.navigation}
+            />)}
+          </ScrollView>
+
+          <RoutinePopup
+            routine={this.state.routine}
+            isOpen={this.state.popupIsOpen}
+            onClose={this.closeRoutine}
             navigation={this.props.navigation}
-          />)}
-        </ScrollView>
+          />
 
-        <RoutinePopup
-          routine={this.state.routine}
-          isOpen={this.state.popupIsOpen}
-          onClose={this.closeRoutine}
-          navigation={this.props.navigation}
-        />
-
-        {!this.state.popupIsOpen ? <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar> : null }
-      </View>
-    );
+          {!this.state.popupIsOpen ? <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar> : null }
+        </View>
+      );
+    }
   }
 }
 
 const styles = StyleSheet.create({
-  titleWrapper: {
-    ...defaultStyles.headerWrapper,
+  loader: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    opacity: 1.0
   }
 });
 
