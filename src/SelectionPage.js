@@ -42,9 +42,9 @@ class SelectionPage extends Component {
   // Last line: hide tab bar if popup is opened
   render() {
     return (
-      <View style={styles.container}>
+      <View style={defaultStyles.container}>
         <View style={[styles.titleWrapper, defaultStyles.outline]}>
-          <Text style={[defaultStyles.titleText]}>Select a Routine</Text>
+          <Text style={[defaultStyles.titleText]}>My Routines</Text>
         </View>
 
         <ScrollView
@@ -68,20 +68,13 @@ class SelectionPage extends Component {
           navigation={this.props.navigation}
         />
 
-        {!this.state.popupIsOpen ? <TabBar navigation={this.props.navigation}></TabBar> : null }
+        {!this.state.popupIsOpen ? <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar> : null }
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#87AECF',
-    flex: 20,
-    padding: 20,
-    alignItems: 'center', // center routine boxes
-    justifyContent: 'center'
-  },
   titleWrapper: {
     ...defaultStyles.headerWrapper,
   }

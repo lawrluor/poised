@@ -41,5 +41,14 @@ export const routines = [
     totalLength: 60,
     convertedLength: "1:00",
     overallRating: 5
-  }
+  },
+  {
+    routine_id: 2,
+    user_id: 1,
+    author: "Lawrence Luo",
+    name: "Focus",
+    totalLength: 40,
+    convertedLength: "00:40",
+    overallRating: 4
+  },
 ];

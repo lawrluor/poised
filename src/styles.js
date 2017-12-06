@@ -18,6 +18,12 @@ const baseStyles = {
 };
 
 export const defaultStyles = {
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#87AECF',
+  },
   outline: {
     // borderWidth: 1
   },
@@ -43,7 +49,7 @@ export const defaultStyles = {
   // Wrapper containers
   headerWrapper: {
     width: width,
-    height: height * 0.1,
+    height: height * 0.15,
     backgroundColor: 'rgba(119, 136, 153, 0.0)',
     justifyContent: 'center',
     alignItems: 'center'

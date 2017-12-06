@@ -1,29 +1,16 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableHighlight,
-  Dimensions
-} from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
+
+// Import Pages
 import SelectionPage from './src/SelectionPage.js';
 import RoutinePage from './src/RoutinePage.js';
 import Feedback from './src/Feedback.js';
 import Results from './src/Results.js';
-import Home from './src/Home.js';
-
-import { defaultStyles } from './src/styles.js';
+import Search from './src/Search.js';
+import InfoPage from './src/InfoPage.js';
 
 class App extends Component<{}> {
-  // App Title
-  static navigationOptions = {
-    title: 'App',
-    header: null
-  }
-
   render() {
     <RootNavigator></RootNavigator>
   }
@@ -32,11 +19,11 @@ class App extends Component<{}> {
 // Navigation using StackNavigator
 export const RootNavigator = StackNavigator(
   {
-    Home: {
-    screen: Home
-    },
     Selections: {
       screen: SelectionPage
+    },
+    Search: {
+      screen: Search
     },
     Routine: {
       screen: RoutinePage
@@ -46,8 +33,11 @@ export const RootNavigator = StackNavigator(
     },
     Results: {
       screen: Results
+    },
+    InfoPage: {
+      screen: InfoPage
     }
   },
 );
 
-export default RootNavigator
+export default RootNavigator;

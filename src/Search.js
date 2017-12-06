@@ -3,16 +3,14 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
-  TouchableHighlight,
-  Dimensions,
+  Image
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
 import SelectionButton from './Components/SelectionButton.js';
 import TabBar from './Components/TabBar.js';
 
-class Home extends Component {
+class Search extends Component {
   // App Header
   static navigationOptions = {
     header: null
@@ -20,7 +18,7 @@ class Home extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={defaultStyles.container}>
         <View style={[styles.titleWrapper, defaultStyles.outline]}>
           <Text style={[defaultStyles.titleText]}>What's on your mind?</Text>
         </View>
@@ -36,7 +34,7 @@ class Home extends Component {
           </View>
         </View>
 
-        <TabBar navigation={this.props.navigation}></TabBar>
+        <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar>
 
         <View style={[styles.bottomWrapper, defaultStyles.outline]}>
         </View>
@@ -46,22 +44,15 @@ class Home extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#87AECF',
-  },
   titleWrapper: {
     ...defaultStyles.headerWrapper,
-    flex: 3,
     justifyContent: 'center',
     alignItems: 'center'
   },
   bodyWrapper: {
     justifyContent: 'space-around',
     alignItems: 'center',
-    flex: 14,
+    flex: 8,
   },
   // span width of container
   buttonWrapper: {
@@ -71,8 +62,8 @@ const styles = StyleSheet.create({
   bottomWrapper: {
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 3
+    flex: 2
   },
 });
 
-export default Home;
+export default Search;

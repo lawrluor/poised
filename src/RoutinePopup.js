@@ -6,7 +6,7 @@ import {
   Text,
   TouchableWithoutFeedback,
   TouchableHighlight,
-  View,
+  View
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';

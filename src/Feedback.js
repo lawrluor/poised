@@ -20,16 +20,16 @@ class Feedback extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={[styles.titleWrapper, styles.outline]}>
+        <View style={[styles.titleWrapper, defaultStyles.outline]}>
           <Text style={[styles.title, styles.baseText]}>{this.state.helpful}</Text>
         </View>
 
-        <View style={[styles.bodyWrapper, styles.outline]}>
+        <View style={[styles.bodyWrapper, defaultStyles.outline]}>
           <Text style={[styles.bodyText, styles.baseText]}></Text>
         </View>
 
-        <View style={[styles.circleWrapper, styles.outline]}>
-          <View style={[styles.outline]}>
+        <View style={[styles.circleWrapper, defaultStyles.outline]}>
+          <View style={[defaultStyles.outline]}>
             <TouchableHighlight style={styles.circleContainer} onPress={() => this.navigateToPrevious(true)}>
               <Image
                 source={require('../static/img/yes.png')}
@@ -37,7 +37,7 @@ class Feedback extends Component {
             </TouchableHighlight>
           </View>
 
-          <View style={[styles.outline]}>
+          <View style={[defaultStyles.outline]}>
             <TouchableHighlight style={styles.circleContainer} onPress={() => this.navigateToPrevious(false)}>
               <Image
                 source={require('../static/img/no.png')}
