@@ -55,7 +55,6 @@ class SelectionPage extends Component {
 
   // Last line: hide tab bar if popup is opened
   render() {
-    console.log("Props", this.props);
     const { routines, loading, refresh } = this.props;
     console.log("Routines", this.props.routines);
     // If not loaded, show loading screen
@@ -76,7 +75,7 @@ class SelectionPage extends Component {
         <View style={defaultStyles.container}>
           <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
             <Text style={defaultStyles.titleText}>View Routines</Text>
-            <Text style={defaultStyles.examineText}>Guided exercises to prime yourself for a performance, created by users and curated by professionals.</Text>
+            <Text style={defaultStyles.examineText}>Guided exercises to prime you for a performance or task, created by users and curated by professionals.</Text>
           </View>
 
           <ScrollView

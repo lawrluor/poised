@@ -52,7 +52,7 @@ export default class RoutinePopup extends Component {
 
   render() {
     // process props to be used in render function
-    const { routine, routine: { name, author, convertedLength, overallRating } } = this.props;
+    const { routine, routine: { name, author, description, convertedLength, overallRating } } = this.props;
 
     // If not open, don't render
     if (!this.state.visible) {
@@ -89,11 +89,11 @@ export default class RoutinePopup extends Component {
           </View>
 
           <View style={[styles.body, defaultStyles.outline]}>
-            <Text style={defaultStyles.paragraphText}>You are receiving this email because you indicated you wanted to be informed of the latest news and specials from CVS Pharmacy® ExtraCare®. You can update your email preferences here. If you prefer not to receive future emails from CVS Pharmacy ExtraCare, you can unsubscribe here, call 1-800-746-7287 or mail us at CVS Health®, Customer Relations, One CVS Drive, Woonsocket, RI 02895. Please note: If you have opted in to receive other CVS Pharmacy email communications, you will continue to receive them unless you opt out specifically for those.</Text>
+            <Text style={defaultStyles.paragraphText}>{description}</Text>
           </View>
 
           <View style={[styles.footer, defaultStyles.outline]}>
-            <TouchableHighlight style={defaultStyles.button} onPress={() => this.navigateToRoutine(name)}>
+            <TouchableHighlight style={defaultStyles.button} onPress={() => this.navigateToRoutine(routine)}>
               <Text style={[defaultStyles.bodyText]}>Begin Routine</Text>
             </TouchableHighlight>
           </View>
@@ -103,12 +103,19 @@ export default class RoutinePopup extends Component {
     );
   }
 
-  navigateToRoutine(routineName) {
+  navigateToRoutine(routine) {
+    let routineActions = [];
+    let routineDurations = [];
+    for (var key in routine.actions) {
+      routineActions.push(routine.actions[key].text);
+      routineDurations.push(routine.actions[key].length);
+    }
+    
     this.props.navigation.navigate('Routine',
     {
-      routineName: routineName, // from this.state.name
-      // routineActions: routineActions,
-      // routineDurations: routineDurations
+      routineName: routine.name, // from this.state.name
+      routineActions: routineActions,
+      routineDurations: routineDurations
     });
   }
 }

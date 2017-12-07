@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, TouchableHighlight, Navigator, Image } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, TouchableHighlight, TouchableWithoutFeedback, Navigator, Image } from 'react-native';
 
+import { defaultStyles } from './styles.js';
 import Center from '../src/Components/Center.js';
 
 class Feedback extends Component {
@@ -19,30 +20,26 @@ class Feedback extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={[styles.titleWrapper, defaultStyles.outline]}>
+      <View style={defaultStyles.container}>
+        <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
           <Text style={[styles.title, styles.baseText]}>{this.state.helpful}</Text>
         </View>
 
         <View style={[styles.bodyWrapper, defaultStyles.outline]}>
-          <Text style={[styles.bodyText, styles.baseText]}></Text>
+          <Text style={[defaultStyles.bodyText]}></Text>
         </View>
 
         <View style={[styles.circleWrapper, defaultStyles.outline]}>
           <View style={[defaultStyles.outline]}>
-            <TouchableHighlight style={styles.circleContainer} onPress={() => this.navigateToPrevious(true)}>
-              <Image
-                source={require('../static/img/yes.png')}
-              />
-            </TouchableHighlight>
+            <TouchableWithoutFeedback style={styles.circleContainer} onPress={() => this.navigateToPrevious(true)}>
+              <Image source={require('../static/img/icons/thumbs_down.png')} style={defaultStyles.iconLarge}/>
+            </TouchableWithoutFeedback>
           </View>
 
           <View style={[defaultStyles.outline]}>
-            <TouchableHighlight style={styles.circleContainer} onPress={() => this.navigateToPrevious(false)}>
-              <Image
-                source={require('../static/img/no.png')}
-              />
-            </TouchableHighlight>
+            <TouchableWithoutFeedback style={styles.circleContainer} onPress={() => this.navigateToPrevious(false)}>
+              <Image source={require('../static/img/icons/thumbs_up.png')} style={defaultStyles.iconLarge}/>
+            </TouchableWithoutFeedback>
           </View>
         </View>
       </View>
@@ -67,12 +64,6 @@ class Feedback extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#87AECF',
-  },
   baseText: {
     fontFamily: 'Avenir',
     color: '#FFFFFF'
@@ -81,11 +72,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center',
     margin: 10,
-  },
-  titleWrapper: {
-    flex: 3,
-    justifyContent: 'flex-end', // flush to bottom
-    alignItems: 'center'
   },
   bodyWrapper: {
     justifyContent: 'center',

@@ -26,7 +26,7 @@ class GridDisplay extends Component {
   }
 
   render() {
-    const { routine, routine: { name, author, convertedLength, overallRating }, onOpen } = this.props;
+    const { routine, routine: { name, author, preview, convertedLength, overallRating }, onOpen } = this.props;
 
     return (
       //   Style with Image overlaid behind image, instead of background color
@@ -44,7 +44,7 @@ class GridDisplay extends Component {
             </View>
 
             <View style={[styles.previewContainer, defaultStyles.outline]}>
-              <Text style={[defaultStyles.paragraphText]}>Preview Text is Here for each routine, if a routine does not have preview text it truncates from the body</Text>
+              <Text style={[defaultStyles.paragraphText]}>{preview}</Text>
             </View>
           </View>
 

@@ -127,3 +127,13 @@ while (!this.finished()) {
 // move to final screen
 clearTimeout(this.timer);
 this.props.navigation.navigate('Feedback');
+
+// Iterate through each action
+let actions = this.state.routineActions;
+actions.forEach((element, index) => {
+  setTimeout( () => {
+    console.log(element);
+    console.log(this.state.routineDurations[index] * 100);
+  }, index * this.state.routineDurations[index] * 100);
+  console.log ("Finished");
+});

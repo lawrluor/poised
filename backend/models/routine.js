@@ -7,6 +7,12 @@ var routineSchema = new Schema({
   user_id: Number,
   author: String,
   name: String,
+  preview: String,
+  description: String,
+  actions: [{
+    text : String,
+    length : Number
+  }],
   totalLength: Number,
   convertedLength: String,
   overallRating: Number

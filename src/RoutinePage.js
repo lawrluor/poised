@@ -4,24 +4,24 @@ import { AppRegistry, StyleSheet, Text, View, Navigator } from 'react-native';
 import Sound from 'react-native-sound';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
+import { defaultStyles } from './styles.js';
+
 import Center from '../src/Components/Center.js';
 
 // Enable playback in silence mode
 Sound.setCategory('Playback');
 
-// change this to be imported as props from RoutineInfo
-let routineDurations = [10000, 10000, 10000];
-let routineActions = ['measured breathing', 'shake out your limbs', 'visualize your performance'];
-
 class RoutinePage extends Component {
   constructor(props) {
     super(props);
 
-    let begin = 0; // To access first index (0) of item and times
-
     this.state = {
-      counter: begin,
-      duration: routineDurations[begin]
+      counter: 0,
+      currentAction: this.props.navigation.state.params.routineActions[0],
+      currentDuration: this.props.navigation.state.params.routineDurations[0] * 100,
+      routineActions: this.props.navigation.state.params.routineActions,
+      routineDurations: this.props.navigation.state.params.routineDurations,
+      finished: false
     }
   }
 
@@ -33,32 +33,38 @@ class RoutinePage extends Component {
 
   // Begin counting on page load
   componentDidMount() {
+    // Recursive function to "synchronously" cycle through actions
+    let loopCountdown = (counter) => {
+      if (counter < this.state.routineDurations.length) {
+        console.log(counter, this.state.routineDurations.length);
+        console.log(this.state.routineActions[counter])
+
+        // Set the current action and duration for this iteration
+        this.setState({
+          currentAction: this.state.routineActions[counter],
+          currentDuration: this.state.routineDurations[counter] * 100
+        });
+
+        // Begin Countdown for this iteration
+        this.beginCountdown(this.state.currentDuration);
+
+        // Set timer on this iteration
+        setTimeout( () => {
+          loopCountdown(counter + 1); // Recursively start loop again with incremented index
+        }, this.state.currentDuration)
+      } else {
+        // Move to next screen
+        music.stop();
+        clearTimeout();
+        this.props.navigation.navigate('Feedback');
+      }
+    }
+
     // Begin playing audio
     let music = this.playAudio();
 
-    // start initial countdown (jank)
-    this.restartCountdown(this.state.duration);
-
-    // Set interval so that every set duration, increment counter by 1
-    this.timer = setInterval(() => {
-      if (!this.finished()) {
-        let next = this.state.counter + 1;
-        let nextDuration = routineDurations[next];
-
-        this.restartCountdown(this.state.duration);
-
-        console.log(next, nextDuration);
-        this.setState({
-          counter: next,
-          duration: nextDuration,
-        });
-      } else {
-        // move to final screen, and clear operations
-        clearTimeout(this.timer);
-        music.stop();
-        this.props.navigation.navigate('Feedback');
-      }
-    }, routineDurations[this.state.counter]); // BUG: This is called once and will only use the first value od Durations
+    // Call recursive function to begin routine
+    loopCountdown(this.state.counter);
   }
 
   // In the case user closes screen before the timeout fires, otherwise it would cause a memory leak that would trigger the transition regardless, breaking the user experience.
@@ -90,33 +96,22 @@ class RoutinePage extends Component {
     return music;
   }
 
-  restartCountdown(duration) {
-    console.log("Countdown reset");
+  beginCountdown(duration) {
     this.refs.circularProgress.performLinearAnimation(0, 0);
-
-    console.log("Countdown started");
     this.refs.circularProgress.performLinearAnimation(100, duration); // Will fill the progress bar linearly in 8 seconds
-  }
-
-  finished() {
-    if (this.state.counter === (routineActions.length - 1)) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={[styles.titleWrapper, styles.outline]}>
-          <Text style={[styles.bodyText, styles.baseText]}>
-            {routineActions[this.state.counter]}
+      <View style={defaultStyles.container}>
+        <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
+          <Text style={defaultStyles.bodyText}>
+            {this.state.currentAction}
           </Text>
         </View>
 
-        <View style={[styles.circleWrapper, styles.outline]}>
-          <AnimatedCircularProgress style={[styles.countdown, styles.outline]}
+        <View style={[styles.circleWrapper, defaultStyles.outline]}>
+          <AnimatedCircularProgress style={[styles.countdown, defaultStyles.outline]}
             ref='circularProgress'
             size={200}
             width={5}
@@ -124,10 +119,10 @@ class RoutinePage extends Component {
             tintColor="#3d5875"
             backgroundColor="#FFFFFF">
           </AnimatedCircularProgress>
-          <Center style={[styles.center, styles.outline]}></Center>
+          <Center style={[styles.center, defaultStyles.outline]}></Center>
         </View>
 
-        <View style={[styles.bottomWrapper, styles.outline]}>
+        <View style={[styles.bottomWrapper, defaultStyles.outline]}>
         </View>
       </View>
     );
@@ -135,26 +130,6 @@ class RoutinePage extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#87AECF',
-  },
-  baseText: {
-    fontFamily: 'Avenir',
-    color: '#FFFFFF'
-  },
-  title: {
-    fontSize: 48,
-    textAlign: 'center',
-    margin: 10,
-  },
-  titleWrapper: {
-    flex: 2,
-    justifyContent: 'flex-end', // flush to bottom
-    alignItems: 'center'
-  },
   circleWrapper: {
     flex: 6,
     justifyContent: 'center',
@@ -162,20 +137,6 @@ const styles = StyleSheet.create({
   },
   bottomWrapper: {
     flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  bodyText: {
-    fontSize: 32
-  },
-  outline: {
-    // borderWidth: 2
-  },
-  button: {
-    height: 40,
-    width: 40,
-    borderRadius: 20,
-    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center'
   },

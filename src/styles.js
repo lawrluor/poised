@@ -43,7 +43,8 @@ export const defaultStyles = {
   },
   examineText: {
     ...baseStyles.text,
-    fontSize: 10
+    fontSize: 10,
+    textAlign: 'center'
   },
 
   // Wrapper containers
@@ -53,9 +54,9 @@ export const defaultStyles = {
     backgroundColor: 'rgba(119, 136, 153, 0.0)',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginTop: 30 // account for status bar (20px)
+    marginTop: 25 // account for status bar (20px)
   },
-  // TabBar
+  // Icons
   icon: {
     height: 30,
     width: 30
@@ -68,6 +69,10 @@ export const defaultStyles = {
   iconSmallStandard: {
     height: 16,
     width: 16
+  },
+  iconLarge: {
+    height: 64,
+    width: 64
   },
   tabTitle: {
     ...baseStyles.text,

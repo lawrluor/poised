@@ -17,7 +17,6 @@ class TabBar extends Component {
   }
 
   render() {
-    console.log(this.props.currentPage);
     return (
       <Tabs
         selected={this.state.name}
