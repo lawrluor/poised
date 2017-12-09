@@ -94,10 +94,9 @@ export default class RoutinePopup extends Component {
 
           <View style={[styles.footer, defaultStyles.outline]}>
             <TouchableHighlight style={defaultStyles.button} onPress={() => this.navigateToRoutine(routine)}>
-              <Text style={[defaultStyles.bodyText]}>Begin Routine</Text>
+              <Text style={[defaultStyles.bodyText]}>Begin Routine ({convertedLength})</Text>
             </TouchableHighlight>
           </View>
-
         </Animated.View>
       </View>
     );
@@ -110,7 +109,7 @@ export default class RoutinePopup extends Component {
       routineActions.push(routine.actions[key].text);
       routineDurations.push(routine.actions[key].length);
     }
-    
+
     this.props.navigation.navigate('Routine',
     {
       routineName: routine.name, // from this.state.name

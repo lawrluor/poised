@@ -3,7 +3,8 @@ import {
   StyleSheet,
   Text,
   View,
-  Dimensions
+  Dimensions,
+  Linking
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
@@ -16,6 +17,10 @@ class InfoPage extends Component {
   static navigationOptions = {
     header: null
   };
+
+  openExternalLink(url) {
+    return Linking.openURL(url).catch(err => console.error('An error occurred', err));
+  }
 
   render() {
     return(
@@ -51,8 +56,9 @@ class InfoPage extends Component {
             <View style={[styles.textBlock, defaultStyles.outline]}>
               <Text style={defaultStyles.bodyText}>How can I help?</Text>
               <Text style={defaultStyles.paragraphText}>
-                Using the app is great, but you can give me feedback at THIS LINK. I am
-                also looking for more experts in the field of performance anxiety.
+                Using the app is great, but you can give me feedback
+                  <Text style={{color:'blue'}} onPress={() => this.openExternalLink("https://google.com")}> here. </Text>
+                  I am also looking for more experts in the field of performance anxiety.
               </Text>
             </View>
           </View>

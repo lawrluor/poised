@@ -25,7 +25,7 @@ export const defaultStyles = {
     backgroundColor: '#87AECF',
   },
   outline: {
-    // borderWidth: 1
+    borderWidth: 1
   },
 
   // Text
@@ -56,6 +56,10 @@ export const defaultStyles = {
     alignItems: 'center',
     marginTop: 25 // account for status bar (20px)
   },
+  // To be used to preserve footer space when tabBar is absent
+  footerWrapper: {
+    height: 50
+  },
   // Icons
   icon: {
     height: 30,
@@ -68,7 +72,11 @@ export const defaultStyles = {
   },
   iconSmallStandard: {
     height: 16,
-    width: 16
+    width: 16,
+  },
+  iconMedium: {
+    height: 24,
+    width: 24
   },
   iconLarge: {
     height: 64,
