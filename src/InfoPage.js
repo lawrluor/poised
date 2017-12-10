@@ -26,7 +26,7 @@ class InfoPage extends Component {
     return(
       <View style={defaultStyles.container}>
         <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
-          <Text style={defaultStyles.titleText}>About Poise</Text>
+          <Text style={defaultStyles.titleText}>About Poise (v0.8)</Text>
           <Text style={defaultStyles.examineText}>Developer: Lawrence Luo | Version: 0.5</Text>
         </View>
 

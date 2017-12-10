@@ -25,10 +25,15 @@ export const defaultStyles = {
     backgroundColor: '#87AECF',
   },
   outline: {
-    borderWidth: 1
+    // borderWidth: 1
   },
 
   // Text
+  jumboText: {
+    ...baseStyles.text,
+    fontSize: 36,
+    fontWeight: 'bold'
+  },
   titleText: {
     ...baseStyles.text,
     fontSize: 24,
@@ -46,10 +51,14 @@ export const defaultStyles = {
     fontSize: 12,
     textAlign: 'center'
   },
+  linkText: {
+    ...baseStyles.text,
+    fontWeight: 'bold'
+  },
 
   // Wrapper containers
   headerWrapper: {
-    width: width,
+    width: width * 0.9,
     height: height * 0.10,
     backgroundColor: 'rgba(119, 136, 153, 0.0)',
     justifyContent: 'flex-start',

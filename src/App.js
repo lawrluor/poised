@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { StackNavigator } from 'react-navigation';
 
 // Import Pages
+import LoginPage from './LoginPage.js';
+import SignUp from './SignUp.js';
 import SelectionPage from './SelectionPage.js';
 import RoutinePage from './RoutinePage.js';
 import Feedback from './Feedback.js';
@@ -28,6 +30,12 @@ class App extends Component<{}> {
 // Navigation using StackNavigator
 export const RootNavigator = StackNavigator(
   {
+    LoginPage: {
+      screen: LoginPage
+    },
+    SignUp: {
+      screen: SignUp
+    },
     Selections: {
       screen: SelectionPage
     },
