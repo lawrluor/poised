@@ -33,6 +33,9 @@ class Results extends Component {
             {this.showText(this.props.navigation.state.params.result)}
           </Text>
         </View>
+
+        <View style={defaultStyles.footerWrapper}>
+        </View>
       </View>
     );
   }
@@ -46,8 +49,5 @@ class Results extends Component {
     }
   }
 }
-
-const styles = StyleSheet.create({
-});
 
 export default Results

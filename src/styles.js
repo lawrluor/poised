@@ -43,7 +43,7 @@ export const defaultStyles = {
   },
   examineText: {
     ...baseStyles.text,
-    fontSize: 10,
+    fontSize: 12,
     textAlign: 'center'
   },
 
@@ -58,7 +58,7 @@ export const defaultStyles = {
   },
   // To be used to preserve footer space when tabBar is absent
   footerWrapper: {
-    height: 50
+    maxHeight: 50
   },
   // Icons
   icon: {

@@ -15,13 +15,15 @@ class RoutinePage extends Component {
   constructor(props) {
     super(props);
 
+    // Music begins once state is defined
     this.state = {
       counter: 0,
       currentAction: this.props.navigation.state.params.routineActions[0],
       currentDuration: this.props.navigation.state.params.routineDurations[0] * 100,
       routineActions: this.props.navigation.state.params.routineActions,
       routineDurations: this.props.navigation.state.params.routineDurations,
-      finished: false
+      finished: false,
+      music: this.playAudio()
     }
   }
 
@@ -45,23 +47,21 @@ class RoutinePage extends Component {
           currentDuration: this.state.routineDurations[counter] * 100
         });
 
-        // Begin Countdown for this iteration
-        this.beginCountdown(this.state.currentDuration);
+        // Begin timer animation for this iteration
+        this.beginTimerAnimation(this.state.currentDuration);
 
         // Set timer on this iteration
         setTimeout( () => {
+          clearTimeout(); // clear previous timeout
           loopCountdown(counter + 1); // Recursively start loop again with incremented index
         }, this.state.currentDuration)
       } else {
         // Move to next screen
-        music.stop();
+        this.state.music.stop();
         clearTimeout();
         this.props.navigation.navigate('Feedback');
       }
     }
-
-    // Begin playing audio
-    let music = this.playAudio();
 
     // Call recursive function to begin routine
     loopCountdown(this.state.counter);
@@ -69,7 +69,8 @@ class RoutinePage extends Component {
 
   // In the case user closes screen before the timeout fires, otherwise it would cause a memory leak that would trigger the transition regardless, breaking the user experience.
   componentWillUnmount() {
-    clearTimeout(this.timer);
+    clearTimeout();
+    this.state.music.stop();
   }
 
   // use react-native-sound to play audio
@@ -96,7 +97,7 @@ class RoutinePage extends Component {
     return music;
   }
 
-  beginCountdown(duration) {
+  beginTimerAnimation(duration) {
     this.refs.circularProgress.performLinearAnimation(0, 0);
     this.refs.circularProgress.performLinearAnimation(100, duration); // Will fill the progress bar linearly in 8 seconds
   }
@@ -111,7 +112,7 @@ class RoutinePage extends Component {
         </View>
 
         <View style={[styles.circleWrapper, defaultStyles.outline]}>
-          <AnimatedCircularProgress style={[styles.countdown, defaultStyles.outline]}
+          <AnimatedCircularProgress style={styles.countdown}
             ref='circularProgress'
             size={200}
             width={5}
@@ -119,7 +120,7 @@ class RoutinePage extends Component {
             tintColor="#3d5875"
             backgroundColor="#FFFFFF">
           </AnimatedCircularProgress>
-          <Center style={[styles.center, defaultStyles.outline]}></Center>
+          <Center style={styles.center}></Center>
         </View>
 
         <View style={[styles.bottomWrapper, defaultStyles.outline]}>
@@ -132,13 +133,12 @@ class RoutinePage extends Component {
 const styles = StyleSheet.create({
   circleWrapper: {
     flex: 6,
+    ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
     alignItems: 'center'
   },
   bottomWrapper: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center'
+    flex: 2
   },
   // allow for views to overlay
   countdown: {

@@ -76,6 +76,8 @@ class SelectionPage extends Component {
           // user_id: child.val().user_id,
         });
       });
+
+      // Change to get promise from snap
       console.log(routines);
       this.setState({
         routines: routines,

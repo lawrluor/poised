@@ -34,6 +34,9 @@ class Feedback extends Component {
             </TouchableWithoutFeedback>
           </View>
         </View>
+
+        <View style={[styles.footerWrapper, defaultStyles.outline]}>
+        </View>
       </View>
     )
   }
