@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ScrollView, Navigator } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Navigator,
+  ActivityIndicator,
+  RefreshControl,
+ } from 'react-native';
 
 import GridDisplay from './Components/GridDisplay.js';
 import TabBar from './Components/TabBar.js';
@@ -9,29 +17,71 @@ import { defaultStyles } from './styles.js';
 
 // Redux
 import { connect } from 'react-redux';
-import {
-  ActivityIndicator,
-  RefreshControl,
-  // ...others
-} from 'react-native';
 
-// Connect Redux storage and refresh actions
-@connect(
-  state => ({
-    routines: state.routines,
-    loading: state.loading
-  }),
-  dispatch => ({
-    refresh: () => dispatch({type: 'GET_ROUTINE_DATA'}),
-  })
-)
+// Import Firebase app config
+import firebaseApp from './Components/Firebase.js';
+
+// Connect Redux storage and refresh actions,
+// @connect(
+//   state => ({
+//     routines: state.routines,
+//     loading: state.loading
+//   }),
+//   dispatch => ({
+//     refresh: () => dispatch({type: 'GET_ROUTINE_DATA'}),
+//   })
+// )
 
 class SelectionPage extends Component {
   // Set default routine for popup as the first routine, before routine is opened
   // FAILS when there are no routines
-  state = {
-    popupIsOpen: false,
-    routine: "test"
+  constructor() {
+    super();
+    this.state = {
+      popupIsOpen: false,
+      routines: [],
+      routine: "test",
+      loading: true
+    }
+
+    this.routinesRef = this.getRef().child('routines');
+  }
+
+  getRef() {
+    return firebaseApp.database().ref();
+  }
+
+  componentWillMount() {
+    this.getRoutines(this.routinesRef);
+  }
+
+  // componentDidMount() {
+  //   this.getRoutines(this.routinesRef);
+  // }
+
+  getRoutines(routinesRef) {
+    routinesRef.on('value', (snap) => {
+      let routines = [];
+      snap.forEach((child) => {
+        routines.push({
+          name: child.val().name,
+          author: child.val().author,
+          convertedLength: child.val().convertedLength,
+          description: child.val().description,
+          overallRating: child.val().overallRating,
+          preview: child.val().preview,
+          actions: child.val().actions,
+          _key: child.key,
+          // routine_id: child.val().routine_id,
+          // user_id: child.val().user_id,
+        });
+      });
+      console.log(routines);
+      this.setState({
+        routines: routines,
+        loading: false
+      });
+    });
   }
 
   openRoutine = (routine) => {
@@ -55,15 +105,14 @@ class SelectionPage extends Component {
 
   // Last line: hide tab bar if popup is opened
   render() {
-    const { routines, loading, refresh } = this.props;
-    console.log("Routines", this.props.routines);
+    const { refresh } = this.props;
     // If not loaded, show loading screen
-    if (loading) {
+    if (this.state.loading) {
       // Currently bugged, not loading activityIndicator
       return (
         <View style={defaultStyles.container}>
           <ActivityIndicator
-            animating={loading}
+            animating={this.state.loading}
             color="#FFFFFF"
             style={styles.loader}
             size="large"
@@ -85,13 +134,13 @@ class SelectionPage extends Component {
             showsVerticalScrollIndicator={false}
             refreshControl={
               <RefreshControl
-                refreshing={loading}
+                refreshing={this.state.loading}
                 onRefresh={refresh}
                 tintColor="#FFFFFF"
               />
             }
           >
-            {routines.map((routine, index) => <GridDisplay
+            {this.state.routines.map((routine, index) => <GridDisplay
               routine={routine}
               onOpen={this.openRoutine}
               key={index}
