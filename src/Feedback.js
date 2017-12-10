@@ -14,28 +14,34 @@ class Feedback extends Component {
     return (
       <View style={defaultStyles.container}>
         <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
-          <Text style={defaultStyles.titleText}>Was this routine helpful?</Text>
         </View>
 
-        <View style={[styles.bodyWrapper, defaultStyles.outline]}>
-          <Text style={[defaultStyles.bodyText]}></Text>
-        </View>
-
-        <View style={[styles.iconWrapper, defaultStyles.outline]}>
-          <View style={[defaultStyles.outline]}>
-            <TouchableWithoutFeedback onPress={() => this.navigateToResults(true)}>
-              <Image source={require('../static/img/icons/thumbs_up_64.png')}/>
-            </TouchableWithoutFeedback>
+        <View style={[defaultStyles.graphicLayoutBodyContainer, defaultStyles.outline]}>
+          <View style={[defaultStyles.graphicLayoutUpperText, defaultStyles.outline]}>
+            <Text style={defaultStyles.titleText}>
+              Was this routine helpful?
+            </Text>
           </View>
 
-          <View style={[defaultStyles.outline]}>
-            <TouchableWithoutFeedback onPress={() => this.navigateToResults(false)}>
-              <Image source={require('../static/img/icons/thumbs_down_64.png')}/>
-            </TouchableWithoutFeedback>
+          <View style={[styles.iconWrapper, defaultStyles.outline]}>
+            <View style={[styles.leftContainer, defaultStyles.outline]}>
+              <TouchableWithoutFeedback onPress={() => this.navigateToResults(false)}>
+                <Image source={require('../static/img/icons/thumbs_down_64.png')} style={{marginTop: 16}}/>
+              </TouchableWithoutFeedback>
+            </View>
+
+            <View style={[styles.rightContainer, defaultStyles.outline]}>
+              <TouchableWithoutFeedback onPress={() => this.navigateToResults(true)}>
+                <Image source={require('../static/img/icons/thumbs_up_64.png')} style={{marginBottom: 16}}/>
+              </TouchableWithoutFeedback>
+            </View>
+          </View>
+
+          <View style={[defaultStyles.graphicLayoutLowerText, defaultStyles.outline]}>
           </View>
         </View>
 
-        <View style={[styles.footerWrapper, defaultStyles.outline]}>
+        <View style={[defaultStyles.footerWrapper, defaultStyles.outline]}>
         </View>
       </View>
     )
@@ -48,22 +54,21 @@ class Feedback extends Component {
 }
 
 const styles = StyleSheet.create({
-  bodyWrapper: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 2
-  },
   iconWrapper: {
-    flex: 5,
+    flex: 4,
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'stretch'
+    alignItems: 'center'
   },
-  bodyText: {
-    fontSize: 32
+  leftContainer: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  outline: {
-    borderWidth: 2
+  rightContainer: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 

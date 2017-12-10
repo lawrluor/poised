@@ -3,12 +3,15 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   Navigator,
   TextInput,
   TouchableHighlight,
   TouchableOpacity,
   Alert,
-  BackHandler
+  Keyboard,
+  KeyboardAvoidingView,
+  Animated
  } from 'react-native';
 
 import { defaultStyles } from './styles.js';
@@ -23,9 +26,65 @@ class LoginPage extends Component {
     super();
     this.state = {
       email: "Email",
-      password: "Password"
+      password: "Password",
+      signup: false
     }
+
+    this.imageHeight = new Animated.Value(160);
+    this.titleFlex = new Animated.Value(2);
+    this.inputFlex = new Animated.Value(2);
   }
+
+  // Keyboard functionality based on tutorial https://medium.freecodecamp.org/how-to-make-your-react-native-app-respond-gracefully-when-the-keyboard-pops-up-7442c1535580
+  componentWillMount () {
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
+    console.log("listeners added");
+  }
+
+  componentWillUnmount() {
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
+  }
+
+  _keyboardDidShow = (event) => {
+    console.log("keyboard showing");
+    // Hide Image
+    Animated.timing(this.imageHeight, {
+      duration: event.duration,
+      toValue: 0,
+    }).start();
+
+    // Shrink title container
+    Animated.timing(this.titleFlex, {
+      duration: event.duration,
+      toValue: 1,
+    }).start();
+
+    // Grow input container
+    Animated.timing(this.inputFlex, {
+      duration: event.duration,
+      toValue: 5,
+    }).start();
+  };
+
+  _keyboardDidHide = () => {
+    console.log("keyboard hiding");
+    // Show Image
+    Animated.timing(this.imageHeight, {
+      toValue: 160,
+    }).start();
+
+    // Return title container to normal size
+    Animated.timing(this.titleFlex, {
+      toValue: 2,
+    }).start();
+
+    // Shrink input container
+    Animated.timing(this.inputFlex, {
+      toValue: 2,
+    }).start();
+  };
 
   // Login method
   async login(email, pass) {
@@ -63,9 +122,11 @@ class LoginPage extends Component {
     });
   }
 
-  // Navigate to signup page
-  navigateToSignUp() {
-    this.props.navigation.navigate('SignUp')
+  // If user in the middle of typing, clears keyboard
+  navigateToSignup(email) {
+    this.componentWillMount();
+    Keyboard.dismiss()
+    this.props.navigation.navigate('Signup');
   }
 
   // App Header
@@ -74,16 +135,16 @@ class LoginPage extends Component {
   };
 
   render() {
-    return(
-      <View style={[defaultStyles.container, defaultStyles.outline]}>
+    return (
+      <KeyboardAvoidingView style={[defaultStyles.container, defaultStyles.outline]}>
         <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}></View>
 
-        <View style={[styles.titleContainer, defaultStyles.outline]}>
-          <Center></Center>
-          <Text style={defaultStyles.jumboText}>Poise</Text>
-        </View>
+        <Animated.View style={[styles.titleContainer, defaultStyles.outline, {flex: this.titleFlex}]}>
+            <Animated.Image source={require('../static/img/center.png')} style={{height:this.imageHeight}}></Animated.Image>
+            <Text style={defaultStyles.jumboText}>Poise</Text>
+        </Animated.View>
 
-        <View style={[styles.inputContainer, defaultStyles.outline]}>
+        <Animated.View style={[styles.inputContainer, defaultStyles.outline, {flex:this.inputFlex}]}>
           <TextInput
             style={styles.input}
             keyboardType={'email-address'}
@@ -104,22 +165,21 @@ class LoginPage extends Component {
             onChangeText={(password) => this.setState({password})}
           />
 
-          <TouchableHighlight style={styles.loginButton} onPress={() => this.login(this.state.email, this.state.password)}>
+          <TouchableHighlight underlayColor='rgba(28, 56, 79, 0.7)' style={styles.loginButton} onPress={() => this.login(this.state.email, this.state.password)}>
             <Text style={[defaultStyles.bodyText]}>Login</Text>
           </TouchableHighlight>
 
-          <TouchableOpacity onPress={() => this.navigateToSignUp()}>
+          <TouchableOpacity onPress={() => this.navigateToSignup()}>
             <Text style={defaultStyles.paragraphText}>New User? <Text style={defaultStyles.linkText}>Create Account</Text></Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => this.navigateToMain(null)}>
-            <Text style={defaultStyles.paragraphText}>Login As Guest</Text>
+            <Text style={defaultStyles.paragraphText}>Continue As Guest</Text>
           </TouchableOpacity>
-        </View>
+        </Animated.View>
 
-        <View style={[styles.actionsContainer, defaultStyles.outline]}>
-        </View>
-      </View>
+        <View style={[styles.footerContainer, defaultStyles.outline]}></View>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -127,7 +187,7 @@ class LoginPage extends Component {
 const styles = StyleSheet.create({
   titleContainer: {
     flex: 2,
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
     alignItems: 'center',
   },
   inputContainer: {
@@ -137,9 +197,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'rgba(119, 136, 153, 0.5)'
   },
-  actionsContainer: {
-    flex: 1,
-    alignItems: 'center'
+  footerContainer: {
+    flex: 1
   },
   input: {
     ...defaultStyles.paragraphText,

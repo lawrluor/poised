@@ -16,7 +16,7 @@ class SelectionButton extends Component {
 
   render () {
     return (
-      <TouchableHighlight style={defaultStyles.button} onPress={() => this.props.navigation.navigate('Selections')}>
+      <TouchableHighlight underlayColor="#8FB9DC" style={defaultStyles.button} onPress={() => this.props.navigation.navigate('Selections')}>
         <Text style={[defaultStyles.bodyText]}>{this.props.name}</Text>
       </TouchableHighlight>
     );

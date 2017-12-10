@@ -4,7 +4,7 @@ import { StackNavigator } from 'react-navigation';
 
 // Import Pages
 import LoginPage from './LoginPage.js';
-import SignUp from './SignUp.js';
+import Signup from './Signup.js';
 import SelectionPage from './SelectionPage.js';
 import RoutinePage from './RoutinePage.js';
 import Feedback from './Feedback.js';
@@ -33,8 +33,8 @@ export const RootNavigator = StackNavigator(
     LoginPage: {
       screen: LoginPage
     },
-    SignUp: {
-      screen: SignUp
+    Signup: {
+      screen: Signup
     },
     Selections: {
       screen: SelectionPage

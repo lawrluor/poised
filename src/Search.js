@@ -20,7 +20,8 @@ class Search extends Component {
     return (
       <View style={defaultStyles.container}>
         <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
-          <Text style={[defaultStyles.titleText]}>What's on your mind?</Text>
+          <Text style={defaultStyles.titleText}>What's on your mind?</Text>
+          <Text style={defaultStyles.examineText}>Browse applicable routines based on topic.</Text>
         </View>
 
         <View style={[styles.bodyWrapper, defaultStyles.outline]}>
@@ -37,7 +38,7 @@ class Search extends Component {
 
         <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar>
 
-        <View style={[styles.bottomWrapper, defaultStyles.outline]}>
+        <View style={[defaultStyles.footerWrapper, defaultStyles.outline]}>
         </View>
       </View>
     );
@@ -54,12 +55,7 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     flex: 1,
     justifyContent: 'space-around' // spread vertically throughout container
-  },
-  bottomWrapper: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 2
-  },
+  }
 });
 
 export default Search;

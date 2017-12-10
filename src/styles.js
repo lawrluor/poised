@@ -25,13 +25,13 @@ export const defaultStyles = {
     backgroundColor: '#87AECF',
   },
   outline: {
-    // borderWidth: 1
+    borderWidth: 1
   },
 
   // Text
   jumboText: {
     ...baseStyles.text,
-    fontSize: 36,
+    fontSize: 38,
     fontWeight: 'bold'
   },
   titleText: {
@@ -67,6 +67,7 @@ export const defaultStyles = {
   },
   // To be used to preserve footer space when tabBar is absent
   footerWrapper: {
+    flex: 1,
     maxHeight: 50
   },
   // Icons
@@ -95,6 +96,23 @@ export const defaultStyles = {
     ...baseStyles.text,
     fontSize: 14,
     color: 'white'
+  },
+
+  // For title, graphic layout in RoutinePage, Feedback, Results
+  graphicLayoutBodyContainer: {
+    flex: 4,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  graphicLayoutUpperText: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end'
+  },
+  graphicLayoutLowerText: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-start'
   },
 
   // Buttons

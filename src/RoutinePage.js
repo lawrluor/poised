@@ -106,24 +106,34 @@ class RoutinePage extends Component {
     return (
       <View style={defaultStyles.container}>
         <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
-          <Text style={defaultStyles.bodyText}>
-            {this.state.currentAction}
-          </Text>
         </View>
 
-        <View style={[styles.circleWrapper, defaultStyles.outline]}>
-          <AnimatedCircularProgress style={styles.countdown}
-            ref='circularProgress'
-            size={200}
-            width={5}
-            fill={0}
-            tintColor="#3d5875"
-            backgroundColor="#FFFFFF">
-          </AnimatedCircularProgress>
-          <Center style={styles.center}></Center>
+        <View style={[defaultStyles.graphicLayoutBodyContainer, defaultStyles.outline]}>
+          <View style={[defaultStyles.graphicLayoutUpperText, defaultStyles.outline]}>
+            <Text style={defaultStyles.bodyText}>
+              {this.state.currentAction}
+            </Text>
+          </View>
+
+          <View style={[styles.circleWrapper, defaultStyles.outline]}>
+            <AnimatedCircularProgress style={styles.countdown}
+              ref='circularProgress'
+              size={200}
+              width={5}
+              fill={0}
+              tintColor="#3d5875"
+              backgroundColor="#FFFFFF">
+            </AnimatedCircularProgress>
+            <Center style={styles.center}></Center>
+          </View>
+
+          <View style={[defaultStyles.graphicLayoutLowerText, defaultStyles.outline]}>
+            <Text style={defaultStyles.bodyText}>
+            </Text>
+          </View>
         </View>
 
-        <View style={[styles.bottomWrapper, defaultStyles.outline]}>
+        <View style={[defaultStyles.footerWrapper, defaultStyles.outline]}>
         </View>
       </View>
     );
@@ -132,13 +142,10 @@ class RoutinePage extends Component {
 
 const styles = StyleSheet.create({
   circleWrapper: {
-    flex: 6,
-    ...StyleSheet.absoluteFillObject,
+    // ...StyleSheet.absoluteFillObject,
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center'
-  },
-  bottomWrapper: {
-    flex: 2
   },
   // allow for views to overlay
   countdown: {

@@ -29,12 +29,15 @@ class Results extends Component {
     return (
       <View style={[defaultStyles.container, defaultStyles.outline]}>
         <View style={defaultStyles.headerWrapper}>
+        </View>
+
+        <View style={[defaultStyles.graphicLayoutBodyContainer, defaultStyles.outline]}>
           <Text style={defaultStyles.titleText}>
             {this.showText(this.props.navigation.state.params.result)}
           </Text>
         </View>
 
-        <View style={defaultStyles.footerWrapper}>
+        <View style={[defaultStyles.footerWrapper, defaultStyles.outline]}>
         </View>
       </View>
     );
