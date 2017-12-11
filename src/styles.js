@@ -25,7 +25,7 @@ export const defaultStyles = {
     backgroundColor: '#87AECF',
   },
   outline: {
-    borderWidth: 1
+    // borderWidth: 1
   },
 
   // Text
@@ -53,6 +53,7 @@ export const defaultStyles = {
   },
   linkText: {
     ...baseStyles.text,
+    color: 'rgba(28, 56, 79, 1.0)',
     fontWeight: 'bold'
   },
 
@@ -101,6 +102,7 @@ export const defaultStyles = {
   // For title, graphic layout in RoutinePage, Feedback, Results
   graphicLayoutBodyContainer: {
     flex: 4,
+    width: width * 0.9,
     justifyContent: 'center',
     alignItems: 'center'
   },

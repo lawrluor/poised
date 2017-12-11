@@ -140,7 +140,8 @@ class Signup extends Component {
             style={styles.input}
             keyboardType={'email-address'}
             editable={true}
-            autoCapitalize={null}
+            autoCapitalize='none'
+            autoCorrect={false}
             maxLength={40}
             placeholder={this.state.email}
             onChangeText={(email) => this.setState({email})}
@@ -149,7 +150,8 @@ class Signup extends Component {
           <TextInput
             style={styles.input}
             editable={true}
-            autoCapitalize={null}
+            autoCapitalize='none'
+            autoCorrect={false}
             maxLength={40}
             placeholder={this.state.password}
             secureTextEntry={true}

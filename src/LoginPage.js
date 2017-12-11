@@ -39,7 +39,6 @@ class LoginPage extends Component {
   componentWillMount () {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
-    console.log("listeners added");
   }
 
   componentWillUnmount() {
@@ -48,7 +47,6 @@ class LoginPage extends Component {
   }
 
   _keyboardDidShow = (event) => {
-    console.log("keyboard showing");
     // Hide Image
     Animated.timing(this.imageHeight, {
       duration: event.duration,
@@ -69,7 +67,6 @@ class LoginPage extends Component {
   };
 
   _keyboardDidHide = () => {
-    console.log("keyboard hiding");
     // Show Image
     Animated.timing(this.imageHeight, {
       toValue: 160,
@@ -89,6 +86,8 @@ class LoginPage extends Component {
   // Login method
   async login(email, pass) {
     try {
+      console.log("attempting login");
+      console.log(firebaseApp);
       await firebaseApp.auth()
         .signInWithEmailAndPassword(email, pass);
 
@@ -96,11 +95,11 @@ class LoginPage extends Component {
       this.navigateToMain(email);
     } catch (error) {
       console.log(error.toString());
-      Alert.alert(
-        'Error',
-        error.toString(),
-        {text: "OK", onPress: () => console.log('OK Pressed')},
-      )
+      // Alert.alert(
+      //   'Error',
+      //   error.toString(),
+      //   {text: "OK", onPress: () => console.log('OK Pressed')},
+      // )
     }
   }
 
@@ -149,7 +148,8 @@ class LoginPage extends Component {
             style={styles.input}
             keyboardType={'email-address'}
             editable={true}
-            autoCapitalize={null}
+            autoCapitalize='none'
+            autoCorrect={false}
             maxLength={40}
             placeholder={this.state.email}
             onChangeText={(email) => this.setState({email})}
@@ -158,7 +158,8 @@ class LoginPage extends Component {
           <TextInput
             style={styles.input}
             editable={true}
-            autoCapitalize={null}
+            autoCapitalize='none'
+            autoCorrect={false}
             maxLength={40}
             placeholder={this.state.password}
             secureTextEntry={true}
@@ -174,7 +175,7 @@ class LoginPage extends Component {
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => this.navigateToMain(null)}>
-            <Text style={defaultStyles.paragraphText}>Continue As Guest</Text>
+            <Text style={defaultStyles.linkText}>Continue As Guest</Text>
           </TouchableOpacity>
         </Animated.View>
 
@@ -204,7 +205,7 @@ const styles = StyleSheet.create({
     ...defaultStyles.paragraphText,
     height: 40,
     width: 270,
-    padding: 5,
+    padding: 10,
     marginTop: 5,
     marginBottom: 5,
     marginLeft: 15,

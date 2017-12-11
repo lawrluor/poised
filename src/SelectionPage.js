@@ -55,17 +55,11 @@ class SelectionPage extends Component {
     this.getRoutines(this.routinesRef);
   }
 
-  componentDidMount() {
-    this.getRoutines(this.routinesRef);
-  }
-
   getRoutines(routinesRef) {
-    console.log(routinesRef);
     console.log("Retrieving routines...");
     routinesRef.on('value', (snap) => {
       let routines = [];
       snap.forEach((child) => {
-        console.log(child);
         routines.push({
           name: child.val().name,
           author: child.val().author,

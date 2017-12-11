@@ -52,7 +52,7 @@ export default class RoutinePopup extends Component {
 
   render() {
     // process props to be used in render function
-    const { routine, routine: { name, author, description, convertedLength, overallRating } } = this.props;
+    const { routine, routine: { _key, name, author, description, convertedLength, overallRating } } = this.props;
 
     // If not open, don't render
     if (!this.state.visible) {
@@ -114,7 +114,9 @@ export default class RoutinePopup extends Component {
     {
       routineName: routine.name, // from this.state.name
       routineActions: routineActions,
-      routineDurations: routineDurations
+      routineDurations: routineDurations,
+      routineRating: routine.overallRating,
+      routineKey: routine._key
     });
   }
 }

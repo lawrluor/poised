@@ -69,13 +69,6 @@ class GridDisplay extends Component {
     let result = date.toISOString().substr(14, 5); // substring to only take MM:SS
     return result;
   }
-
-  navigateToRoutineInfo(routineName) {
-    this.props.navigation.navigate('RoutineInfo',
-    {
-      routineName: routineName // from this.state.name
-    });
-  }
 }
 
 const styles = StyleSheet.create({

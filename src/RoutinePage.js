@@ -18,10 +18,13 @@ class RoutinePage extends Component {
     // Music begins once state is defined
     this.state = {
       counter: 0,
+      routineName: this.props.navigation.state.params.routineName,
       currentAction: this.props.navigation.state.params.routineActions[0],
       currentDuration: this.props.navigation.state.params.routineDurations[0] * 100,
       routineActions: this.props.navigation.state.params.routineActions,
       routineDurations: this.props.navigation.state.params.routineDurations,
+      routineRating: this.props.navigation.state.params.routineRating,
+      routineKey: this.props.navigation.state.params.routineKey,
       finished: false,
       music: this.playAudio()
     }
@@ -59,7 +62,7 @@ class RoutinePage extends Component {
         // Move to next screen
         this.state.music.stop();
         clearTimeout();
-        this.props.navigation.navigate('Feedback');
+        this.navigateToFeedback();
       }
     }
 
@@ -100,6 +103,14 @@ class RoutinePage extends Component {
   beginTimerAnimation(duration) {
     this.refs.circularProgress.performLinearAnimation(0, 0);
     this.refs.circularProgress.performLinearAnimation(100, duration); // Will fill the progress bar linearly in 8 seconds
+  }
+
+  navigateToFeedback(routine){
+    this.props.navigation.navigate('Feedback', {
+      routineName: this.state.routineName,
+      routineRating: this.state.routineRating,
+      routineKey: this.state.routineKey
+    });
   }
 
   render() {

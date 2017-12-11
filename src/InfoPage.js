@@ -57,7 +57,7 @@ class InfoPage extends Component {
               <Text style={defaultStyles.bodyText}>How can I help?</Text>
               <Text style={defaultStyles.paragraphText}>
                 Using the app is great, but you can give me feedback
-                  <Text style={{color:'blue'}} onPress={() => this.openExternalLink("https://google.com")}> here. </Text>
+                  <Text style={defaultStyles.linkText} onPress={() => this.openExternalLink("https://google.com")}> here. </Text>
                   I am also looking for more experts in the field of performance anxiety.
               </Text>
             </View>
@@ -90,8 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(119, 136, 153, 0.5)'
   },
   textBlock: {
-    paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 5
   },
   footer: {
     flex: 2,
