@@ -137,3 +137,36 @@ actions.forEach((element, index) => {
   }, index * this.state.routineDurations[index] * 100);
   console.log ("Finished");
 });
+
+<View style={defaultStyles.container}>
+  <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
+  </View>
+
+  <View style={[defaultStyles.graphicLayoutBodyContainer, defaultStyles.outline]}>
+    <View style={[defaultStyles.graphicLayoutUpperText, defaultStyles.outline]}>
+      <Text style={defaultStyles.bodyText}>
+        {this.state.currentAction}
+      </Text>
+    </View>
+
+    <View style={[styles.circleWrapper, defaultStyles.outline]}>
+      <AnimatedCircularProgress style={styles.countdown}
+        ref='circularProgress'
+        size={200}
+        width={5}
+        fill={0}
+        tintColor="#3d5875"
+        backgroundColor="#FFFFFF">
+      </AnimatedCircularProgress>
+      <Center style={styles.center}></Center>
+    </View>
+
+    <View style={[defaultStyles.graphicLayoutLowerText, defaultStyles.outline]}>
+      <Text style={defaultStyles.bodyText}>
+      </Text>
+    </View>
+  </View>
+
+  <View style={[defaultStyles.footerWrapper, defaultStyles.outline]}>
+  </View>
+</View>

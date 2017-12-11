@@ -12,25 +12,26 @@ class Feedback extends Component {
       routineName: this.props.navigation.state.params.routineName,
       routineKey: this.props.navigation.state.params.routineKey,
       routineRating: this.props.navigation.state.params.routineRating,
-      address: "",
+      path: "",
       currentRating: 0,
       routinesRef: null
     }
   }
 
+  // Load routines reference, get and store path, current rating, and ref to state
   componentWillMount() {
     let routinesRef = firebaseApp.database().ref('routines');
 
     // Query routine that matches key, store in this.state.routineRef to access later
     // orderByKey() indicates that key should equal value in equalTo()
     routinesRef.orderByKey().equalTo(this.state.routineKey).on('value', (snap) => {
-      // get current Rating at time of query, store address path prefixed by key: 3/overallRating
+      // get current Rating at time of query, store path path prefixed by key: 3/overallRating
       this.setState({
         currentRating: snap.val()[this.state.routineKey]['overallRating'],
-        address: this.state.routineKey.toString() + '/overallRating',
+        path: this.state.routineKey.toString() + '/overallRating',
         routinesRef: routinesRef
       })
-      console.log(this.state.address, this.state.currentRating);
+      console.log(this.state.path, this.state.currentRating);
     });
   }
 
@@ -80,10 +81,11 @@ class Feedback extends Component {
   navigateToResults(result) {
     // Extract routine ref from state
     let routinesRef = this.state.routinesRef;
+
     if (result) {
-      routinesRef.update({[this.state.address] : this.state.currentRating + 1 });
+      routinesRef.update({[this.state.path] : this.state.currentRating + 1 });
     } else {
-      routinesRef.update({[this.state.address] : this.state.currentRating - 1 });
+      routinesRef.update({[this.state.path] : this.state.currentRating - 1 });
     }
     this.props.navigation.navigate('Results', {result:result});
   }

@@ -55,6 +55,7 @@ class RoutinePage extends Component {
 
         // Set timer on this iteration
         setTimeout( () => {
+          console.log("next");
           clearTimeout(); // clear previous timeout
           loopCountdown(counter + 1); // Recursively start loop again with incremented index
         }, this.state.currentDuration)
@@ -100,6 +101,7 @@ class RoutinePage extends Component {
     return music;
   }
 
+  // Presence of AnimatedCircularProgress crashes Android app
   beginTimerAnimation(duration) {
     this.refs.circularProgress.performLinearAnimation(0, 0);
     this.refs.circularProgress.performLinearAnimation(100, duration); // Will fill the progress bar linearly in 8 seconds
