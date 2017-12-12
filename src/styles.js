@@ -14,7 +14,7 @@ const baseStyles = {
   text: {
     fontFamily: 'Avenir',
     color: '#FFFFFF'
-  },
+  }
 };
 
 export const defaultStyles = {
@@ -117,7 +117,35 @@ export const defaultStyles = {
     justifyContent: 'flex-start'
   },
 
-  // Buttons
+  // Buttons and Input
+  input: {
+    ...baseStyles.text,
+    height: 40,
+    width: 270,
+    padding: 10,
+    marginTop: 5,
+    marginBottom: 5,
+    marginLeft: 15,
+    marginRight: 15,
+    borderRadius: 10,
+    backgroundColor: 'white',
+    color: 'grey',
+  },
+  loginButton: {
+    height: 40,
+    width: 270,
+    padding: 5,
+    marginTop: 5,
+    marginBottom: 5,
+    marginLeft: 15,
+    marginRight: 15,
+    borderRadius: 10,
+    backgroundColor: 'rgba(28, 56, 79, 1.0)', // #1C384F
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  // Used in popup Routine
   button: {
     borderWidth: 3,
     borderRadius: 15,

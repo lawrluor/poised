@@ -87,7 +87,10 @@ class Feedback extends Component {
     } else {
       routinesRef.update({[this.state.path] : this.state.currentRating - 1 });
     }
-    this.props.navigation.navigate('Results', {result:result});
+    this.props.navigation.navigate('Results', {
+      result: result,
+      routineId: this.state.routineKey
+    });
   }
 }
 

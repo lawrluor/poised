@@ -137,7 +137,7 @@ class Signup extends Component {
 
         <Animated.View style={[styles.inputContainer, defaultStyles.outline, {flex:this.inputFlex}]}>
           <TextInput
-            style={styles.input}
+            style={defaultStyles.input}
             keyboardType={'email-address'}
             editable={true}
             autoCapitalize='none'
@@ -148,7 +148,7 @@ class Signup extends Component {
           />
 
           <TextInput
-            style={styles.input}
+            style={defaultStyles.input}
             editable={true}
             autoCapitalize='none'
             autoCorrect={false}
@@ -158,7 +158,7 @@ class Signup extends Component {
             onChangeText={(password) => this.setState({password})}
           />
 
-          <TouchableHighlight style={styles.loginButton} onPress={() => this.signup(this.state.email, this.state.password)}>
+          <TouchableHighlight style={defaultStyles.loginButton} onPress={() => this.signup(this.state.email, this.state.password)}>
             <Text style={[defaultStyles.bodyText]}>Create Account</Text>
           </TouchableHighlight>
 
@@ -188,32 +188,6 @@ const styles = StyleSheet.create({
   },
   footerContainer: {
     flex: 1
-  },
-  input: {
-    ...defaultStyles.paragraphText,
-    height: 40,
-    width: 270,
-    padding: 5,
-    marginTop: 5,
-    marginBottom: 5,
-    marginLeft: 15,
-    marginRight: 15,
-    borderRadius: 10,
-    backgroundColor: 'white',
-    color: 'grey',
-  },
-  loginButton: {
-    height: 40,
-    width: 270,
-    padding: 5,
-    marginTop: 5,
-    marginBottom: 5,
-    marginLeft: 15,
-    marginRight: 15,
-    borderRadius: 10,
-    backgroundColor: 'rgba(28, 56, 79, 1.0)', // #1C384F
-    justifyContent: 'center',
-    alignItems: 'center'
   }
 });
 
