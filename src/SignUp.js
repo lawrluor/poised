@@ -32,6 +32,7 @@ class Signup extends Component {
     this.imageHeight = new Animated.Value(160);
     this.titleFlex = new Animated.Value(2);
     this.inputFlex = new Animated.Value(2);
+    this.footerFlex = new Animated.Value(1);
   }
 
   // Keyboard functionality based on tutorial https://medium.freecodecamp.org/how-to-make-your-react-native-app-respond-gracefully-when-the-keyboard-pops-up-7442c1535580
@@ -87,6 +88,7 @@ class Signup extends Component {
 
   // Sign up method
   async signup(email, pass) {
+    Keyboard.dismiss();
     console.log(email, pass);
     try {
       await firebaseApp.auth()
@@ -96,11 +98,13 @@ class Signup extends Component {
       this.navigateToMain(email);
     } catch (error) {
       console.log(error.toString());
-      Alert.alert(
+      return Alert.alert(
         'Error',
         error.toString(),
-        {text: "OK", onPress: () => console.log('OK Pressed')},
-      )
+        [
+          {text: "OK", onPress: () => console.log('OK Pressed')},
+        ]
+      );
     }
   }
 
@@ -167,7 +171,7 @@ class Signup extends Component {
           </TouchableOpacity>
         </Animated.View>
 
-        <View style={[styles.footerContainer, defaultStyles.outline]}></View>
+        <Animated.View style={[defaultStyles.footerContainer, defaultStyles.outline, {flex: this.footerFlex}]}></Animated.View>
       </KeyboardAvoidingView>
     )
   }
@@ -185,9 +189,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     backgroundColor: 'rgba(119, 136, 153, 0.5)'
-  },
-  footerContainer: {
-    flex: 1
   }
 });
 

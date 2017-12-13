@@ -105,7 +105,7 @@ export default class RoutinePopup extends Component {
   navigateToRoutine(routine) {
     let routineActions = [];
     let routineDurations = [];
-    for (var key in routine.actions) {
+    for (let key in routine.actions) {
       routineActions.push(routine.actions[key].text);
       routineDurations.push(routine.actions[key].length);
     }

@@ -25,7 +25,7 @@ export const defaultStyles = {
     backgroundColor: '#87AECF',
   },
   outline: {
-    // borderWidth: 1
+    borderWidth: 1
   },
 
   // Text
@@ -64,12 +64,12 @@ export const defaultStyles = {
     backgroundColor: 'rgba(119, 136, 153, 0.0)',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginTop: 25 // account for status bar (20px)
+    marginTop: 20 // account for status bar (20px)
   },
   // To be used to preserve footer space when tabBar is absent
   footerWrapper: {
     flex: 1,
-    maxHeight: 50
+    // minHeight: 50
   },
   // Icons
   icon: {
@@ -130,6 +130,7 @@ export const defaultStyles = {
     borderRadius: 10,
     backgroundColor: 'white',
     color: 'grey',
+    textAlignVertical: 'top'
   },
   loginButton: {
     height: 40,
@@ -141,14 +142,32 @@ export const defaultStyles = {
     marginRight: 15,
     borderRadius: 10,
     backgroundColor: 'rgba(28, 56, 79, 1.0)', // #1C384F
+    borderWidth: 1,
+    borderColor: 'rgba(28, 56, 79, 1.0)',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  secondaryButton: {
+    height: 40,
+    width: 270,
+    padding: 5,
+    marginTop: 5,
+    marginBottom: 5,
+    marginLeft: 15,
+    marginRight: 15,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // "inherits" from login button up to this point
+    backgroundColor: 'rgba(28, 56, 79, 0.0)', // transparent
+    borderWidth: 1,
+    borderColor: '#FFFFFF',
   },
 
   // Used in popup Routine
   button: {
     borderWidth: 3,
-    borderRadius: 15,
+    borderRadius: 10,
     borderColor: '#FFFFFF',
     backgroundColor: 'rgba(0, 0, 0, 0.1)', // Black with 50% opacity
     padding: 10,

@@ -31,8 +31,9 @@ class LoginPage extends Component {
     }
 
     this.imageHeight = new Animated.Value(160);
-    this.titleFlex = new Animated.Value(2);
-    this.inputFlex = new Animated.Value(2);
+    this.titleFlex = new Animated.Value(4);
+    this.inputFlex = new Animated.Value(7);
+    this.footerFlex = new Animated.Value(1);
   }
 
   // Keyboard functionality based on tutorial https://medium.freecodecamp.org/how-to-make-your-react-native-app-respond-gracefully-when-the-keyboard-pops-up-7442c1535580
@@ -56,13 +57,19 @@ class LoginPage extends Component {
     // Shrink title container
     Animated.timing(this.titleFlex, {
       duration: event.duration,
-      toValue: 1,
+      toValue: 2,
     }).start();
 
     // Grow input container
     Animated.timing(this.inputFlex, {
       duration: event.duration,
-      toValue: 5,
+      toValue: 10,
+    }).start();
+
+    // Hide footer container
+    Animated.timing(this.footerFlex, {
+      duration: event.duration,
+      toValue: 0,
     }).start();
   };
 
@@ -74,32 +81,37 @@ class LoginPage extends Component {
 
     // Return title container to normal size
     Animated.timing(this.titleFlex, {
-      toValue: 2,
+      toValue: 4,
     }).start();
 
     // Shrink input container
     Animated.timing(this.inputFlex, {
-      toValue: 2,
+      toValue: 7,
+    }).start();
+
+    // Return footer container to normal size
+    Animated.timing(this.footerFlex, {
+      toValue: 1,
     }).start();
   };
 
   // Login method
   async login(email, pass) {
     try {
-      console.log("attempting login");
-      console.log(firebaseApp);
+      Keyboard.dismiss();
       await firebaseApp.auth()
-        .signInWithEmailAndPassword(email, pass);
+        .signInWithEmailAndPassword(email, pass)
 
       console.log("Logged In!");
       this.navigateToMain(email);
     } catch (error) {
-      console.log(error.toString());
-      // Alert.alert(
-      //   'Error',
-      //   error.toString(),
-      //   {text: "OK", onPress: () => console.log('OK Pressed')},
-      // )
+      return Alert.alert(
+        'Error',
+        error.toString(),
+        [
+          {text: "OK", onPress: () => console.log('OK Pressed')},
+        ]
+      );
     }
   }
 
@@ -115,6 +127,7 @@ class LoginPage extends Component {
 
   // Navigate to main app after login/signup
   navigateToMain(email) {
+    Keyboard.dismiss()
     this.props.navigation.navigate('Selections',
     {
       email: email
@@ -124,7 +137,6 @@ class LoginPage extends Component {
   // If user in the middle of typing, clears keyboard
   navigateToSignup(email) {
     this.componentWillMount();
-    Keyboard.dismiss()
     this.props.navigation.navigate('Signup');
   }
 
@@ -170,8 +182,8 @@ class LoginPage extends Component {
             <Text style={[defaultStyles.bodyText]}>Login</Text>
           </TouchableHighlight>
 
-          <TouchableOpacity onPress={() => this.navigateToSignup()}>
-            <Text style={defaultStyles.paragraphText}>New User? <Text style={defaultStyles.linkText}>Create Account</Text></Text>
+          <TouchableOpacity style={defaultStyles.secondaryButton} onPress={() => this.navigateToSignup()}>
+            <Text style={defaultStyles.bodyText}>Create Account</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => this.navigateToMain(null)}>
@@ -179,7 +191,7 @@ class LoginPage extends Component {
           </TouchableOpacity>
         </Animated.View>
 
-        <View style={[styles.footerContainer, defaultStyles.outline]}></View>
+        <Animated.View style={[defaultStyles.footerWrapper, defaultStyles.outline, {flex: this.footerFlex}]}></Animated.View>
       </KeyboardAvoidingView>
     )
   }
@@ -187,19 +199,16 @@ class LoginPage extends Component {
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flex: 2,
+    flex: 4,
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
   inputContainer: {
-    flex: 2,
+    flex: 7,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
     backgroundColor: 'rgba(119, 136, 153, 0.5)'
-  },
-  footerContainer: {
-    flex: 1
   }
 });
 
