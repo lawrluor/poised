@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import {
-  Dimensions,
   Image,
   ImageBackground,
   StyleSheet,
@@ -11,9 +10,6 @@ import {
 } from 'react-native';
 
 import { defaultStyles } from '../styles';
-
-// Get screen dimensions
-const { width, height } = Dimensions.get('window');
 
 class GridDisplay extends Component {
   // Component Types
@@ -79,8 +75,8 @@ class GridDisplay extends Component {
 const styles = StyleSheet.create({
   container: {
     margin: 6,
-    height: height / 6.5, // with padding, comes to approx 4 rows per screen height
-    width: width / 1.13, // 1 column per screen width, add padding,
+    height: defaultStyles.screenDimensions.height / 6.5, // with padding, comes to approx 4 rows per screen height
+    width: defaultStyles.screenDimensions.width / 1.13, // 1 column per screen width, add padding,
   },
   imageContainer: {
     position: 'absolute',

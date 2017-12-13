@@ -3,26 +3,29 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   ScrollView,
   Navigator,
   ActivityIndicator,
   RefreshControl,
+  TouchableHighlight,
   BackHandler,
   ToastAndroid,
   Platform
  } from 'react-native';
 
+import { defaultStyles } from './styles.js';
 import GridDisplay from './Components/GridDisplay.js';
 import TabBar from './Components/TabBar.js';
 import RoutinePopup from './RoutinePopup.js';
 
-import { defaultStyles } from './styles.js';
-
-// Redux
-import { connect } from 'react-redux';
+import Toast, {DURATION} from 'react-native-easy-toast';
 
 // Import Firebase app config
 import firebaseApp from './Components/Firebase.js';
+
+// Redux
+// import { connect } from 'react-redux';
 
 // Connect Redux storage and refresh actions,
 // @connect(
@@ -117,6 +120,11 @@ class SelectionPage extends Component {
     });
   }
 
+  stopMe() {
+    console.log("stopping");
+    this.refs.toast.show('This feature has been disabled in the beta version', 500);
+  }
+
   // App Header
   static navigationOptions = {
     header: null
@@ -167,6 +175,15 @@ class SelectionPage extends Component {
             </ScrollView>
           </View>
 
+          <View style={defaultStyles.footerWrapper}>
+            <TouchableHighlight onPress={() => this.stopMe()} style={styles.selectionsButton} underlayColor='rgba(28, 56, 79, 0.7)'>
+              <View style={styles.buttonContainer}>
+                <Image style={styles.selectionsIconSmall} source={require('../static/img/icons/pencil.png')}></Image>
+                <Text style={defaultStyles.bodyText}>Create Routine</Text>
+              </View>
+            </TouchableHighlight>
+          </View>
+
           <RoutinePopup
             routine={this.state.routine}
             isOpen={this.state.popupIsOpen}
@@ -176,7 +193,7 @@ class SelectionPage extends Component {
 
           {!this.state.popupIsOpen ? <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar> : null }
 
-          <View style={defaultStyles.footerWrapper}></View>
+          <Toast ref="toast"/>
         </View>
       );
     }
@@ -192,10 +209,23 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     ...defaultStyles.outline,
-    flex: 10,
+    flex: 4,
   },
   scrollContent: {
     paddingVertical: 10
+  },
+  selectionsButton: {
+    ...defaultStyles.loginButton,
+    marginTop: 10,
+    width: (defaultStyles.screenDimensions.width / 1.13) // match gridDisplay
+  },
+  buttonContainer: {
+    flexDirection: 'row'
+  },
+  selectionsIconSmall: {
+    ...defaultStyles.iconSmall,
+    marginTop: 4,
+    marginRight: 4
   }
 });
 

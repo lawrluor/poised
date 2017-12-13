@@ -18,6 +18,10 @@ const baseStyles = {
 };
 
 export const defaultStyles = {
+  screenDimensions: {
+    width: width,
+    height: height
+  },
   container: {
     flex: 1,
     justifyContent: 'center',

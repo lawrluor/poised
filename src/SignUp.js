@@ -162,7 +162,7 @@ class Signup extends Component {
             onChangeText={(password) => this.setState({password})}
           />
 
-          <TouchableHighlight style={defaultStyles.loginButton} onPress={() => this.signup(this.state.email, this.state.password)}>
+          <TouchableHighlight style={defaultStyles.loginButton} underlayColor='rgba(28, 56, 79, 0.7)' onPress={() => this.signup(this.state.email, this.state.password)}>
             <Text style={[defaultStyles.bodyText]}>Create Account</Text>
           </TouchableHighlight>
 

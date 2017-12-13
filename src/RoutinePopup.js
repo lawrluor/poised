@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   modal: {
     height: height * 0.66,             // take 66% of screen height
     padding: 15,
-    backgroundColor: 'rgba(119, 136, 153, 0.9)',
+    backgroundColor: 'rgba(119, 136, 153, 1.0)',
   },
   // Header is divided horizontally into title and stats container
   header: {
