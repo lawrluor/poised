@@ -81,10 +81,15 @@ export default class RoutinePopup extends Component {
 
             <View style={[styles.statsContainer, defaultStyles.outline]}>
               <Text style={[defaultStyles.paragraphText, defaultStyles.outline]}>{convertedLength}</Text>
-              <Text style={[defaultStyles.paragraphText, defaultStyles.outline]}>
-                <Image style={defaultStyles.iconSmaller} source={require('../static/img/icons/heart_white.png')}></Image>
-                {overallRating}
-              </Text>
+              <View style={[styles.ratingsContainer, defaultStyles.outline]}>
+                <View style={defaultStyles.outline}>
+                  <Image style={styles.iconSmaller} source={require('../static/img/icons/heart_white.png')}></Image>
+                </View>
+
+                <View style={defaultStyles.outline}>
+                  <Text style={defaultStyles.paragraphText}>{overallRating}</Text>
+                </View>
+              </View>
             </View>
           </View>
 
@@ -151,7 +156,18 @@ const styles = StyleSheet.create({
     flex: 5
   },
   statsContainer: {
-    flex: 1
+    flex: 1,
+    alignItems: 'flex-end'
+  },
+  ratingsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end'
+  },
+  iconSmaller: {
+    ...defaultStyles.iconSmaller,
+    marginTop: 4,
+    marginRight: 2
   },
   body: {
     flex: 8,

@@ -4,7 +4,8 @@ import {
   Text,
   View,
   Dimensions,
-  Linking
+  Linking,
+  ScrollView
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
@@ -30,8 +31,12 @@ class InfoPage extends Component {
           <Text style={defaultStyles.examineText}>Developer: Lawrence Luo</Text>
         </View>
 
-        <View style={[styles.textContainer, defaultStyles.outline]}>
-          <View style={[styles.body, defaultStyles.outline]}>
+        <View style={styles.scrollContainer}>
+          <ScrollView
+            contentContainerStyle={styles.scrollContent}
+            style={[styles.textContainer, defaultStyles.outline]}
+          >
+
             <View style={[styles.textBlock, defaultStyles.outline]}>
               <Text style={defaultStyles.paragraphText}>
                 Poise is a mobile app that enables you to perform at their best
@@ -47,25 +52,36 @@ class InfoPage extends Component {
                 Before an anxiety-inducing task, use a routine that will boost your
                 performance. These are typically a short sequence of several physical and
                 mental exercises that take a few to several minutes. The routines currently
-                available in the app have been curated by experts in performance anxiety,
-                but you will also be able to create your own routines and view those Created
-                by other users in future versions.
+                available in the app have been curated by experts in performance anxiety.
               </Text>
+            </View>
+
+            <View style={[styles.textBlock, defaultStyles.outline]}>
+              <Text style={defaultStyles.bodyText}>What is in the next update?</Text>
+              <Text style={defaultStyles.paragraphText}>
+                Version 1.0 will have:
+              </Text>
+
+              <Text style={defaultStyles.paragraphText}>-Create your own routines</Text>
+              <Text style={defaultStyles.paragraphText}>-View routines created by others</Text>
+              <Text style={defaultStyles.paragraphText}>-Save and favorite routines</Text>
+              <Text style={defaultStyles.paragraphText}>-Edit existing routines to fit your unique needs</Text>
+              <Text style={defaultStyles.paragraphText}>-Personal settings page</Text>
+              <Text style={defaultStyles.paragraphText}>-More music options and transition sound effects</Text>
             </View>
 
             <View style={[styles.textBlock, defaultStyles.outline]}>
               <Text style={defaultStyles.bodyText}>How can I help?</Text>
               <Text style={defaultStyles.paragraphText}>
-                Using the app is great, but you can give me feedback
-                  <Text style={defaultStyles.linkText} onPress={() => this.openExternalLink("https://google.com")}> here. </Text>
-                  I am also looking for more experts in the field of performance anxiety.
+                I am always looking for more beta testers, so please introduce Poise to your friends! I am also looking
+                to talk to experts in the field of performance anxiety, as well as students who suffer acutely from from
+                performance anxiety in specific situations.
               </Text>
             </View>
-          </View>
+          </ScrollView>
         </View>
 
-        <View style={[styles.footer, defaultStyles.outline]}>
-        </View>
+        <View style={[defaultStyles.footerWrapper, defaultStyles.outline]}></View>
 
         <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar>
       </View>
@@ -74,28 +90,20 @@ class InfoPage extends Component {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center'
+  scrollContainer: {
+    flex: 6
   },
-  body: {
-    flex: 12,
+  scrollContent: {
+    paddingVertical: 10
   },
   textContainer: {
     width: width * 0.85,
-    height: height * 0.78,
-    padding: 15,
+    padding: 10,
     borderRadius: 10,
     backgroundColor: 'rgba(119, 136, 153, 0.5)'
   },
   textBlock: {
     paddingBottom: 5
-  },
-  footer: {
-    flex: 2,
-    justifyContent: 'flex-start',
-    alignItems: 'center'
   }
 });
 

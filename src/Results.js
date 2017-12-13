@@ -6,7 +6,8 @@ import {
   TouchableHighlight,
   View,
   Keyboard,
-  Animated
+  Animated,
+  Alert
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
@@ -17,6 +18,7 @@ class Results extends Component {
     super(props);
 
     this.state = {
+      result: this.props.navigation.state.params.result,
       commentsRef: firebaseApp.database().ref('comments'),
       currentUser: firebaseApp.auth().currentUser.uid,
       routineId: this.props.navigation.state.params.routineId,
@@ -25,6 +27,7 @@ class Results extends Component {
 
     this.bodyFlex = new Animated.Value(4);
     this.footerFlex = new Animated.Value(1);
+    this.resultText = new Animated.Value(22);
 
     console.log("currentUser", this.state.currentUser);
     console.log("routineId", this.state.routineId);
@@ -57,6 +60,11 @@ class Results extends Component {
       duration: event.duration,
       toValue: 0,
     }).start();
+
+    // Hide result text
+    this.setState({
+      result: "hidden"
+    });
   };
 
   _keyboardDidHide = () => {
@@ -69,23 +77,61 @@ class Results extends Component {
     Animated.timing(this.footerFlex, {
       toValue: 1,
     }).start();
+
+    // Show result text
+    this.setState({
+      result: this.props.navigation.state.params.result
+    });
   };
+
+  // Sanitizes data from user-submitted feedback
+  sanitizeData(text) {
+    if (!text || text.length===0) {
+      return [false, "Entry cannot be blank."];
+    } else if (text.length > 2000) {
+      // max length is covered by TextInput but this is a fallback
+      return [false, "Entry cannot be over 2000 characters."]
+    } else {
+      return [true, "Success"];
+    }
+  }
 
   // When user hits submit button, pushes comment to database
   submitComment() {
     Keyboard.dismiss();
-    this.state.commentsRef.push({
-      user_id: this.state.currentUser,
-      routine_id: this.state.routineId,
-      message: this.state.message,
-      timestamp: Date()
-    });
 
-    this.navigateToSelections();
+    const validated = this.sanitizeData(this.state.message)[0];
+    const alertMessage = this.sanitizeData(this.state.message)[1];
+
+    if (validated===true) {;
+      this.state.commentsRef.push({
+        user_id: this.state.currentUser,
+        routine_id: this.state.routineId,
+        message: this.state.message,
+        timestamp: Date()
+      });
+
+      this.navigateToSelections();
+    } else {
+      return Alert.alert(
+        "Error",
+        alertMessage,
+        [
+          {text: "Ok", onPress: () => console.log('OK Pressed')},
+        ]
+      );
+    }
   }
 
   navigateToSelections() {
     Keyboard.dismiss();
+    Alert.alert(
+      "Finished Routine",
+      "Thank you for using Poise.",
+      [
+        {text: "Done", onPress: () => console.log('OK Pressed')},
+      ]
+    );
     this.props.navigation.navigate('Selections');
   }
 
@@ -97,14 +143,14 @@ class Results extends Component {
   render() {
     return (
       <View style={[defaultStyles.container, defaultStyles.outline]}>
-        <View style={defaultStyles.headerWrapper}>
-          <Text style={defaultStyles.titleText}>
-            {this.showText(this.props.navigation.state.params.result)}
-          </Text>
-        </View>
+        <View style={defaultStyles.headerWrapper}></View>
 
-        <Animated.View style={[{flex: this.bodyFlex}, defaultStyles.graphicLayoutBodyContainer, defaultStyles.outline]}>
+        <Animated.View style={[ {flex: this.bodyFlex}, defaultStyles.graphicLayoutBodyContainer, defaultStyles.outline]}>
           <View style={[styles.feedbackWrapper, defaultStyles.outline]}>
+            <Text style={[ {fontSize: this.resultText}, defaultStyles.actionText ]}>
+              {this.showText(this.state.result)}
+            </Text>
+
             <TextInput
               style={styles.input}
               autogrow={true}
@@ -112,6 +158,7 @@ class Results extends Component {
               editable={true}
               autoCapitalize='none'
               autoCorrect={false}
+              maxLength={2000}
               placeholder="Your feedback is very much appreciated and will help develop more useful routines!"
               onChangeText={(message) => this.setState({message: message})}
             />
@@ -133,10 +180,13 @@ class Results extends Component {
 
   // Helper function to show text based on result
   showText(result) {
-    if (result) {
-      return "You're in good shape! Please consider leaving some feedback";
-    } else {
+    if (result === true) {
+      return "Glad it was helpful! Please consider leaving some feedback.";
+    } else if (result === false) {
       return "Sorry to hear that. Please leave some feedback and try another routine!";
+    } else {
+      // Case where text should be hidden (when typing)
+      return "";
     }
   }
 }
@@ -156,7 +206,7 @@ const styles = StyleSheet.create({
   input: {
     ...defaultStyles.input,
     height: 150,
-    width: 350
+    width: 320
   }
 });
 

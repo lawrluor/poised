@@ -146,7 +146,7 @@ class Signup extends Component {
             editable={true}
             autoCapitalize='none'
             autoCorrect={false}
-            maxLength={40}
+            maxLength={100}
             placeholder={this.state.email}
             onChangeText={(email) => this.setState({email})}
           />
@@ -156,7 +156,7 @@ class Signup extends Component {
             editable={true}
             autoCapitalize='none'
             autoCorrect={false}
-            maxLength={40}
+            maxLength={100}
             placeholder={this.state.password}
             secureTextEntry={true}
             onChangeText={(password) => this.setState({password})}

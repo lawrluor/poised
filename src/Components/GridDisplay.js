@@ -40,7 +40,7 @@ class GridDisplay extends Component {
         <View style={styles.displayContainer}>
           <View style={styles.textContainer}>
             <View style={[styles.titleContainer, defaultStyles.outline]}>
-              <Text style={[defaultStyles.bodyText, defaultStyles.outline]}>{name}</Text>
+              <Text style={[styles.bodyText, defaultStyles.outline]}>{name}</Text>
             </View>
 
             <View style={[styles.previewContainer, defaultStyles.outline]}>
@@ -50,11 +50,16 @@ class GridDisplay extends Component {
 
           <View style={styles.statsContainer}>
             <View style={[styles.lengthContainer, defaultStyles.outline]}>
-              <Text style={[defaultStyles.paragraphText, defaultStyles.outline]}>{convertedLength}</Text>
-              <Text style={[defaultStyles.paragraphText, defaultStyles.outline]}>
-                <Image style={defaultStyles.iconSmaller} source={require('../../static/img/icons/heart_white.png')}></Image>
-                {overallRating}
-              </Text>
+              <Text style={defaultStyles.paragraphText}>{convertedLength}</Text>
+              <View style={[styles.ratingsContainer, defaultStyles.outline]}>
+                <View style={defaultStyles.outline}>
+                  <Image style={styles.iconSmaller} source={require('../../static/img/icons/heart_white.png')}></Image>
+                </View>
+
+                <View style={defaultStyles.outline}>
+                  <Text style={defaultStyles.paragraphText}>{overallRating}</Text>
+                </View>
+              </View>
             </View>
           </View>
         </View>
@@ -75,7 +80,7 @@ const styles = StyleSheet.create({
   container: {
     margin: 6,
     height: height / 6.5, // with padding, comes to approx 4 rows per screen height
-    width: width / 1.15, // 1 column per screen width, add padding,
+    width: width / 1.13, // 1 column per screen width, add padding,
   },
   imageContainer: {
     position: 'absolute',
@@ -117,12 +122,22 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-end'
   },
-  ratingContainer: {
+  ratingsContainer: {
     flex: 1,
-    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'flex-end'
   },
   overlaidText: {
     position: 'absolute',
+  },
+  iconSmaller: {
+    ...defaultStyles.iconSmaller,
+    marginTop: 4,
+    marginRight: 2
+  },
+  bodyText: {
+    ...defaultStyles.bodyText,
+    fontWeight: 'bold'
   }
 });
 

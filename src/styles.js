@@ -25,7 +25,7 @@ export const defaultStyles = {
     backgroundColor: '#87AECF',
   },
   outline: {
-    borderWidth: 1
+    // borderWidth: 1
   },
 
   // Text
@@ -36,7 +36,12 @@ export const defaultStyles = {
   },
   titleText: {
     ...baseStyles.text,
-    fontSize: 24,
+    fontSize: 24
+  },
+  actionText: {
+    ...baseStyles.text,
+    fontSize: 22,
+    textAlign: 'center'
   },
   bodyText: {
     ...baseStyles.text,
@@ -77,7 +82,6 @@ export const defaultStyles = {
     width: 30
   },
   iconSmaller: {
-    marginTop: 1,
     height: 12,
     width: 12
   },

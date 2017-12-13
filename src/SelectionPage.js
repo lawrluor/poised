@@ -33,10 +33,11 @@ import firebaseApp from './Components/Firebase.js';
 // )
 
 class SelectionPage extends Component {
-  // Set default routine for popup as the first routine, before routine is opened
-  // FAILS when there are no routines
   constructor() {
     super();
+
+    // Set default routine for popup as the first routine, before routine is opened
+    // FAILS when there are no routines
     this.state = {
       popupIsOpen: false,
       routines: [],
@@ -126,26 +127,26 @@ class SelectionPage extends Component {
             <Text style={defaultStyles.examineText}>Guided exercises to prime you for a performance or task, created by users and curated by professionals.</Text>
           </View>
 
-          <ScrollView
-            contentContainerStyle={styles.scrollContent}
-            // Hide all scroll indicators
-            showsHorizontalScrollIndicator={false}
-            showsVerticalScrollIndicator={false}
-            refreshControl={
-              <RefreshControl
-                refreshing={this.state.loading}
-                onRefresh={refresh}
-                tintColor="#FFFFFF"
-              />
-            }
-          >
-            {this.state.routines.map((routine, index) => <GridDisplay
-              routine={routine}
-              onOpen={this.openRoutine}
-              key={index}
-              navigation={this.props.navigation}
-            />)}
-          </ScrollView>
+          <View style={styles.scrollContainer}>
+            <ScrollView
+              contentContainerStyle={styles.scrollContent}
+              showsHorizontalScrollIndicator={false}
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.loading}
+                  onRefresh={refresh}
+                  tintColor="#FFFFFF"
+                />
+              }
+            >
+              {this.state.routines.map((routine, index) => <GridDisplay
+                routine={routine}
+                onOpen={this.openRoutine}
+                key={index}
+                navigation={this.props.navigation}
+              />)}
+            </ScrollView>
+          </View>
 
           <RoutinePopup
             routine={this.state.routine}
@@ -155,6 +156,8 @@ class SelectionPage extends Component {
           />
 
           {!this.state.popupIsOpen ? <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar> : null }
+
+          <View style={defaultStyles.footerWrapper}></View>
         </View>
       );
     }
@@ -167,6 +170,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     opacity: 1.0
+  },
+  scrollContainer: {
+    ...defaultStyles.outline,
+    flex: 10,
+  },
+  scrollContent: {
+    paddingVertical: 10
   }
 });
 
