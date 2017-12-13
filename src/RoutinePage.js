@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Navigator } from 'react-native';
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View,
+  Navigator,
+  TouchableOpacity,
+  Image
+} from 'react-native';
 
 import Sound from 'react-native-sound';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
@@ -20,12 +28,12 @@ class RoutinePage extends Component {
       counter: 0,
       routineName: this.props.navigation.state.params.routineName,
       currentAction: this.props.navigation.state.params.routineActions[0],
-      currentDuration: this.props.navigation.state.params.routineDurations[0] * 10,
+      currentDuration: this.props.navigation.state.params.routineDurations[0] * 100,
       routineActions: this.props.navigation.state.params.routineActions,
       routineDurations: this.props.navigation.state.params.routineDurations,
       routineRating: this.props.navigation.state.params.routineRating,
       routineKey: this.props.navigation.state.params.routineKey,
-      finished: false,
+      exited: false,
       music: this.playAudio()
     }
   }
@@ -40,6 +48,11 @@ class RoutinePage extends Component {
   componentDidMount() {
     // Recursive function to "synchronously" cycle through actions
     let loopCountdown = (counter) => {
+      // If user exits routine manually, this will be set to true and will break the recursion
+      if (this.state.exited) {
+        return
+      }
+
       if (counter < this.state.routineDurations.length) {
         console.log(counter, this.state.routineDurations.length);
         console.log(this.state.routineActions[counter])
@@ -47,7 +60,7 @@ class RoutinePage extends Component {
         // Set the current action and duration for this iteration
         this.setState({
           currentAction: this.state.routineActions[counter],
-          currentDuration: this.state.routineDurations[counter] * 10
+          currentDuration: this.state.routineDurations[counter] * 100
         });
 
         // Begin timer animation for this iteration
@@ -60,8 +73,6 @@ class RoutinePage extends Component {
         }, this.state.currentDuration)
       } else {
         // Move to next screen
-        this.state.music.stop();
-        clearTimeout();
         this.navigateToFeedback();
       }
     }
@@ -72,8 +83,7 @@ class RoutinePage extends Component {
 
   // In the case user closes screen before the timeout fires, otherwise it would cause a memory leak that would trigger the transition regardless, breaking the user experience.
   componentWillUnmount() {
-    clearTimeout();
-    this.state.music.stop();
+    this.exit()
   }
 
   // use react-native-sound to play audio
@@ -106,13 +116,27 @@ class RoutinePage extends Component {
     this.refs.circularProgress.performLinearAnimation(100, duration); // Will fill the progress bar linearly in 8 seconds
   }
 
-  navigateToFeedback(routine){
+  navigateToFeedback(routine) {
+    this.exit();
     this.props.navigation.navigate('Feedback', {
       routineName: this.state.routineName,
       routineRating: this.state.routineRating,
       routineKey: this.state.routineKey
     });
   }
+
+  exit() {
+    console.log("exiting");
+    this.setState({exited: true});
+    clearTimeout();
+    this.state.music.stop();
+  }
+
+  navigateToSelections() {
+    this.exit();
+    this.props.navigation.navigate('Selections');
+  }
+
 
   render() {
     return (
@@ -142,6 +166,10 @@ class RoutinePage extends Component {
           <View style={[defaultStyles.graphicLayoutLowerText, defaultStyles.outline]}>
             <Text style={defaultStyles.bodyText}>
             </Text>
+
+            <TouchableOpacity onPress={() => this.navigateToSelections()}>
+              <Image style={defaultStyles.iconLarge} source={require('../static/img/icons/cancel.png')}></Image>
+            </TouchableOpacity>
           </View>
         </View>
 

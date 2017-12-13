@@ -4,7 +4,6 @@ import {
   Text,
   View,
   Dimensions,
-  Linking,
   ScrollView
 } from 'react-native';
 
@@ -19,6 +18,7 @@ class InfoPage extends Component {
     header: null
   };
 
+  // Not being used currently
   openExternalLink(url) {
     return Linking.openURL(url).catch(err => console.error('An error occurred', err));
   }

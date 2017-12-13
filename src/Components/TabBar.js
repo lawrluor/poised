@@ -23,9 +23,9 @@ class TabBar extends Component {
         style={{backgroundColor:'rgba(119, 136, 153, 1.0)'}}
         onSelect={el => this.changeTab(el)}>
 
-        <Image source={require('../../static/img/icons/search_white.png')} style={defaultStyles.iconSmallStandard} name="Search" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
-        <Image source={require('../../static/img/icons/goal_white.png')} style={defaultStyles.iconSmallStandard} name="Selections" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
-        <Image source={require('../../static/img/icons/info_white.png')} style={defaultStyles.iconSmallStandard} name="InfoPage" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
+        <Image source={require('../../static/img/icons/search_white.png')} style={defaultStyles.iconSmall} name="Search" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
+        <Image source={require('../../static/img/icons/goal_white.png')} style={defaultStyles.iconSmall} name="Selections" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
+        <Image source={require('../../static/img/icons/info_white.png')} style={defaultStyles.iconSmall} name="InfoPage" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
       </Tabs>
     )
   }

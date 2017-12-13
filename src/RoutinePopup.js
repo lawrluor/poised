@@ -7,6 +7,7 @@ import {
   Image,
   TouchableWithoutFeedback,
   TouchableHighlight,
+  TouchableOpacity,
   View
 } from 'react-native';
 
@@ -80,7 +81,14 @@ export default class RoutinePopup extends Component {
             </View>
 
             <View style={[styles.statsContainer, defaultStyles.outline]}>
-              <Text style={[defaultStyles.paragraphText, defaultStyles.outline]}>{convertedLength}</Text>
+              <TouchableOpacity onPress={this.props.onClose}>
+                <Image style={defaultStyles.iconMedium} source={require('../static/img/icons/cancel.png')}></Image>
+              </TouchableOpacity>
+
+              <View style={defaultStyles.outline}>
+                <Text style={defaultStyles.paragraphText}></Text>
+              </View>
+
               <View style={[styles.ratingsContainer, defaultStyles.outline]}>
                 <View style={defaultStyles.outline}>
                   <Image style={styles.iconSmaller} source={require('../static/img/icons/heart_white.png')}></Image>

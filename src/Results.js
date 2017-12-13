@@ -127,7 +127,7 @@ class Results extends Component {
     Keyboard.dismiss();
     Alert.alert(
       "Finished Routine",
-      "Thank you for using Poise.",
+      "Thank you for using Poise!",
       [
         {text: "Done", onPress: () => console.log('OK Pressed')},
       ]

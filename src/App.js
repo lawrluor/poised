@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { BackHandler } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
 // Import Pages
@@ -12,7 +12,7 @@ import Results from './Results.js';
 import Search from './Search.js';
 import InfoPage from './InfoPage.js';
 
-// Redux
+// Redux (currently not being used)
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { apiMiddleware, reducer } from './redux';

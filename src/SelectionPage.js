@@ -7,6 +7,9 @@ import {
   Navigator,
   ActivityIndicator,
   RefreshControl,
+  BackHandler,
+  ToastAndroid,
+  Platform
  } from 'react-native';
 
 import GridDisplay from './Components/GridDisplay.js';
@@ -45,15 +48,31 @@ class SelectionPage extends Component {
       loading: true
     }
 
+    this.backButtonListener = null;
     this.routinesRef = this.getRef().child('routines');
-  }
-
-  getRef() {
-    return firebaseApp.database().ref();
   }
 
   componentWillMount() {
     this.getRoutines(this.routinesRef);
+  }
+
+  componentDidMount() {
+    this.disableBackButton();
+  }
+
+  // Disables hardware back button on Android for duration of the app runtime
+  // Based on: https://github.com/react-community/react-navigation/issues/1819
+  disableBackButton() {
+    if (Platform.OS === 'android') {
+      this.backButtonListener = BackHandler.addEventListener('hardwareBackPress', () => {
+        ToastAndroid.show('Back button disabled for this action', ToastAndroid.SHORT);
+        return true;
+      });
+    }
+  }
+
+  getRef() {
+    return firebaseApp.database().ref();
   }
 
   getRoutines(routinesRef) {

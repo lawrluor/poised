@@ -85,7 +85,7 @@ export const defaultStyles = {
     height: 12,
     width: 12
   },
-  iconSmallStandard: {
+  iconSmall: {
     height: 16,
     width: 16,
   },
@@ -94,8 +94,8 @@ export const defaultStyles = {
     width: 24
   },
   iconLarge: {
-    height: 64,
-    width: 64
+    height: 32,
+    width: 32
   },
   tabTitle: {
     ...baseStyles.text,
