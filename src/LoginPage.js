@@ -27,12 +27,12 @@ class LoginPage extends Component {
     this.state = {
       email: "Email",
       password: "Password",
-      signup: false
+      typing: false
     }
 
     this.imageHeight = new Animated.Value(160);
-    this.titleFlex = new Animated.Value(4);
-    this.inputFlex = new Animated.Value(7);
+    this.titleFlex = new Animated.Value(3);
+    this.inputFlex = new Animated.Value(4);
     this.footerFlex = new Animated.Value(1);
   }
 
@@ -48,6 +48,7 @@ class LoginPage extends Component {
   }
 
   _keyboardDidShow = (event) => {
+    this.setState({ typing: true });
     // Hide Image
     Animated.timing(this.imageHeight, {
       duration: event.duration,
@@ -63,7 +64,7 @@ class LoginPage extends Component {
     // Grow input container
     Animated.timing(this.inputFlex, {
       duration: event.duration,
-      toValue: 10,
+      toValue: 5,
     }).start();
 
     // Hide footer container
@@ -74,6 +75,8 @@ class LoginPage extends Component {
   };
 
   _keyboardDidHide = () => {
+    this.setState({ typing: false });
+
     // Show Image
     Animated.timing(this.imageHeight, {
       toValue: 160,
@@ -81,12 +84,12 @@ class LoginPage extends Component {
 
     // Return title container to normal size
     Animated.timing(this.titleFlex, {
-      toValue: 4,
+      toValue: 3,
     }).start();
 
     // Shrink input container
     Animated.timing(this.inputFlex, {
-      toValue: 7,
+      toValue: 4,
     }).start();
 
     // Return footer container to normal size
@@ -182,13 +185,17 @@ class LoginPage extends Component {
             <Text style={[defaultStyles.bodyText]}>Login</Text>
           </TouchableHighlight>
 
-          <TouchableOpacity style={defaultStyles.secondaryButton} onPress={() => this.navigateToSignup()}>
-            <Text style={defaultStyles.bodyText}>Create Account</Text>
-          </TouchableOpacity>
+          {this.state.typing ? null :
+            <View style={styles.hiddenContainer}>
+              <TouchableOpacity style={defaultStyles.secondaryButton} onPress={() => this.navigateToSignup()}>
+                <Text style={defaultStyles.bodyText}>Create Account</Text>
+              </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => this.navigateToMain(null)}>
-            <Text style={defaultStyles.linkText}>Continue As Guest</Text>
-          </TouchableOpacity>
+              <TouchableOpacity onPress={() => this.navigateToMain(null)}>
+                <Text style={defaultStyles.linkText}>Continue As Guest</Text>
+              </TouchableOpacity>
+            </View>
+           }
         </Animated.View>
 
         <Animated.View style={[defaultStyles.footerWrapper, defaultStyles.outline, {flex: this.footerFlex}]}></Animated.View>
@@ -199,16 +206,19 @@ class LoginPage extends Component {
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flex: 4,
+    flex: 3,
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
   inputContainer: {
-    flex: 7,
+    flex: 5,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
     backgroundColor: 'rgba(119, 136, 153, 0.5)'
+  },
+  hiddenContainer: {
+    alignItems: 'center'
   }
 });
 

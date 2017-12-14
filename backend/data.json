@@ -1,105 +1,233 @@
 {
-  "routines" : {
-    "0" : {
-      "routine_id": 0,
-      "user_id": 0,
-      "author": "Mia Yee",
-      "name": "Calm",
-      "preview": "This routine is designed to calm your mind and body through a guided breathing exercise...",
-      "description": "This routine is designed to calm your mind and body. Through a guided breathing exercise, it will return your breath to a normal rate. It will also reduce anxiety during a 'thinking about thinking' phase, intensely on an unrelated object.",
-      "actions": {
-        "0" : {"text": "measured breathing", "length": 30},
-        "1" : {"text": "shake out your limbs", "length": 30},
-        "2" : {"text": "imagine a lake", "length": 30}
-      },
-      "totalLength": 90,
-      "convertedLength": "1:30",
-      "overallRating": 67
-    },
-    "1" : {
-      "routine_id": 1,
-      "user_id": 0,
-      "author": "Dr. Karin Hendricks",
-      "name": "Energize",
-      "preview": "Sometimes, the best performances require a heightened state of arousal...",
-      "description": "Sometimes, the best performances require a heightened state of arousal. This routine will amp up your mind and body, and energize you for the your performance ahead.",
-      "actions": {
-        "0" : {"text": "words of self-affirmation", "length": 20},
-        "1" : {"text": "power poses", "length": 30},
-        "2" : {"text": "visualize your performance", "length": 20}
-      },
-      "totalLength": 70,
-      "convertedLength": "1:10",
-      "overallRating": 14
-    },
-    "2" : {
-      "routine_id": 2,
-      "user_id": 1,
-      "author": "Lawrence Luo",
-      "name": "Inspire",
-      "preview": "For many, the best way to execute at their 100% is not the how but the why...",
-      "description": "For many, the best way to execute at their 100% is not the how but the why. This routine consists of a series of insightful questions that will help you channel your passion behind your performance, and will focus you towards your core goals.",
-      "actions": {
-        "0" : {"text": "think of 3 reasons why this task matters", "length": 60},
-        "1" : {"text": "remember who is benefitting from your performance", "length": 30},
-        "2" : {"text": "ask yourself why you are important to them", "length": 30}
-      },
-      "totalLength": 120,
-      "convertedLength": "2:00",
-      "overallRating": 832
-    },
-    "3" : {
-      "routine_id": 3,
-      "user_id": 1,
-      "author": "Lawrence Luo",
-      "name": "Focus",
-      "preview": "Taking a test emphasizes memory recall and mental dexterity rather than charisma or stage presence...",
-      "description": "Taking a test emphasizes memory recall and mental dexterity rather than charisma or stage presence. This routine is designed to focus your mind on test materials, help you reiterate the most crucial concepts for the exam, and clear your mind of other distractions",
-      "actions": {
-        "0" : {"text": "pick a familiar object or scene, and observe it in your mind", "length": 30},
-        "1" : {"text": "think of three concepts you have been struggling with", "length": 60},
-        "2" : {"text": "think of three crucial concepts you've mastered", "length": 60}
-      },
-      "totalLength": 120,
-      "convertedLength": "2:00",
-      "overallRating": 1044
-    },
-    "4" : {
-      "routine_id": 4,
-      "user_id": 1,
-      "author": "Lawrence Luo",
-      "name": "App Demo Presentation",
-      "preview": "Demoing an app or software project can be stressful. Sometimes, it can feel like anything that can go wrong will go wrong: your computer running out of battery, an adapter malfunction, your code not compiling at the last second",
-      "description": "Demoing an app or software project can be stressful. Sometimes, it can feel like anything that can go wrong will go wrong: your computer running out of battery, an adapter malfunction, your code not compiling at the last second. Or maybe you're nervous because the stakes are high, when you're pitching a product or prototype to an investor. Even in a group of friends, it can be difficult to show what might not be your best work. This routine will help you focus on the present and the positives: why you like developing apps and why you're excited to share your progress with your audience. It will also help you clear distracting thoughts that may be making you feel anxious.",
-      "actions": {
-        "0" : {"text": "Name two goals that you have for this presentation", "length": 20},
-        "1" : {"text": "Think about the top two features you're most excited to share today", "length": 20},
-        "2" : {"text": "Think of a reason your audience is excited about your project", "length": 20},
-        "3" : {"text": "Visualize yourself in front of the room delivering a compelling demo", "length": 20}
-      },
-      "totalLength": 80,
-      "convertedLength": "1:20",
-      "overallRating": 0
-    }
-  },
-  "comments" : {
-    "0" : {
-      "routine_id": 0,
-      "user_id": "0KHtbCH5NZUmk2df1J1u2pZaQ2h2",
-      "message": "First Comment on Calm Routine by luolawrence",
-      "timestamp": "Mon Dec 11 2017 13:29:43 GMT-0500 (EST)"
-    },
-    "1" : {
-      "routine_id": 0,
-      "user_id": "Al8Kerz6XCcSTl0pvDEQyvjhG3m2",
-      "message": "Second Comment on Calm Routine by lluo8",
-      "timestamp": "Mon Dec 11 2017 13:31:43 GMT-0500 (EST)"
-    },
-    "2" : {
-      "routine_id": 1,
-      "user_id": "Al8Kerz6XCcSTl0pvDEQyvjhG3m2",
-      "message": "First Comment on Calm Routine by lluo8",
-      "timestamp": "Mon Dec 11 2017 13:33:43 GMT-0500 (EST)"
-    }
-  }
+	"routines": {
+		"0": {
+			"routine_id": 0,
+			"user_id": 0,
+			"author": "Mia Yee",
+			"name": "Calm",
+			"preview": "This routine is designed to calm your mind and body through a guided breathing exercise...",
+			"description": "This routine is designed to calm your mind and body. Through a guided breathing exercise, it will return your breath to a normal rate. It will also reduce anxiety during a 'thinking about thinking' phase, intensely on an unrelated object.",
+			"actions": {
+				"0": {
+					"text": "measured breathing",
+					"length": 30
+				},
+				"1": {
+					"text": "shake out your limbs",
+					"length": 30
+				},
+				"2": {
+					"text": "imagine a lake",
+					"length": 30
+				}
+			},
+			"totalLength": 90,
+			"convertedLength": "1:30",
+			"overallRating": 67
+		},
+		"1": {
+			"routine_id": 1,
+			"user_id": 0,
+			"author": "Dr. Karin Hendricks",
+			"name": "Energize",
+			"preview": "Sometimes, the best performances require a heightened state of arousal...",
+			"description": "Sometimes, the best performances require a heightened state of arousal. This routine will amp up your mind and body, and energize you for the your performance ahead.",
+			"actions": {
+				"0": {
+					"text": "words of self-affirmation",
+					"length": 20
+				},
+				"1": {
+					"text": "power poses",
+					"length": 30
+				},
+				"2": {
+					"text": "visualize your performance",
+					"length": 20
+				}
+			},
+			"totalLength": 70,
+			"convertedLength": "1:10",
+			"overallRating": 14
+		},
+		"2": {
+			"routine_id": 2,
+			"user_id": 1,
+			"author": "Lawrence Luo",
+			"name": "Inspire",
+			"preview": "For many, the best way to execute at their 100% is not the how but the why...",
+			"description": "For many, the best way to execute at their 100% is not the how but the why. This routine consists of a series of insightful questions that will help you channel your passion behind your performance, and will focus you towards your core goals.",
+			"actions": {
+				"0": {
+					"text": "think of 3 reasons why this task matters",
+					"length": 60
+				},
+				"1": {
+					"text": "remember who is benefitting from your performance",
+					"length": 30
+				},
+				"2": {
+					"text": "ask yourself why you are important to them",
+					"length": 30
+				}
+			},
+			"totalLength": 120,
+			"convertedLength": "2:00",
+			"overallRating": 832
+		},
+		"3": {
+			"routine_id": 3,
+			"user_id": 1,
+			"author": "Lawrence Luo",
+			"name": "Focus",
+			"preview": "Taking a test emphasizes memory recall and mental dexterity rather than charisma or stage presence...",
+			"description": "Taking a test emphasizes memory recall and mental dexterity rather than charisma or stage presence. This routine is designed to focus your mind on test materials, help you reiterate the most crucial concepts for the exam, and clear your mind of other distractions",
+			"actions": {
+				"0": {
+					"text": "pick a familiar object or scene, and observe it in your mind",
+					"length": 30
+				},
+				"1": {
+					"text": "think of three concepts you have been struggling with",
+					"length": 60
+				},
+				"2": {
+					"text": "think of three crucial concepts you've mastered",
+					"length": 60
+				}
+			},
+			"totalLength": 120,
+			"convertedLength": "2:00",
+			"overallRating": 1044
+		},
+		"4": {
+			"routine_id": 4,
+			"user_id": 1,
+			"author": "Lawrence Luo",
+			"name": "App Demo Presentation",
+			"preview": "Demoing an app or software project can be stressful. Sometimes, it can feel like anything that can go wrong will go wrong: your computer running out of battery, an adapter malfunction, your code not compiling at the last second",
+			"description": "Demoing an app or software project can be stressful. Sometimes, it can feel like anything that can go wrong will go wrong: your computer running out of battery, an adapter malfunction, your code not compiling at the last second. Or maybe you're nervous because the stakes are high, when you're pitching a product or prototype to an investor. Even in a group of friends, it can be difficult to show what might not be your best work. This routine will help you focus on the present and the positives: why you like developing apps and why you're excited to share your progress with your audience. It will also help you clear distracting thoughts that may be making you feel anxious.",
+			"actions": {
+				"0": {
+					"text": "Name two goals that you have for this presentation",
+					"length": 20
+				},
+				"1": {
+					"text": "Think about the top two features you're most excited to share today",
+					"length": 20
+				},
+				"2": {
+					"text": "Think of a reason your audience is excited about your project",
+					"length": 20
+				},
+				"3": {
+					"text": "Visualize yourself in front of the room delivering a compelling demo",
+					"length": 20
+				}
+			},
+			"totalLength": 80,
+			"convertedLength": "1:20",
+			"overallRating": 0
+		}
+	},
+	"comments": {
+		"0": {
+			"routine_id": 0,
+			"user_id": "0KHtbCH5NZUmk2df1J1u2pZaQ2h2",
+			"message": "First Comment on Calm Routine by luolawrence",
+			"timestamp": "Mon Dec 11 2017 13:29:43 GMT-0500 (EST)"
+		},
+		"1": {
+			"routine_id": 0,
+			"user_id": "Al8Kerz6XCcSTl0pvDEQyvjhG3m2",
+			"message": "Second Comment on Calm Routine by lluo8",
+			"timestamp": "Mon Dec 11 2017 13:31:43 GMT-0500 (EST)"
+		},
+		"2": {
+			"routine_id": 1,
+			"user_id": "Al8Kerz6XCcSTl0pvDEQyvjhG3m2",
+			"message": "First Comment on Calm Routine by lluo8",
+			"timestamp": "Mon Dec 11 2017 13:33:43 GMT-0500 (EST)"
+		}
+	},
+	"tags": {
+		"0": {
+			"tag_id": 0,
+			"internal_name": "public_speaking",
+			"name": "Public Speaking",
+			"matching_routines": {
+        "0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"1": {
+			"tag_id": 1,
+			"internal_name": "competition",
+			"name": "Competition",
+			"matching_routines": {
+        "0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"2": {
+			"tag_id": 2,
+			"internal_name": "interview",
+			"name": "Interview",
+			"matching_routines": {
+        "0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"3": {
+			"tag_id": 3,
+			"internal_name": "test",
+			"name": "Test",
+			"matching_routines": {
+        "0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"4": {
+			"tag_id": 4,
+			"internal_name": "networking",
+			"name": "Networking",
+			"matching_routines": {
+        "0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"5": {
+			"tag_id": 5,
+			"internal_name": "presentation",
+			"name": "Presentation",
+			"matching_routines": {
+				"0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3,
+        "4": 4
+			}
+		},
+		"6": {
+			"tag_id": 6,
+			"internal_name": "date",
+			"name": "Date",
+			"matching_routines": {
+				"0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		}
+	}
 }

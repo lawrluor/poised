@@ -182,5 +182,5 @@ export const defaultStyles = {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  },
 }

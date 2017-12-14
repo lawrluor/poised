@@ -3,11 +3,12 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  ScrollView
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
-import SelectionButton from './Components/SelectionButton.js';
+import TagButton from './Components/TagButton.js';
 import TabBar from './Components/TabBar.js';
 
 class Search extends Component {
@@ -20,20 +21,24 @@ class Search extends Component {
     return (
       <View style={defaultStyles.container}>
         <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
-          <Text style={defaultStyles.titleText}>What's on your mind?</Text>
+          <Text style={defaultStyles.titleText}>What is on your mind?</Text>
           <Text style={defaultStyles.examineText}>Browse applicable routines based on topic.</Text>
         </View>
 
         <View style={[styles.bodyWrapper, defaultStyles.outline]}>
-          <View style={[styles.buttonWrapper, defaultStyles.outline]}>
-            <SelectionButton navigation={this.props.navigation} name={"Public Speaking"}></SelectionButton>
-            <SelectionButton navigation={this.props.navigation} name={"Competition"}></SelectionButton>
-            <SelectionButton navigation={this.props.navigation} name={"Interview"}></SelectionButton>
-            <SelectionButton navigation={this.props.navigation} name={"Test"}></SelectionButton>
-            <SelectionButton navigation={this.props.navigation} name={"Networking Event"}></SelectionButton>
-            <SelectionButton navigation={this.props.navigation} name={"Presentation"}></SelectionButton>
-            <SelectionButton navigation={this.props.navigation} name={"Date"}></SelectionButton>
-          </View>
+          <ScrollView
+            horizontal={true}
+          >
+            <View style={[styles.buttonWrapper, defaultStyles.outline]}>
+              <TagButton navigation={this.props.navigation} name={"Public Speaking"}></TagButton>
+              <TagButton navigation={this.props.navigation} name={"Competition"}></TagButton>
+              <TagButton navigation={this.props.navigation} name={"Interview"}></TagButton>
+              <TagButton navigation={this.props.navigation} name={"Test"}></TagButton>
+              <TagButton navigation={this.props.navigation} name={"Networking Event"}></TagButton>
+              <TagButton navigation={this.props.navigation} name={"Presentation"}></TagButton>
+              <TagButton navigation={this.props.navigation} name={"Date"}></TagButton>
+            </View>
+          </ScrollView>
         </View>
 
         <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar>
@@ -49,13 +54,14 @@ const styles = StyleSheet.create({
   bodyWrapper: {
     justifyContent: 'space-around',
     alignItems: 'center',
-    flex: 8,
+    flex: 1,
   },
   // span width of container
   buttonWrapper: {
-    flex: 1,
-    justifyContent: 'space-around' // spread vertically throughout container
-  }
+    flexDirection: 'row',
+    justifyContent: 'space-between' // spread vertically throughout container
+  },
+
 });
 
 export default Search;

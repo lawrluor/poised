@@ -17,6 +17,7 @@ import {
 import { defaultStyles } from './styles.js';
 import GridDisplay from './Components/GridDisplay.js';
 import TabBar from './Components/TabBar.js';
+import TagButton from './Components/TagButton.js';
 import RoutinePopup from './RoutinePopup.js';
 
 import Toast, {DURATION} from 'react-native-easy-toast';
@@ -48,19 +49,27 @@ class SelectionPage extends Component {
       popupIsOpen: false,
       routines: [],
       routine: "test",
-      loading: true
+      loading: true,
+      selectedTag: ""
     }
 
+    this.handler = this.handler.bind(this); // bind reference to parent in this to pass to child component
     this.backButtonListener = null;
-    this.routinesRef = this.getRef().child('routines');
+    this.ref = this.getRef();
   }
 
-  componentWillMount() {
-    this.getRoutines(this.routinesRef);
+  // Search tags
+  handler(tagName) {
+    console.log("setting state");
+    this.setState({
+      selectedTag: tagName
+    });
+    this.getData(tagName);
   }
 
   componentDidMount() {
     this.disableBackButton();
+    this.getData(this.state.selectedTag);
   }
 
   // Disables hardware back button on Android for duration of the app runtime
@@ -78,32 +87,85 @@ class SelectionPage extends Component {
     return firebaseApp.database().ref();
   }
 
-  getRoutines(routinesRef) {
-    console.log("Retrieving routines...");
-    routinesRef.on('value', (snap) => {
-      let routines = [];
-      snap.forEach((child) => {
-        routines.push({
-          name: child.val().name,
-          author: child.val().author,
-          convertedLength: child.val().convertedLength,
-          description: child.val().description,
-          overallRating: child.val().overallRating,
-          preview: child.val().preview,
-          actions: child.val().actions,
-          _key: child.key,
-          // routine_id: child.val().routine_id,
-          // user_id: child.val().user_id,
+  // Helper function to query tag given tag name
+  async getTag(tagName) {
+    return new Promise(resolve => {
+      this.ref.child("tags").orderByChild("name").equalTo(tagName).on('value', (snap) => {
+
+        // Only one tag should match. If no match found, tag is null and breaks
+        snap.forEach((child) => {
+          let tag = {
+            name: child.val().name,
+            matching_routines: child.val().matching_routines,
+            _key: child.key,
+          }
+          resolve(tag);
         });
       });
+    });
+  }
 
-      // Change to get promise from snap
+  // Queries routines that match tag
+  async getData(tagName) {
+    console.log("selectedTag:", tagName);
+
+    // if no tag selected, simply return all Routines
+    if (tagName === "") {
+      this.ref.child("routines").orderByKey().on('value', (snap) => {
+        let routines = [];
+        snap.forEach((child) => {
+          routines.push({
+            name: child.val().name,
+            author: child.val().author,
+            convertedLength: child.val().convertedLength,
+            description: child.val().description,
+            overallRating: child.val().overallRating,
+            preview: child.val().preview,
+            actions: child.val().actions,
+            _key: child.key,
+            // routine_id: child.val().routine_id,
+            // user_id: child.val().user_id,
+          });
+        });
+
+        // Works because forEach() is synchronous
+        this.setState({
+          routines: routines,
+          loading: false
+        });
+      });
+    } else {
+        // Query for Tag, and access list of matching routines ids
+        let queriedTag = await this.getTag(tagName);
+
+        // For each routine id, convert to string and query to get Routine object, then push to routines
+        let routines = [];
+        queriedTag["matching_routines"].forEach((child) => {
+          this.ref.child("routines").orderByKey().equalTo(child.toString()).on('value', (snap) => {
+            snap.forEach((child) => {
+              routines.push({
+                name: child.val().name,
+                author: child.val().author,
+                convertedLength: child.val().convertedLength,
+                description: child.val().description,
+                overallRating: child.val().overallRating,
+                preview: child.val().preview,
+                actions: child.val().actions,
+                _key: child.key,
+                // routine_id: child.val().routine_id,
+                // user_id: child.val().user_id,
+              });
+            });
+          });
+      });
+
       console.log("Routines retrieved:", routines);
       this.setState({
         routines: routines,
         loading: false
       });
-    });
+
+    }
   }
 
   openRoutine = (routine) => {
@@ -154,9 +216,25 @@ class SelectionPage extends Component {
             <Text style={defaultStyles.examineText}>Guided exercises to prime you for a performance or task, created by users and curated by professionals.</Text>
           </View>
 
+          <View style={[styles.tagScrollWrapper, defaultStyles.outline]}>
+            <ScrollView
+              contentContainerStyle={styles.tagScrollContentContainer}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+            >
+              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Public Speaking"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Competition"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Interview"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Test"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Networking"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Presentation"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Date"}></TagButton>
+            </ScrollView>
+          </View>
+
           <View style={styles.scrollContainer}>
             <ScrollView
-              contentContainerStyle={styles.scrollContent}
+              paddingVertical={5}
               showsHorizontalScrollIndicator={false}
               refreshControl={
                 <RefreshControl
@@ -207,12 +285,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     opacity: 1.0
   },
+  // actual tag sscroll content
+  tagScrollWrapper: {
+    flexDirection: 'row',
+    flex: 1
+  },
+  // Wraps tag scroll content
+  tagScrollContentContainer: {
+    marginTop: 5,
+    marginBottom: 5,
+    marginRight: 15,
+    marginLeft: 15
+  },
   scrollContainer: {
     ...defaultStyles.outline,
-    flex: 4,
-  },
-  scrollContent: {
-    paddingVertical: 10
+    flex: 12,
   },
   selectionsButton: {
     ...defaultStyles.loginButton,
