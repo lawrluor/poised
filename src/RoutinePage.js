@@ -125,6 +125,7 @@ class RoutinePage extends Component {
       console.log('duration in seconds: ' + audio.getDuration() + 'number of channels: ' + audio.getNumberOfChannels());
     });
     audio.setNumberOfLoops(loops); // loop indefinitely until stop() called
+    audio.setVolume(0.66); // pass this as a parameter to function in the future 
     return audio;
   }
 

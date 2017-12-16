@@ -148,6 +148,7 @@ class SelectionPage extends Component {
                 convertedLength: child.val().convertedLength,
                 description: child.val().description,
                 overallRating: child.val().overallRating,
+                downvotes: child.val().downvotes,
                 preview: child.val().preview,
                 actions: child.val().actions,
                 _key: child.key,
