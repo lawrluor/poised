@@ -163,7 +163,7 @@ class Signup extends Component {
           />
 
           <TouchableHighlight style={defaultStyles.loginButton} onPress={() => this.signup(this.state.email, this.state.password)}>
-            <Text style={[defaultStyles.bodyText]}>Create Account</Text>
+            <Text style={[defaultStyles.bodyText]}>Sign Up</Text>
           </TouchableHighlight>
 
           <TouchableOpacity onPress={() => this.navigateToLogin()}>

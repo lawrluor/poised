@@ -30,11 +30,11 @@ class App extends Component<{}> {
 // Navigation using StackNavigator
 export const RootNavigator = StackNavigator(
   {
-    LoginPage: {
-      screen: LoginPage
-    },
     Signup: {
       screen: Signup
+    },
+    LoginPage: {
+      screen: LoginPage
     },
     Selections: {
       screen: SelectionPage

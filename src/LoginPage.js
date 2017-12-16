@@ -128,6 +128,42 @@ class LoginPage extends Component {
     }
   }
 
+  async resetPassword() {
+    try {
+      await firebaseApp.auth()
+        .sendPasswordResetEmail(this.state.email);
+
+      console.log("Password reset email sent")
+      Alert.alert(
+        'Success',
+        'Password reset instructions sent to: ' + this.state.email,
+        [
+          {text: "OK", onPress: () => console.log('OK Pressed')},
+        ]
+      );
+    } catch(error) {
+      console.log(error);
+      if (error.code === "auth/user-not-found") {
+        Alert.alert(
+          'Error',
+          'No user has been registered with this email',
+          [
+            {text: "OK", onPress: () => console.log('OK Pressed')},
+          ]
+        );
+
+      } else {
+        Alert.alert(
+          'Error',
+          'Make sure the address in the email field is spelled and formatted correctly.',
+          [
+            {text: "OK", onPress: () => console.log('OK Pressed')},
+          ]
+        );
+      }
+    }
+  }
+
   // Navigate to main app after login/signup
   navigateToMain(email) {
     Keyboard.dismiss()
@@ -193,8 +229,8 @@ class LoginPage extends Component {
                 <Text style={defaultStyles.bodyText}>Create Account</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => this.navigateToMain(null)}>
-                <Text style={defaultStyles.linkText}>Continue As Guest</Text>
+              <TouchableOpacity onPress={() => this.resetPassword()}>
+                <Text style={defaultStyles.linkText}>Forgot password?</Text>
               </TouchableOpacity>
             </View>
            }
