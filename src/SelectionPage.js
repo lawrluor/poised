@@ -254,7 +254,8 @@ class SelectionPage extends Component {
             navigation={this.props.navigation}
           />
 
-          {!this.state.popupIsOpen ? <TabBar style={{flex: 1}} navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar> : null }
+          <View style={styles.footer}></View>
+          {!this.state.popupIsOpen ? <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar> : null }
         </View>
       );
     }
@@ -282,6 +283,11 @@ const styles = StyleSheet.create({
   scrollContainer: {
     ...defaultStyles.outline,
     flex: 8,
+  },
+  // flex 1, puts scrollview above tabBar. Assigning flex to TabBar comoponent doesn't work, nor does nesting it inside footer.
+  // Using footerWrapper from defaultStyles makes it so that routinePopup begin routine button's clickbox is covered
+  footer: {
+    flex: 1
   },
   selectionsButton: {
     ...defaultStyles.loginButton,

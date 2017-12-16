@@ -24,8 +24,8 @@ class Signup extends Component {
   constructor() {
     super();
     this.state = {
-      email: "Email",
-      password: "Password",
+      email: "",
+      password: "",
       signup: false
     }
 
@@ -90,6 +90,7 @@ class Signup extends Component {
   async signup(email, pass) {
     Keyboard.dismiss();
     console.log(email, pass);
+
     try {
       await firebaseApp.auth()
         .createUserWithEmailAndPassword(email, pass);
@@ -147,7 +148,8 @@ class Signup extends Component {
             autoCapitalize='none'
             autoCorrect={false}
             maxLength={100}
-            placeholder={this.state.email}
+            placeholder={"Email"}
+            underlineColorAndroid={'transparent'}
             onChangeText={(email) => this.setState({email})}
           />
 
@@ -157,12 +159,13 @@ class Signup extends Component {
             autoCapitalize='none'
             autoCorrect={false}
             maxLength={100}
-            placeholder={this.state.password}
+            placeholder={"Password"}
+            underlineColorAndroid={'transparent'}
             secureTextEntry={true}
             onChangeText={(password) => this.setState({password})}
           />
 
-          <TouchableHighlight style={defaultStyles.loginButton} onPress={() => this.signup(this.state.email, this.state.password)}>
+          <TouchableHighlight style={defaultStyles.loginButton} underlayColor='rgba(28, 56, 79, 0.7)' onPress={() => this.signup(this.state.email, this.state.password)}>
             <Text style={[defaultStyles.bodyText]}>Sign Up</Text>
           </TouchableHighlight>
 
