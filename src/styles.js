@@ -12,7 +12,7 @@ const { width, height } = Dimensions.get('window');
 
 const baseStyles = {
   text: {
-    fontFamily: 'Avenir',
+    fontFamily: 'System',
     color: '#FFFFFF'
   }
 };

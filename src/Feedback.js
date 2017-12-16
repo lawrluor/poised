@@ -19,6 +19,7 @@ class Feedback extends Component {
       routineName: this.props.navigation.state.params.routineName,
       routineKey: this.props.navigation.state.params.routineKey,
       routineRating: this.props.navigation.state.params.routineRating,
+      routineDownvotes: this.props.navigation.state.params.routineDownvotes,
       path: "",
       currentRating: 0,
       routinesRef: null
@@ -35,7 +36,7 @@ class Feedback extends Component {
       // get current Rating at time of query, store path path prefixed by key: 3/overallRating
       this.setState({
         currentRating: snap.val()[this.state.routineKey]['overallRating'],
-        path: this.state.routineKey.toString() + '/overallRating',
+        path: this.state.routineKey.toString(),
         routinesRef: routinesRef
       })
       console.log(this.state.path, this.state.currentRating);
@@ -84,15 +85,15 @@ class Feedback extends Component {
     )
   }
 
-  // Navigate to Results page with result of thumbs up or down
+  // Navigate to Results page with result of thumbs up or down, increment downvotes or rating
   navigateToResults(result) {
     // Extract routine ref from state
     let routinesRef = this.state.routinesRef;
 
     if (result) {
-      routinesRef.update({[this.state.path] : this.state.currentRating + 1 });
+      routinesRef.update({[this.state.path + '/overallRating'] : this.state.currentRating + 1 });
     } else {
-      routinesRef.update({[this.state.path] : this.state.currentRating - 1 });
+      routinesRef.update({[this.state.path + '/downvotes'] : this.state.routineDownvotes + 1 });
     }
     this.props.navigation.navigate('Results', {
       result: result,

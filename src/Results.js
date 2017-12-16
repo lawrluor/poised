@@ -160,7 +160,7 @@ class Results extends Component {
               autoCorrect={false}
               maxLength={2000}
               underlineColorAndroid={'transparent'}
-              placeholder="Your feedback is very much appreciated and will help develop more useful routines!"
+              placeholder="Being specific about what you liked, didn't like, and wish was in the app would be very much appreciated! Your feedback is crucial to help develop more useful routines and features."
               onChangeText={(message) => this.setState({message: message})}
             />
 
@@ -182,7 +182,7 @@ class Results extends Component {
   // Helper function to show text based on result
   showText(result) {
     if (result === true) {
-      return "Glad it was helpful! Please consider leaving some feedback.";
+      return "Great to hear that! Please consider leaving some feedback.";
     } else if (result === false) {
       return "Sorry to hear that. Please leave some feedback and try another routine!";
     } else {

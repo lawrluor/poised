@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   tabBar: {
+    flex: 1,
     backgroundColor:'rgba(119, 136, 153, 1.0)',
     width: defaultStyles.screenDimensions.width
   },

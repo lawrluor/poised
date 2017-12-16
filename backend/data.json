@@ -27,14 +27,15 @@
 			},
 			"totalLength": 70,
 			"convertedLength": "1:00",
-			"overallRating": 67
+			"overallRating": 67,
+			"downvotes": 0
 		},
 		"1": {
 			"routine_id": 1,
 			"user_id": 0,
 			"author": "Mia Yee",
 			"name": "Calm",
-			"preview": "This routine is designed to calm your mind and body through a guided breathing exercise...",
+			"preview": "This routine is designed to calm your mind and body through a guided breathing exercise.",
 			"description": "This routine is designed to calm your mind and body. Through a guided breathing exercise, it will return your breath to a normal rate. It will also reduce anxiety during a 'thinking about thinking' phase, intensely on an unrelated object.",
 			"actions": {
 				"0": {
@@ -52,14 +53,15 @@
 			},
 			"totalLength": 90,
 			"convertedLength": "1:30",
-			"overallRating": 67
+			"overallRating": 67,
+			"downvotes": 0
 		},
 		"2": {
 			"routine_id": 2,
 			"user_id": 0,
 			"author": "Dr. Karin Hendricks",
 			"name": "Energize",
-			"preview": "Sometimes, the best performances require a heightened state of arousal...",
+			"preview": "Sometimes, the best performances require a heightened state of arousal.",
 			"description": "Sometimes, the best performances require a heightened state of arousal. This routine will amp up your mind and body, and energize you for the your performance ahead.",
 			"actions": {
 				"0": {
@@ -77,7 +79,8 @@
 			},
 			"totalLength": 70,
 			"convertedLength": "1:10",
-			"overallRating": 14
+			"overallRating": 14,
+			"downvotes": 0
 		},
 		"3": {
 			"routine_id": 3,
@@ -106,7 +109,8 @@
 			},
 			"totalLength": 80,
 			"convertedLength": "1:20",
-			"overallRating": 0
+			"overallRating": 0,
+			"downvotes": 0
 		},
 
 		"5": {
@@ -114,7 +118,7 @@
 			"user_id": 1,
 			"author": "Lawrence Luo",
 			"name": "Focus",
-			"preview": "Taking a test emphasizes memory recall and mental dexterity rather than charisma or stage presence...",
+			"preview": "Taking a test emphasizes memory recall and mental dexterity rather than charisma or stage presence.",
 			"description": "Taking a test emphasizes memory recall and mental dexterity rather than charisma or stage presence. This routine is designed to focus your mind on test materials, help you reiterate the most crucial concepts for the exam, and clear your mind of other distractions",
 			"actions": {
 				"0": {
@@ -132,14 +136,15 @@
 			},
 			"totalLength": 120,
 			"convertedLength": "2:00",
-			"overallRating": 1044
+			"overallRating": 1044,
+			"downvotes": 0
 		},
 		"6": {
 			"routine_id": 6,
 			"user_id": 1,
 			"author": "Lawrence Luo",
 			"name": "Inspire",
-			"preview": "For many, the best way to execute at their 100% is not the how but the why...",
+			"preview": "For many, the best way to execute at their 100% is not the how but the why.",
 			"description": "For many, the best way to execute at their 100% is not the how but the why. This routine consists of a series of insightful questions that will help you channel your passion behind your performance, and will focus you towards your core goals.",
 			"actions": {
 				"0": {
@@ -157,7 +162,8 @@
 			},
 			"totalLength": 120,
 			"convertedLength": "2:00",
-			"overallRating": 832
+			"overallRating": 832,
+			"downvotes": 0
 		}
 	},
 	"comments": {

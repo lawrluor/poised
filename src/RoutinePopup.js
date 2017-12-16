@@ -115,6 +115,7 @@ export default class RoutinePopup extends Component {
   }
 
   navigateToRoutine(routine) {
+    console.log("Button Clicked");
     let routineActions = [];
     let routineDurations = [];
     for (let key in routine.actions) {
@@ -128,6 +129,7 @@ export default class RoutinePopup extends Component {
       routineActions: routineActions,
       routineDurations: routineDurations,
       routineRating: routine.overallRating,
+      routineDownvotes: routine.downvotes,
       routineKey: routine._key
     });
   }

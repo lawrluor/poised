@@ -23,6 +23,24 @@ class GridDisplay extends Component {
     // onOpen: PropTypes.func.isRequired
   }
 
+  // if given length in seconds, converts to mm:ss, using no external libraries
+  convertLength(seconds) {
+    let date = new Date(null);
+    date.setSeconds(seconds); // total value of seconds
+    let result = date.toISOString().substr(14, 5); // substring to only take MM:SS
+    return result;
+  }
+
+  // If preview text is over 90 chars (arbitrary), truncate so it doesn't overflow display
+  truncatePreview(previewText) {
+    if (previewText.length > 100) {
+      // remove beginning & trailing whitespace
+      return previewText.substring(0, 100).trim() + "...";
+    } else {
+      return previewText;
+    }
+  }
+
   render() {
     const { routine, routine: { name, author, preview, convertedLength, overallRating }, onOpen } = this.props;
 
@@ -42,7 +60,7 @@ class GridDisplay extends Component {
             </View>
 
             <View style={[styles.previewContainer, defaultStyles.outline]}>
-              <Text style={[defaultStyles.paragraphText]}>{preview}</Text>
+              <Text style={[defaultStyles.paragraphText]}>{this.truncatePreview(preview)}</Text>
             </View>
           </View>
 
@@ -63,14 +81,6 @@ class GridDisplay extends Component {
         </View>
       </TouchableOpacity>
     )
-  }
-
-  // if given length in seconds, converts to mm:ss, using no external libraries
-  convertLength(seconds) {
-    let date = new Date(null);
-    date.setSeconds(seconds); // total value of seconds
-    let result = date.toISOString().substr(14, 5); // substring to only take MM:SS
-    return result;
   }
 }
 

@@ -28,7 +28,7 @@ class RoutinePage extends Component {
       counter: 0,
       routineName: this.props.navigation.state.params.routineName,
       currentAction: this.props.navigation.state.params.routineActions[0],
-      currentDuration: this.props.navigation.state.params.routineDurations[0] * 1000,
+      currentDuration: this.props.navigation.state.params.routineDurations[0] * 10,
       routineActions: this.props.navigation.state.params.routineActions,
       routineDurations: this.props.navigation.state.params.routineDurations,
       routineRating: this.props.navigation.state.params.routineRating,
@@ -74,7 +74,7 @@ class RoutinePage extends Component {
         // Set the current action and duration for this iteration
         this.setState({
           currentAction: this.state.routineActions[counter],
-          currentDuration: this.state.routineDurations[counter] * 1000
+          currentDuration: this.state.routineDurations[counter] * 10
         });
 
         // Begin timer animation for this iteration
@@ -171,9 +171,11 @@ class RoutinePage extends Component {
 
   navigateToFeedback(routine) {
     this.exit();
+    console.log("downvotes:",this.props.navigation.state.params.routineDownvotes)
     this.props.navigation.navigate('Feedback', {
       routineName: this.state.routineName,
       routineRating: this.state.routineRating,
+      routineDownvotes: this.props.navigation.state.params.routineDownvotes,
       routineKey: this.state.routineKey
     });
   }
@@ -251,7 +253,7 @@ const styles = StyleSheet.create({
     position: 'absolute'
   },
   cancelIcon: {
-    fontSize: 24
+    fontSize: 36
   }
 });
 

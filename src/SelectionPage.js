@@ -118,6 +118,7 @@ class SelectionPage extends Component {
             convertedLength: child.val().convertedLength,
             description: child.val().description,
             overallRating: child.val().overallRating,
+            downvotes: child.val().downvotes,
             preview: child.val().preview,
             actions: child.val().actions,
             _key: child.key,
@@ -253,9 +254,7 @@ class SelectionPage extends Component {
             navigation={this.props.navigation}
           />
 
-          <View style={[defaultStyles.footerWrapper, defaultStyles.outline]}></View>
-
-          {!this.state.popupIsOpen ? <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar> : null }
+          {!this.state.popupIsOpen ? <TabBar style={{flex: 1}} navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar> : null }
         </View>
       );
     }
