@@ -10,14 +10,14 @@ import {
 } from 'react-native';
 
 import Sound from 'react-native-sound';
+Sound.setCategory('Playback'); // Enable playback in silence mode
+
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { defaultStyles } from './styles.js';
 
 import Center from '../src/Components/Center.js';
-
-// Enable playback in silence mode
-Sound.setCategory('Playback');
 
 class RoutinePage extends Component {
   constructor(props) {
@@ -28,13 +28,14 @@ class RoutinePage extends Component {
       counter: 0,
       routineName: this.props.navigation.state.params.routineName,
       currentAction: this.props.navigation.state.params.routineActions[0],
-      currentDuration: this.props.navigation.state.params.routineDurations[0] * 100,
+      currentDuration: this.props.navigation.state.params.routineDurations[0] * 1000,
       routineActions: this.props.navigation.state.params.routineActions,
       routineDurations: this.props.navigation.state.params.routineDurations,
       routineRating: this.props.navigation.state.params.routineRating,
       routineKey: this.props.navigation.state.params.routineKey,
       exited: false,
-      music: this.playAudio()
+      music: this.playMusic(),
+      notification: this.loadAudio('notification_direct.mp3', 0)
     }
   }
 
@@ -44,8 +45,21 @@ class RoutinePage extends Component {
     header: null
   };
 
-  // Begin counting on page load
   componentDidMount() {
+    // Change this to load and play music using respective load & play functions
+    // let music = await this.loadAudio('faure_pavane.mp3', 0);
+    // let notification = await this.loadAudio('notification_direct.mp3', 0)
+
+    // console.log("music:", music);
+    // console.log("notification", notification);
+    //
+    // this.setState({
+    //   music: music,
+    //   notification: notification
+    // })
+    //
+    // playAudio(music);
+
     // Recursive function to "synchronously" cycle through actions
     let loopCountdown = (counter) => {
       // If user exits routine manually, this will be set to true and will break the recursion
@@ -60,7 +74,7 @@ class RoutinePage extends Component {
         // Set the current action and duration for this iteration
         this.setState({
           currentAction: this.state.routineActions[counter],
-          currentDuration: this.state.routineDurations[counter] * 100
+          currentDuration: this.state.routineDurations[counter] * 1000
         });
 
         // Begin timer animation for this iteration
@@ -68,8 +82,21 @@ class RoutinePage extends Component {
 
         // Set timer on this iteration
         setTimeout( () => {
-          clearTimeout(); // clear previous timeout
-          loopCountdown(counter + 1); // Recursively start loop again with incremented index
+          if (!this.state.exited) {
+            let notification = this.state.notification.play((success) => {
+              if (success) {
+                console.log('successfully finished playing');
+              } else {
+                console.log('playback failed due to audio decoding errors');
+                notification.reset();
+              }
+            });
+
+            clearTimeout(); // clear previous timeout
+            loopCountdown(counter + 1); // Recursively start loop again with incremented index
+          } else {
+            console.log("attempted to start next iteration but user exited");
+          }
         }, this.state.currentDuration)
       } else {
         // Move to next screen
@@ -86,8 +113,34 @@ class RoutinePage extends Component {
     this.exit()
   }
 
+  // load audio
+  loadAudio(filename, loops) {
+    // Load the sound file from the app bundle
+    let audio = new Sound(filename, Sound.MAIN_BUNDLE, (error) => {
+      if (error) {
+        console.log('failed to load the sound', error);
+        return;
+      }
+      // loaded successfully
+      console.log('duration in seconds: ' + audio.getDuration() + 'number of channels: ' + audio.getNumberOfChannels());
+    });
+    audio.setNumberOfLoops(loops); // loop indefinitely until stop() called
+    return audio;
+  }
+
+  playAudio(audio) {
+    audio.play((success) => {
+      if (success) {
+        console.log('successfully finished playing');
+      } else {
+        console.log('playback failed due to audio decoding errors');
+        audio.reset();
+      }
+    });
+  }
+
   // use react-native-sound to play audio
-  playAudio() {
+  playMusic() {
     // Load the sound file from the app bundle
     let music = new Sound('faure_pavane.mp3', Sound.MAIN_BUNDLE, (error) => {
       if (error) {
@@ -130,6 +183,9 @@ class RoutinePage extends Component {
     this.setState({exited: true});
     clearTimeout();
     this.state.music.stop();
+    this.state.music.release();
+    this.state.notification.stop();
+    this.state.notification.release();
   }
 
   navigateToSelections() {
@@ -137,7 +193,7 @@ class RoutinePage extends Component {
     this.props.navigation.navigate('Selections');
   }
 
-
+  // consider adding slider or controls that will allow people to stop/slow down routine
   render() {
     return (
       <View style={defaultStyles.container}>
@@ -168,7 +224,7 @@ class RoutinePage extends Component {
             </Text>
 
             <TouchableOpacity onPress={() => this.navigateToSelections()}>
-              <Image style={defaultStyles.iconLarge} source={require('../static/img/icons/cancel.png')}></Image>
+              <Icon style={styles.cancelIcon} name="times-circle" color="#FFFFFF"></Icon>
             </TouchableOpacity>
           </View>
         </View>
@@ -193,6 +249,9 @@ const styles = StyleSheet.create({
   },
   center: {
     position: 'absolute'
+  },
+  cancelIcon: {
+    fontSize: 24
   }
 });
 

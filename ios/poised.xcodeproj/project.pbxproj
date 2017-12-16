@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -35,6 +36,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* poisedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* poisedTests.m */; };
 		3FB30C5BB235446E88FA2A9B /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558D9226C9884FD991E82BA3 /* SimpleLineIcons.ttf */; };
 		4829AD151FAB800C00651593 /* faure_pavane.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4829ACE61FAB800C00651593 /* faure_pavane.mp3 */; };
+		483C6E031FE4D6C100E4BD7A /* notification_direct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 483C6E021FE4D6C100E4BD7A /* notification_direct.mp3 */; };
 		48E5F73C1FAAE1F600997631 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E5F7381FAAE1DF00997631 /* libART.a */; };
 		48E731F61FD7D05F00CD31DD /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48E731F51FD7D00900CD31DD /* libRNVectorIcons.a */; };
 		48E731F71FD7D07900CD31DD /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FED92D5FE86F4A85B14BD8C6 /* libRCTActionSheet.a */; };
@@ -370,6 +372,7 @@
 		2FCA76A4BF84426A9FBAFAA3 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		3266AB1D4E904397AC51FB6D /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		4829ACE61FAB800C00651593 /* faure_pavane.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = faure_pavane.mp3; path = ../android/app/src/main/res/raw/faure_pavane.mp3; sourceTree = "<group>"; };
+		483C6E021FE4D6C100E4BD7A /* notification_direct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = notification_direct.mp3; path = ../android/app/src/main/res/raw/notification_direct.mp3; sourceTree = "<group>"; };
 		48E5F7321FAAE1DF00997631 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
 		48E732511FD7DAD400CD31DD /* libRNVectorIcons.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		5144F66555C6495EB4D28ACA /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
@@ -682,6 +685,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				483C6E021FE4D6C100E4BD7A /* notification_direct.mp3 */,
 				4829ACE61FAB800C00651593 /* faure_pavane.mp3 */,
 				13B07FAE1A68108700A75B9A /* poised */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -1194,6 +1198,7 @@
 				4829AD151FAB800C00651593 /* faure_pavane.mp3 in Resources */,
 				ED6DFE1261F74375A8324332 /* Entypo.ttf in Resources */,
 				F75BC262BA6C4DEEBA86D8C2 /* EvilIcons.ttf in Resources */,
+				483C6E031FE4D6C100E4BD7A /* notification_direct.mp3 in Resources */,
 				F9274AE9498542F9BEC23E2A /* Feather.ttf in Resources */,
 				B9717C8CEB93470989D08645 /* FontAwesome.ttf in Resources */,
 				8F4E2DFB15D44198B437F28B /* Foundation.ttf in Resources */,

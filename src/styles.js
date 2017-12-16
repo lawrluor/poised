@@ -78,6 +78,8 @@ export const defaultStyles = {
   // To be used to preserve footer space when tabBar is absent
   footerWrapper: {
     flex: 1,
+    width: width * 0.9,
+
     // minHeight: 50
   },
   // Icons

@@ -166,6 +166,7 @@ class LoginPage extends Component {
             autoCapitalize='none'
             autoCorrect={false}
             maxLength={100}
+            underlineColorAndroid={'transparent'}
             placeholder={this.state.email}
             onChangeText={(email) => this.setState({email})}
           />
@@ -176,6 +177,7 @@ class LoginPage extends Component {
             autoCapitalize='none'
             autoCorrect={false}
             maxLength={100}
+            underlineColorAndroid={'transparent'}
             placeholder={this.state.password}
             secureTextEntry={true}
             onChangeText={(password) => this.setState({password})}

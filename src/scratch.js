@@ -170,3 +170,46 @@ actions.forEach((element, index) => {
   <View style={[defaultStyles.footerWrapper, defaultStyles.outline]}>
   </View>
 </View>
+
+
+let loopCountdown = (counter) => {
+  // If user exits routine manually, this will be set to true and will break the recursion
+  if (this.state.exited) {
+    return
+  }
+
+  if (counter < this.state.routineDurations.length) {
+    console.log(counter, this.state.routineDurations.length);
+    console.log(this.state.routineActions[counter])
+
+    // Set the current action and duration for this iteration
+    this.setState({
+      currentAction: this.state.routineActions[counter],
+      currentDuration: this.state.routineDurations[counter] * 1000
+    });
+
+    // Begin timer animation for this iteration
+    this.beginTimerAnimation(this.state.currentDuration);
+
+    // Set timer on this iteration
+    setTimeout( () => {
+      this.playAudio(this.state.notification);
+      clearTimeout(); // clear previous timeout
+      loopCountdown(counter + 1); // Recursively start loop again with incremented index
+    }, this.state.currentDuration)
+  } else {
+    // Move to next screen
+    this.navigateToFeedback();
+  }
+}
+
+// Call recursive function to begin routine
+loopCountdown(this.state.counter);
+}
+
+// In the case user closes screen before the timeout fires, otherwise it would cause a memory leak that would trigger the transition regardless, breaking the user experience.
+componentWillUnmount() {
+this.exit()
+}
+
+// load audio

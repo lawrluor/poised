@@ -4,11 +4,14 @@ import {
   Text,
   View,
   Dimensions,
-  ScrollView
+  ScrollView,
+  Linking
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
 import TabBar from './Components/TabBar.js';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const { width, height } = Dimensions.get('window');
 
@@ -57,20 +60,6 @@ class InfoPage extends Component {
             </View>
 
             <View style={[styles.textBlock, defaultStyles.outline]}>
-              <Text style={defaultStyles.bodyText}>What is in the next update?</Text>
-              <Text style={defaultStyles.paragraphText}>
-                Version 1.0 will have:
-              </Text>
-
-              <Text style={defaultStyles.paragraphText}>-Create your own routines</Text>
-              <Text style={defaultStyles.paragraphText}>-View routines created by others</Text>
-              <Text style={defaultStyles.paragraphText}>-Save and favorite routines</Text>
-              <Text style={defaultStyles.paragraphText}>-Edit existing routines to fit your unique needs</Text>
-              <Text style={defaultStyles.paragraphText}>-Personal settings page</Text>
-              <Text style={defaultStyles.paragraphText}>-More music options and transition sound effects</Text>
-            </View>
-
-            <View style={[styles.textBlock, defaultStyles.outline]}>
               <Text style={defaultStyles.bodyText}>How can I help?</Text>
               <Text style={defaultStyles.paragraphText}>
                 I am always looking for more beta testers, so please introduce Poise to your friends! I am also looking
@@ -78,10 +67,30 @@ class InfoPage extends Component {
                 performance anxiety in specific situations.
               </Text>
             </View>
+
+            <View style={[styles.textBlock, defaultStyles.outline]}>
+              <Text style={defaultStyles.bodyText}>What is in the works?</Text>
+              <Text style={defaultStyles.paragraphText}>-Create your own routines</Text>
+              <Text style={defaultStyles.paragraphText}>-View routines created by others</Text>
+              <Text style={defaultStyles.paragraphText}>-Save and favorite routines</Text>
+              <Text style={defaultStyles.paragraphText}>-Edit existing routines to fit your unique needs</Text>
+              <Text style={defaultStyles.paragraphText}>-Personal settings page</Text>
+              <Text style={defaultStyles.paragraphText}>-More music options and transition sound effects</Text>
+            </View>
           </ScrollView>
         </View>
 
-        <View style={[defaultStyles.footerWrapper, defaultStyles.outline]}></View>
+        <View style={[defaultStyles.footerWrapper, defaultStyles.outline]}>
+          <View style={[styles.socialContainer, defaultStyles.outline]}>
+            <Icon.Button styles={this.socialButton} name="facebook" backgroundColor="#3b5998" onPress={ () => Linking.openURL('https://www.facebook.com/poisemobileapp/') }>
+              <Text style={defaultStyles.paragraphText}>Follow</Text>
+            </Icon.Button>
+
+            <Icon.Button styles={this.socialButton} name="envelope" backgroundColor="#d14836" onPress={ () => Linking.openURL('mailto:luolawrence1@gmail.com') }>
+              <Text style={defaultStyles.paragraphText}>Email</Text>
+            </Icon.Button>
+          </View>
+        </View>
 
         <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar>
       </View>
@@ -91,7 +100,7 @@ class InfoPage extends Component {
 
 const styles = StyleSheet.create({
   scrollContainer: {
-    flex: 6
+    flex: 5
   },
   scrollContent: {
     paddingVertical: 10
@@ -104,6 +113,16 @@ const styles = StyleSheet.create({
   },
   textBlock: {
     paddingBottom: 5
+  },
+  // horizontal container with social icons inside bottomWrapper
+  socialContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around', // space apart horizontally in container
+    alignItems: 'center',
+    margin: 5,
+  },
+  socialButton: {
+    padding: 5
   }
 });
 

@@ -20,8 +20,6 @@ import TabBar from './Components/TabBar.js';
 import TagButton from './Components/TagButton.js';
 import RoutinePopup from './RoutinePopup.js';
 
-import Toast, {DURATION} from 'react-native-easy-toast';
-
 // Import Firebase app config
 import firebaseApp from './Components/Firebase.js';
 
@@ -182,11 +180,6 @@ class SelectionPage extends Component {
     });
   }
 
-  stopMe() {
-    console.log("stopping");
-    this.refs.toast.show('This feature has been disabled in the beta version', 500);
-  }
-
   // App Header
   static navigationOptions = {
     header: null
@@ -253,15 +246,6 @@ class SelectionPage extends Component {
             </ScrollView>
           </View>
 
-          <View style={defaultStyles.footerWrapper}>
-            <TouchableHighlight onPress={() => this.stopMe()} style={styles.selectionsButton} underlayColor='rgba(28, 56, 79, 0.7)'>
-              <View style={styles.buttonContainer}>
-                <Image style={styles.selectionsIconSmall} source={require('../static/img/icons/pencil.png')}></Image>
-                <Text style={defaultStyles.bodyText}>Create Routine</Text>
-              </View>
-            </TouchableHighlight>
-          </View>
-
           <RoutinePopup
             routine={this.state.routine}
             isOpen={this.state.popupIsOpen}
@@ -269,9 +253,9 @@ class SelectionPage extends Component {
             navigation={this.props.navigation}
           />
 
-          {!this.state.popupIsOpen ? <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar> : null }
+          <View style={[defaultStyles.footerWrapper, defaultStyles.outline]}></View>
 
-          <Toast ref="toast"/>
+          {!this.state.popupIsOpen ? <TabBar navigation={this.props.navigation} currentPage={this.props.navigation.state.routeName}></TabBar> : null }
         </View>
       );
     }
@@ -285,21 +269,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     opacity: 1.0
   },
-  // actual tag sscroll content
+  // actual tag scroll content
   tagScrollWrapper: {
     flexDirection: 'row',
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
   },
   // Wraps tag scroll content
   tagScrollContentContainer: {
-    marginTop: 5,
-    marginBottom: 5,
     marginRight: 15,
     marginLeft: 15
   },
   scrollContainer: {
     ...defaultStyles.outline,
-    flex: 12,
+    flex: 8,
   },
   selectionsButton: {
     ...defaultStyles.loginButton,

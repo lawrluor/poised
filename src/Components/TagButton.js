@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   tagButton: {
     marginRight: 5,
     minWidth: (defaultStyles.screenDimensions.width * 0.25),
+    maxHeight: 40,
     marginLeft: 5,
     borderWidth: 1,
     borderRadius: 10,

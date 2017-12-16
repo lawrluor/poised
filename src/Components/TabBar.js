@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  Image
+  Image,
+  Alert,
+  StyleSheet
 } from 'react-native';
 
 import { defaultStyles } from '../styles.js';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // TabNavigator Documentation: https://github.com/aksonov/react-native-tabs
 import Tabs from 'react-native-tabs';
@@ -16,38 +20,78 @@ class TabBar extends Component {
     this.state = {name: this.props.currentPage};
   }
 
-  render() {
-    return (
-      <Tabs
-        selected={this.state.name}
-        style={{backgroundColor:'rgba(119, 136, 153, 1.0)'}}
-        onSelect={el => this.changeTab(el)}>
-
-        <Image source={require('../../static/img/icons/search_white.png')} style={defaultStyles.iconSmall} name="Search" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
-        <Image source={require('../../static/img/icons/goal_white.png')} style={defaultStyles.iconSmall} name="Selections" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
-        <Image source={require('../../static/img/icons/info_white.png')} style={defaultStyles.iconSmall} name="InfoPage" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
-      </Tabs>
-    )
-  }
-
   changeTab(el) {
+    // Stop users from accessing the "Search" page
+    if (el.props.name === "Create") {
+      return Alert.alert(
+        "Please Note",
+        "The ability to create and edit routines has been disabled in the alpha version.",
+        [
+          {text: "OK", onPress: () => console.log('OK Pressed')},
+        ]
+      );
+    }
+
     // if already on this page, don't reload
     if (el.props.name !== this.state.name) {
       this.props.navigation.navigate(el.props.name);
     };
   }
+
+  render() {
+    return (
+        <Tabs
+          selected={this.state.name}
+          style={styles.tabBar}
+          onSelect={el => this.changeTab(el)}>
+
+          <Tab name="Create" tabname="Create"></Tab>
+          <Tab name="Selections" tabname="Selections"></Tab>
+          <Tab name="InfoPage" tabname="Info"></Tab>
+        </Tabs>
+    )
+  }
 }
 
 // For future, to be able to render icon and text below it for navigation help
 class Tab extends Component {
+  constructor(props) {
+    super(props);
+
+    this.tabname = this.props.tabname
+
+    if (this.props.tabname === "Info") {
+      this.iconName = "info-circle";
+    } else if (this.props.tabname === "Selections") {
+      this.iconName = "list-ul";
+    } else if (this.props.tabname === "Create") {
+      this.iconName = "pencil";
+    }
+  }
+
   render () {
     return (
-      <View>
-        <Image source={require('../../static/img/icons/search_white.png')} style={defaultStyles.iconSmallStandard} name="Search" selectedIconStyle={{borderTopWidth:1,borderTopColor:'white'}}></Image>
-        <Text>Search</Text>
+      <View style={styles.container}>
+        <Icon style={styles.tabIcon} name={this.iconName} color="#FFFFFF"></Icon>
+        <Text style={[defaultStyles.examineText]}>{this.tabname}</Text>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  tabBar: {
+    backgroundColor:'rgba(119, 136, 153, 1.0)',
+    width: defaultStyles.screenDimensions.width
+  },
+  tabIcon: {
+    fontSize: 20
+  }
+});
 
 export default TabBar;

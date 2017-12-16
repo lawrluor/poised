@@ -13,12 +13,11 @@ import {
 
 import { defaultStyles } from './styles.js';
 
-const { width, height } = Dimensions.get('window');
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class RoutinePopup extends Component {
   state = {
-    position: new Animated.Value(this.props.isOpen ? 0 : height),
-    // height: height / 2 when open, else height = 0 (hidden)
+    position: new Animated.Value(this.props.isOpen ? 0 : defaultStyles.screenDimensions.height),
     visible: this.props.isOpen
   }
 
@@ -47,7 +46,7 @@ export default class RoutinePopup extends Component {
   // Close popup
   animateClose() {
     Animated.timing(
-      this.state.position, { toValue: height } //set to bottom of screen
+      this.state.position, { toValue: defaultStyles.screenDimensions.height } //set to bottom of screen
     ).start(() => this.setState({ visible: false }));
   }
 
@@ -82,7 +81,7 @@ export default class RoutinePopup extends Component {
 
             <View style={[styles.statsContainer, defaultStyles.outline]}>
               <TouchableOpacity onPress={this.props.onClose}>
-                <Image style={defaultStyles.iconMedium} source={require('../static/img/icons/cancel.png')}></Image>
+                <Icon style={styles.cancelIcon} name="times-circle" color="#FFFFFF"></Icon>
               </TouchableOpacity>
 
               <View style={defaultStyles.outline}>
@@ -91,7 +90,7 @@ export default class RoutinePopup extends Component {
 
               <View style={[styles.ratingsContainer, defaultStyles.outline]}>
                 <View style={defaultStyles.outline}>
-                  <Image style={styles.iconSmaller} source={require('../static/img/icons/heart_white.png')}></Image>
+                  <Icon style={styles.iconSmaller} name="heart" color="#FFFFFF"></Icon>
                 </View>
 
                 <View style={defaultStyles.outline}>
@@ -106,7 +105,7 @@ export default class RoutinePopup extends Component {
           </View>
 
           <View style={[styles.footer, defaultStyles.outline]}>
-            <TouchableHighlight style={defaultStyles.button} onPress={() => this.navigateToRoutine(routine)}>
+            <TouchableHighlight style={styles.beginButton} underlayColor='rgba(28, 56, 79, 0.7)' onPress={() => this.navigateToRoutine(routine)}>
               <Text style={[defaultStyles.bodyText]}>Begin Routine ({convertedLength})</Text>
             </TouchableHighlight>
           </View>
@@ -149,7 +148,7 @@ const styles = StyleSheet.create({
   },
   // Popup
   modal: {
-    height: height * 0.66,             // take 66% of screen height
+    height: (defaultStyles.screenDimensions.height * 0.66), // take 66% of screen height
     padding: 15,
     backgroundColor: 'rgba(119, 136, 153, 1.0)',
   },
@@ -174,8 +173,11 @@ const styles = StyleSheet.create({
   },
   iconSmaller: {
     ...defaultStyles.iconSmaller,
-    marginTop: 4,
-    marginRight: 2
+    marginTop: 3,
+    marginRight: 2,
+  },
+  cancelIcon: {
+    fontSize: 20
   },
   body: {
     flex: 8,
@@ -184,6 +186,11 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 2,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  beginButton: {
+    ...defaultStyles.loginButton,
+    width: (defaultStyles.screenDimensions.width * 0.9)
   }
 });

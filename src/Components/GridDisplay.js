@@ -11,6 +11,8 @@ import {
 
 import { defaultStyles } from '../styles';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 class GridDisplay extends Component {
   // Component Types
 
@@ -49,7 +51,7 @@ class GridDisplay extends Component {
               <Text style={defaultStyles.paragraphText}>{convertedLength}</Text>
               <View style={[styles.ratingsContainer, defaultStyles.outline]}>
                 <View style={defaultStyles.outline}>
-                  <Image style={styles.iconSmaller} source={require('../../static/img/icons/heart_white.png')}></Image>
+                  <Icon style={styles.iconSmaller} name="heart" color="#FFFFFF"></Icon>
                 </View>
 
                 <View style={defaultStyles.outline}>
@@ -128,7 +130,7 @@ const styles = StyleSheet.create({
   },
   iconSmaller: {
     ...defaultStyles.iconSmaller,
-    marginTop: 4,
+    marginTop: 3,
     marginRight: 2
   },
   bodyText: {

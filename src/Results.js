@@ -159,6 +159,7 @@ class Results extends Component {
               autoCapitalize='none'
               autoCorrect={false}
               maxLength={2000}
+              underlineColorAndroid={'transparent'}
               placeholder="Your feedback is very much appreciated and will help develop more useful routines!"
               onChangeText={(message) => this.setState({message: message})}
             />
