@@ -1,4 +1,4 @@
-package com.poised;
+package com.poise; // make sure this is right for you package.
 
 import android.content.Intent;
 import android.os.Bundle;

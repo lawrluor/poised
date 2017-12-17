@@ -1,4 +1,4 @@
-package com.poised;
+package com.poise;
 
 import android.app.Application;
 
