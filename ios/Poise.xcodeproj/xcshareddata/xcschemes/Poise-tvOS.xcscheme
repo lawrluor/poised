@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "poised-tvOS.app"
-               BlueprintName = "poised-tvOS"
-               ReferencedContainer = "container:poised.xcodeproj">
+               BuildableName = "Poise-tvOS.app"
+               BlueprintName = "Poise-tvOS"
+               ReferencedContainer = "container:Poise.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "poised-tvOSTests.xctest"
-               BlueprintName = "poised-tvOSTests"
-               ReferencedContainer = "container:poised.xcodeproj">
+               BuildableName = "Poise-tvOSTests.xctest"
+               BlueprintName = "Poise-tvOSTests"
+               ReferencedContainer = "container:Poise.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -62,9 +62,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "poised-tvOSTests.xctest"
-               BlueprintName = "poised-tvOSTests"
-               ReferencedContainer = "container:poised.xcodeproj">
+               BuildableName = "Poise-tvOSTests.xctest"
+               BlueprintName = "Poise-tvOSTests"
+               ReferencedContainer = "container:Poise.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "poised-tvOS.app"
-            BlueprintName = "poised-tvOS"
-            ReferencedContainer = "container:poised.xcodeproj">
+            BuildableName = "Poise-tvOS.app"
+            BlueprintName = "Poise-tvOS"
+            ReferencedContainer = "container:Poise.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "poised-tvOS.app"
-            BlueprintName = "poised-tvOS"
-            ReferencedContainer = "container:poised.xcodeproj">
+            BuildableName = "Poise-tvOS.app"
+            BlueprintName = "Poise-tvOS"
+            ReferencedContainer = "container:Poise.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -115,9 +115,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "poised-tvOS.app"
-            BlueprintName = "poised-tvOS"
-            ReferencedContainer = "container:poised.xcodeproj">
+            BuildableName = "Poise-tvOS.app"
+            BlueprintName = "Poise-tvOS"
+            ReferencedContainer = "container:Poise.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
