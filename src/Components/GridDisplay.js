@@ -32,6 +32,7 @@ class GridDisplay extends Component {
   }
 
   // If preview text is over 90 chars (arbitrary), truncate so it doesn't overflow display
+  // CHANGE to truncate if more than 3 lines?
   truncatePreview(previewText) {
     if (previewText.length > 100) {
       // remove beginning & trailing whitespace
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     flex: 1,   // take up all available space
-    backgroundColor: 'rgba(119, 136, 153, 0.5)',
+    backgroundColor: 'rgba(119, 136, 153, 0.7)',
     borderRadius: 10
   },
   image: {

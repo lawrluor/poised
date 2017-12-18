@@ -229,6 +229,10 @@ class LoginPage extends Component {
                 <Text style={defaultStyles.bodyText}>Create Account</Text>
               </TouchableOpacity>
 
+              <TouchableOpacity onPress={() => this.navigateToMain(null)}>
+                <Text style={defaultStyles.linkText}>Continue As Guest</Text>
+              </TouchableOpacity>
+
               <TouchableOpacity onPress={() => this.resetPassword()}>
                 <Text style={defaultStyles.linkText}>Forgot password?</Text>
               </TouchableOpacity>

@@ -48,7 +48,7 @@ class SelectionPage extends Component {
       routines: [],
       routine: "test",
       loading: true,
-      selectedTag: ""
+      selectedTag: "All Routines"
     }
 
     this.handler = this.handler.bind(this); // bind reference to parent in this to pass to child component
@@ -107,8 +107,8 @@ class SelectionPage extends Component {
   async getData(tagName) {
     console.log("selectedTag:", tagName);
 
-    // if no tag selected, simply return all Routines
-    if (tagName === "") {
+    // if selections page is first loaded, supply tagName "All Routines." Other cases protect vs state bugs
+    if (tagName==="All Routines" || tagName==="" || tagName===null) {
       this.ref.child("routines").orderByKey().on('value', (snap) => {
         let routines = [];
         snap.forEach((child) => {
@@ -204,6 +204,7 @@ class SelectionPage extends Component {
         </View>
       )
     } else {
+      // Change TagButton content to draw from firebase
       return (
         <View style={defaultStyles.container}>
           <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
@@ -217,13 +218,15 @@ class SelectionPage extends Component {
               horizontal={true}
               showsHorizontalScrollIndicator={false}
             >
-              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Public Speaking"}></TagButton>
-              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Competition"}></TagButton>
-              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Interview"}></TagButton>
-              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Test"}></TagButton>
-              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Networking"}></TagButton>
-              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Presentation"}></TagButton>
-              <TagButton navigation={this.props.navigation} handler={this.handler} name={"Date"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} selectedTag={this.state.selectedTag} name={"All Routines"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} selectedTag={this.state.selectedTag} name={"Public Speaking"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} selectedTag={this.state.selectedTag} name={"Test"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} selectedTag={this.state.selectedTag} name={"Interview"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} selectedTag={this.state.selectedTag} name={"Performance"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} selectedTag={this.state.selectedTag} name={"Competition"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} selectedTag={this.state.selectedTag} name={"Presentation"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} selectedTag={this.state.selectedTag} name={"Networking"}></TagButton>
+              <TagButton navigation={this.props.navigation} handler={this.handler} selectedTag={this.state.selectedTag} name={"Date"}></TagButton>
             </ScrollView>
           </View>
 

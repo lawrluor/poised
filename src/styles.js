@@ -51,6 +51,10 @@ export const defaultStyles = {
     ...baseStyles.text,
     fontSize: 18
   },
+  largerParagraphText: {
+    ...baseStyles.text,
+    fontSize: 16
+  },
   paragraphText: {
     ...baseStyles.text,
     fontSize: 14

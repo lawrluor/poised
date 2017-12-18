@@ -1,168 +1,418 @@
 {
 	"routines": {
-		"0": {
-			"routine_id": 0,
-			"user_id": 0,
-			"author": "Lawrence Luo",
-			"name": "A Cappella Solo Audition",
-			"preview": "This routine is designed to calm down your jitters before an a cappella audition, and focus on your performance.",
-			"description": "This routine is designed to calm down your nerves before an a cappella audition, and help ypu hone in on what you want to convey during your performance.",
-			"actions": {
-				"0": {
-					"text": "Take 3 deep breaths. The next exercise will start in 10 seconds",
-					"length": 10
-				},
-				"1": {
-					"text": "Release tension in your neck, shoulders, and jaw with a massage or shakeout",
-					"length": 15
-				},
-				"2": {
-					"text": "Think about a few emotions you want to convey during the performance",
-					"length": 15
-				},
-				"3": {
-					"text": "Visualize yourself performing confidently for 20 seconds",
-					"length": 20
-				}
-			},
-			"totalLength": 70,
-			"convertedLength": "1:00",
-			"overallRating": 67,
-			"downvotes": 0
-		},
 		"1": {
 			"routine_id": 1,
 			"user_id": 0,
-			"author": "Mia Yee",
+			"author": "Lawrence Luo",
 			"name": "Calm",
 			"preview": "This routine is designed to calm your mind and body through a guided breathing exercise.",
-			"description": "This routine is designed to calm your mind and body. Through a guided breathing exercise, it will return your breath to a normal rate. It will also reduce anxiety during a 'thinking about thinking' phase, intensely on an unrelated object.",
+			"description": "This routine is designed to calm your mind and body. Through a guided breathing exercise, it will return your breath to a normal rate. It will also eliminate intrusive anxious thoughts by instead focusing your attention intensely on a mental examination of an unrelated object.",
 			"actions": {
 				"0": {
-					"text": "measured breathing",
-					"length": 30
+					"text": "Take a few deep breaths on your own time, inhaling and exhaling fully. A sound will play in 25 seconds when the next exercise begins.",
+					"length": 25
 				},
 				"1": {
-					"text": "shake out your limbs",
-					"length": 30
+					"text": "Relax and gently shake each limb at a time, then release tension in your neck. (20 seconds)",
+					"length": 20
 				},
 				"2": {
-					"text": "imagine a lake",
-					"length": 30
+					"text": "Choose an object that you are familiar with and form a clear mental image of it. (15 seconds)",
+					"length": 15
+				},
+				"3": {
+					"text": "Examine the object visually with as much detail as you can from multiple angles. Do the same tactilely. (40 seconds)",
+					"length": 40
+				},
+				"4": {
+					"text": "Take a few more deep breaths on your own time, inhaling and exhaling fully. A sound will play when your time is up. (25 seconds)",
+					"length": 25
 				}
 			},
-			"totalLength": 90,
-			"convertedLength": "1:30",
-			"overallRating": 67,
+			"totalLength": 115,
+			"convertedLength": "2:05",
+			"overallRating": 4,
 			"downvotes": 0
 		},
 		"2": {
 			"routine_id": 2,
-			"user_id": 0,
-			"author": "Dr. Karin Hendricks",
-			"name": "Energize",
-			"preview": "Sometimes, the best performances require a heightened state of arousal.",
-			"description": "Sometimes, the best performances require a heightened state of arousal. This routine will amp up your mind and body, and energize you for the your performance ahead.",
-			"actions": {
-				"0": {
-					"text": "words of self-affirmation",
-					"length": 20
-				},
-				"1": {
-					"text": "power poses",
-					"length": 30
-				},
-				"2": {
-					"text": "visualize your performance",
-					"length": 20
-				}
-			},
-			"totalLength": 70,
-			"convertedLength": "1:10",
-			"overallRating": 14,
-			"downvotes": 0
-		},
-		"3": {
-			"routine_id": 3,
 			"user_id": 1,
 			"author": "Lawrence Luo",
 			"name": "App Presentation",
-			"preview": "During an app demo, it can feel like anything that can go wrong will go wrong",
-			"description": "Demoing an app or software project can be stressful. Sometimes, it can feel like anything that can go wrong will go wrong: your computer running out of battery, an adapter malfunction, your code not compiling at the last second. Or maybe you're nervous because the stakes are high, when you're pitching a product or prototype to an investor. Even in a group of friends, it can be difficult to show what might not be your best work. This routine will help you focus on the present and the positives: why you like developing apps and why you're excited to share your progress with your audience. It will also help you clear distracting thoughts that may be making you feel anxious.",
+			"preview": "When you're demoing an app, it can sometimes feel like anything that can go wrong will go wrong.",
+			"description": "Demoing an app or software project can be stressful. Sometimes, it can feel like anything that can go wrong will go wrong. Maybe an adapter is malfunctioning or your code suddenly fails to compile. Sometimes, the stakes are what make you jittery. Your presentation could be the deciding factor in winning a Hackathon, or winning over a potential investor. Even among friends, it can be embarassing to show a hastily constructed work-in-progress. This routine will help you focus on the present and the positives: why you enjoy being a developer and why you're excited to share your progress with your audience. It will also help you clear distracting thoughts that may be making you feel anxious. that can go wrong will go wrong. Maybe an adapter is malfunctioning or your code suddenly fails to compile. Sometimes, the stakes are what make you jittery. Your presentation could be the deciding factor in winning a Hackathon, or winning over a potential investor. Even among friends, it can be embarassing to show a hastily constructed work-in-progress. This routine will help you focus on the present and the positives: why you enjoy being a developer and why you're excited to share yo",
 			"actions": {
 				"0": {
-					"text": "Name two goals that you have for this presentation",
-					"length": 20
-				},
-				"1": {
-					"text": "Think about the top two features you're most excited to share today",
-					"length": 20
-				},
-				"2": {
-					"text": "Think of a reason your audience is excited about your project",
-					"length": 20
-				},
-				"3": {
-					"text": "Visualize yourself in front of the room delivering a compelling demo",
-					"length": 20
-				}
-			},
-			"totalLength": 80,
-			"convertedLength": "1:20",
-			"overallRating": 0,
-			"downvotes": 0
-		},
-
-		"5": {
-			"routine_id": 5,
-			"user_id": 1,
-			"author": "Lawrence Luo",
-			"name": "Focus",
-			"preview": "Taking a test emphasizes memory recall and mental dexterity rather than charisma or stage presence.",
-			"description": "Taking a test emphasizes memory recall and mental dexterity rather than charisma or stage presence. This routine is designed to focus your mind on test materials, help you reiterate the most crucial concepts for the exam, and clear your mind of other distractions",
-			"actions": {
-				"0": {
-					"text": "pick a familiar object or scene, and observe it in your mind",
+					"text": "Name a few goals that you have for this presentation. (30 seconds)",
 					"length": 30
 				},
 				"1": {
-					"text": "think of three concepts you have been struggling with",
-					"length": 60
+					"text": "Name a few features you're most excited to share today. (30 seconds)",
+					"length": 30
 				},
 				"2": {
-					"text": "think of three crucial concepts you've mastered",
-					"length": 60
+					"text": "Think of a reason your audience is excited to learn about your project and values your presentation. (30 seconds)",
+					"length": 30
+				},
+				"3": {
+					"text": "Visualize yourself in the spotlight as you give a confident presentation. (30 seconds)",
+					"length": 30
 				}
 			},
 			"totalLength": 120,
 			"convertedLength": "2:00",
-			"overallRating": 1044,
+			"overallRating": 5,
+			"downvotes": 0
+		},
+		"3": {
+			"routine_id": 3,
+			"user_id": 0,
+			"author": "Lawrence Luo",
+			"name": "A Cappella Performance",
+			"preview": "This routine is designed to eliminate nervous jitters before an a cappella performance.",
+			"description": "This routine is designed to eliminate nervous jitters before an a cappella performance, and shift your focus from your current emotions to the emotion you wish to convey during your performance.",
+			"actions": {
+				"0": {
+					"text": "Take several deep breaths on your own time. A sound will play in 30 seconds, indicating that the next exercise has begun.",
+					"length": 30
+				},
+				"1": {
+					"text": "Release tension in your neck, shoulders, and jaw with a brief massage or shakeout. (30 seconds)",
+					"length": 30
+				},
+				"2": {
+					"text": "Identify and analyze a key emotion that you want to convey during your performance. (30 seconds)",
+					"length": 30
+				},
+				"3": {
+					"text": "Visualize yourself performing with confidence, and imagine the positive reaction from your audience. (30 seconds)",
+					"length": 30
+				}
+			},
+			"totalLength": 120,
+			"convertedLength": "2:00",
+			"overallRating": 4,
+			"downvotes": 0
+		},
+		"4" : {
+			"routine_id": 4,
+			"user_id": 1,
+			"author": "Tonic",
+			"name": "SSBM Tournament Match",
+			"preview": "I designed this routine to help prepare directly before a tournament match.",
+			"description": "I designed this routine to help prepare directly before a tournament match. This routine is designed for SSBM (Super Smash Bros. Melee) but may be applicable to other Smash games. It will help you identify your strengths going into the match and helps you establish a basic gameplan that you can adapt during the course of the match.",
+			"actions": {
+				"0": {
+					"text": "Visualize your character and your opponent's character's positions just as the first match begins (20 seconds)",
+					"length": 20
+				},
+				"1": {
+					"text": "Name a technique that you have practiced recently, then execute it a few times mentally. (20 seconds)",
+					"length": 20
+				},
+				"2": {
+					"text": "Name a specific area in which you feel you can outperform your opponent in. (20 seconds)",
+					"length": 20
+				},
+				"3": {
+					"text": "Name a specific tactic or technique you anticipate your opponent to use, and mentally execute a counter to that strategy. (20 seconds)",
+					"length": 20
+				},
+				"4": {
+					"text": "Set a basic gameplan to begin the match with which you can adapt. (40 seconds)",
+					"length": 40
+				}
+			},
+			"totalLength": 120,
+			"convertedLength": "2:00",
+			"overallRating": 3,
+			"downvotes": 0
+		},
+		"5": {
+			"routine_id": 5,
+			"user_id": 0,
+			"author": "Lawrence Luo",
+			"name": "Energize",
+			"preview": "Scientific research has shown that a heightened state of arousal will produce the best performances during certain tasks.",
+			"description": "Scientific research has found that different tasks require different levels of arousal for optimal performance (Yerkes-Dodson law). While very difficult or intellectually demanding tasks may require a lower level of arousal (to facilitate concentration), tasks demanding stamina or persistence may be performed better with higher levels of arousal (to increase motivation). Regardless of what type of task you end up performing, this routine will help amp up your mind and body to excite you for your upcoming performance. The goal of the routine is to help you find that energy, then bring it with you to your performance.",
+			"actions": {
+				"0": {
+					"text": "Stand up straight with your chest out, smile, then take a few deep breaths, exhaling sharply each time. (15 seconds)",
+					"length": 15
+				},
+				"1": {
+					"text": "Shake out your limbs one by one and jump up and down three times. (15 seconds)",
+					"length": 15
+				},
+				"2": {
+					"text": "Declare three statements of self-affirmation: (i.e. 'I am ready', 'I am excited', 'I can do this'). (15 seconds)",
+					"length": 15
+				},
+				"3": {
+					"text": "Visualize the outcome you want and the performance you desire. (15 seconds)",
+					"length": 15
+				}
+			},
+			"totalLength": 60,
+			"convertedLength": "1:00",
+			"overallRating": 6,
 			"downvotes": 0
 		},
 		"6": {
 			"routine_id": 6,
 			"user_id": 1,
 			"author": "Lawrence Luo",
-			"name": "Inspire",
-			"preview": "For many, the best way to execute at their 100% is not the how but the why.",
-			"description": "For many, the best way to execute at their 100% is not the how but the why. This routine consists of a series of insightful questions that will help you channel your passion behind your performance, and will focus you towards your core goals.",
+			"name": "Focus (Test/Exam)",
+			"preview": "Taking a test emphasizes memory recall and mental dexterity rather than charisma or stage presence.",
+			"description": "Taking a test emphasizes memory recall and mental dexterity rather than charisma or stage presence. This routine is designed to focus your mind on test materials and help you reiterate the most crucial concepts for the exam. It will also boost your confidence going into the exam by having you reiterate reasons why you are prepared for certain questions that may appear.",
 			"actions": {
 				"0": {
-					"text": "think of 3 reasons why this task matters",
-					"length": 60
+					"text": "Name a few concepts you have practiced recently and feel confident about. (40 seconds)",
+					"length": 40
 				},
 				"1": {
-					"text": "remember who is benefitting from your performance",
+					"text": "Visualize yourself taking the exam, and mentally execute yourself answering a question related to one of these concepts. (20 seconds)",
+					"length": 20
+				},
+				"2": {
+					"text": "Name a few concepts you have recently struggled with. (40 seconds)",
+					"length": 40
+				},
+				"3": {
+					"text": "Name a few things you have learned recently about some of those concepts. (40 seconds)",
+					"length": 40
+				},
+				"4": {
+					"text": "Take a few deep breaths on your own time. In 25 seconds, a sound will alert you that the exercise has finished.",
+					"length": 25
+				}
+			},
+			"totalLength": 165,
+			"convertedLength": "2:45",
+			"overallRating": 4,
+			"downvotes": 0
+		},
+		"7": {
+			"routine_id": 7,
+			"user_id": 1,
+			"author": "Lawrence Luo",
+			"name": "Inspire",
+			"preview": "For many people, the best way to execute at their 100% is to focus on WHY, not HOW.",
+			"description": "For many people, the best way to execute at their 100% is to focus on WHY, not HOW. This routine consists of a series of prompts that will help you channel your emotions regarding the task at hand and ignite your passion for the cause. It will also help focus you towards your core goals during the task.",
+			"actions": {
+				"0": {
+					"text": "Name a reason why this task is important to you. (30 seconds).",
+					"length": 30
+				},
+				"1": {
+					"text": "Name a reason why you want to do well on this task. (30 seconds)",
 					"length": 30
 				},
 				"2": {
-					"text": "ask yourself why you are important to them",
+					"text": "Name a reason you are passionate about the subject of the task. (30 seconds)",
+					"length": 30
+				},
+				"3": {
+					"text": "Think about those who are benefitting from your performance and why they will be happy to see you succeed. (30 seconds)",
+					"length": 30
+				},
+				"4": {
+					"text": "State to yourself why you are important to them and why they value you. (30 seconds)",
+					"length": 30
+				}
+			},
+			"totalLength": 150,
+			"convertedLength": "2:30",
+			"overallRating": 6,
+			"downvotes": 0
+		},
+		"8" : {
+			"routine_id": 8,
+			"user_id": 1,
+			"author": "Heart Math Institute (Adapted)",
+			"name": "Freeze Frame",
+			"preview": "A research-based technique similar to rational emotive therapy (RET) that stops negative and stressful feelings in their tracks.",
+			"description": "Negative emotions that come up before an anxiety-inducing task can be 'frozen' in the moment they are experienced, and changed through self-intervention. This routine will help you acknowledge the stress you are feeling, then focus you instead on your heart. This routine works best when directly experiencing feelings of anxiety. Read more about the Freeze Frame technique at www.heartmath.org. Routine adapted from 'Performance Anxiety Strategies' by Casey McGrath, Karin S. Hendricks, Tawnya D. Smith",
+			"actions": {
+				"0": {
+					"text": "Acknowledge the stressful feeling you've been experiencing. (15 seconds)",
+					"length": 15
+				},
+				"1": {
+					"text": "Shift your focus away from your racing mind or emotions, and pretend you are breathing through your heart. (15 seconds)",
+					"length": 15
+				},
+				"2": {
+					"text": "Recall a positive, fun feeling or time from the past and try to reexperience it in your head. (30 seconds)",
+					"length": 30
+				},
+				"3" : {
+					"text": "Using your intuition and sincerity: Ask your heart what would be a more efficient response to the stressful situation that would minimize future stress. (60 seconds)",
+					"length": 30
+				},
+				"4" : {
+					"text": "Reflect on what your heart says in answer. (30 seconds)",
 					"length": 30
 				}
 			},
 			"totalLength": 120,
 			"convertedLength": "2:00",
-			"overallRating": 832,
+			"overallRating": 4,
+			"downvotes": 0
+		},
+		"9" : {
+			"routine_id": 9,
+			"user_id": 1,
+			"author": "Lawrence Luo (adapted)",
+			"name": "Visualizing Greatness",
+			"preview": "An in-depth exercise to mentally prepare for your big moment.",
+			"description": "Mental practice is based on the psychoneuromuscular theory, which hypothesizes that imagining an action inspires the same physical responses in the body as the actual motion. This exercise will help you build a 'neural pathway to success' by forming a mental image of a successful performance. This routine will mentally practice for a specific upcoming performance as you imagine yourself producing the most desirable outcome. Please note: this is a supplement, not a substitute, to physical practice. Imagery will not directly improve knowledge or skill, but will help your ability to demonstrate them under pressure.",
+			"actions": {
+				"0": {
+					"text": "Identify the upcoming performance and mentally explore the physical space the event is taking place in visual, audio, and tactile imagery. (30 seconds)",
+					"length": 30
+				},
+				"1": {
+					"text": "Focus on your ideal image of yourself before the task begins. Reflect on your ideal mental and physical state in this moment. (30 seconds)",
+					"length": 30
+				},
+				"2": {
+					"text": "Visualize your ideal image of yourself as the task is just beginning. Reflect on your physical and mental state as you take the spotlight, or take the seat of power. (30 seconds)",
+					"length": 30
+				},
+				"3" : {
+					"text": "Visualize your ideal self during the task. Visualize how you look and feel when you are performing with comfort. (30 seconds)",
+					"length": 30
+				},
+				"4" : {
+					"text": "Visualize your ideal self as the task is ending. Concentrate on the positive emotion you feel from knowing that you executed successfully. (30 seconds)",
+					"length": 30
+				},
+				"5" : {
+					"text": "Visualize your ideal self as you are after you complete the task or exit the spotlight. Reflect on the positive feedback from yourself, your friends, and your audience. (30 seconds)",
+					"length": 30
+				}
+			},
+			"totalLength": 180,
+			"convertedLength": "3:00",
+			"overallRating": 5,
+			"downvotes": 0
+		},
+		"10" : {
+			"routine_id": 10,
+			"user_id": 1,
+			"author": "Susan Jeffers (adapted)",
+			"name": "Five Truths About Fear",
+			"preview": "This exercise will help you rationalize the emotion of fear.",
+			"description": "We have all felt fear in our lives before or during a stressful event - sometimes rationally and sometimes irrationally. This routine will help you understand how to deal with fear, by acknowledging that fear cannot be abolished completely, but that it can be alleviated by facing them head on. This routine is adapted from the book 'Feel the Fear and Do It Anyway' by Susan Jeffers.",
+			"actions": {
+				"0": {
+					"text": "This routine involves reciting out loud several statements about fear and reflecting on them. (10 seconds)",
+					"length": 10
+				},
+				"1": {
+					"text": "Recite and reflect: My fear will never go away as long as I continue to grow (30 seconds)",
+					"length": 30
+				},
+				"2": {
+					"text": "Recite and reflect: The only way to get rid of the fear of doing something is to go out and do it. (30 seconds)",
+					"length": 30
+				},
+				"3": {
+					"text": "Recite and reflect: The only way to feel better about myself is to go out and do it (30 seconds).",
+					"length": 30
+				},
+				"4" : {
+					"text": "Recite and reflect: We all experience fear when we are on unfamiliar territory. I am not alone in my fear. (30 seconds)",
+					"length": 30
+				},
+				"5" : {
+					"text": "Recite and reflect: Pushing through fear head-on is less frightening than the feeling of helplessness when avoiding my fears. (30 seconds)",
+					"length": 30
+				}
+			},
+			"totalLength": 160,
+			"convertedLength": "2:40",
+			"overallRating": 4,
+			"downvotes": 0
+		},
+		"11" : {
+			"routine_id": 11,
+			"user_id": 1,
+			"author": "Amy Cuddy (Adapted)",
+			"name": "Power Poses",
+			"preview": "'Your body language may shape who you are.' This famous talk and resulting exercise by Amy Cuddy his inspired millions to boost their confidence using power poses.",
+			"description": "Body language affects how others see us, but it may also change how we see ourselves. In 2012, social psychologist Amy Cuddy presented her research on the feedback effects of adopting powerful (i.e., expansive) versus powerless (i.e., contractive) postures. She proposed that what she called 'power poses' can boost feelings of confidence, and could have an impact on our chances for success. Since then, dozens of scientists and researchers have conducted experiments looking at the effects of 'power posing' on emotional, cognitive, behavioral and physiological outcomes. While additional studies have not replicated significant results in all of the outcomes, many people feel clear about at least this: power posing increases people's feelings of power and confidence. This short routine will use two of the aforementioned power poses to help you feel comfortable, confident, and poised for success. Description adapated from TED talk https://www.youtube.com/watch?v=Ks-_Mh1QhMc and TED website.",
+			"actions": {
+				"0": {
+					"text": "This routine will require you to take both hands off your device. Place it securely where you can see the screen. In 20 seconds, a sound will play to notify you that the next exercise has begun.",
+					"length": 20
+				},
+				"1": {
+					"text": "Adopt the 'Wonder Woman pose': Stand tall with your hands on your hips, chest out, and chin up. (60 seconds)",
+					"length": 60
+				},
+				"2": {
+					"text": "Adopt the 'Victory' pose: Raise your hands above your head in a 'V' shape - remain standing tall with your chest out and chin up. (60 seconds)",
+					"length": 60
+				}
+			},
+			"totalLength": 140,
+			"convertedLength": "2:20",
+			"overallRating": 4,
+			"downvotes": 0
+		},
+		"12" : {
+			"routine_id": 12,
+			"user_id": 1,
+			"author": "Lawrence Luo",
+			"name": "Victory Psych-Up",
+			"preview": "Oftentimes, the moments in which we feel the most stress are the ones that pit us in competition against others. This routine will help get you in a 'winning mindset' (literally) and empower you to win versus your opponent.",
+			"description": "Oftentimes, the moments in which we feel the most stress are the ones that pit us in competition against others. In these cases, it is not simply enough to perform at a level you want - you must also directly outperform your opponent(s). This routine will help get you in a 'winning mindset' (literally) and empower you to dispel negative and irrational thoughts about your ability, the opponent's superiority, or your chances of winning.",
+			"actions": {
+				"0": {
+					"text": "Visualize yourself and your opponent in the state just as the match begins. (30 seconds)",
+					"length": 30
+				},
+				"1": {
+					"text": "Name a technique that you have practiced recently that you feel confident about. (30 seconds)",
+					"length": 30
+				},
+				"2": {
+					"text": "List a specific area in which you feel you can outperform your opponent in. (30 seconds)",
+					"length": 30
+				},
+				"3": {
+					"text": "List an aspect of your opponent's personality, disposition, or playstyle that you think you will be able to exploit. (30 seconds)",
+					"length": 30
+				},
+				"4": {
+					"text": "Set a basic strategy or gameplan to begin the match with which you can ground yourself with. (60 seconds)",
+					"length": 60
+				}
+			},
+			"totalLength": 180,
+			"convertedLength": "3:00",
+			"overallRating": 6,
+			"downvotes": 0
+		},
+
+		"13": {
+			"routine_id": 13,
+			"user_id": 0,
+			"author": "Weezer (Adapted)",
+			"name": "Frisbee",
+			"preview": "Do as the members of Weezer do during their pre-concert ritual: play frisbee for (at least) 10 minutes.",
+			"description": "This is a simple exercise that requires a frisbee. As Weezer frontman Rivers Cuomo stated in a popular Reddit 'Ask Me Anything' thread: 'Scott and I have to play frisbee for at least 10 minutes before every show. It helps warm up our hands, concentrate our minds, and get us in our own little world.' Please note: place your phone down during the duration of the exercise - the notification sound will alert you when your time is up.",
+			"actions": {
+				"0": {
+					"text": "Procure a frisbee and a partner, then put your phone down in a secure place. A sound will play in 10 minutes indicating the exercise has finished.",
+					"length": 600
+				}
+			},
+			"totalLength": 600,
+			"convertedLength": "10:00",
+			"overallRating": 0,
 			"downvotes": 0
 		}
 	},
@@ -189,39 +439,39 @@
 	"tags": {
 		"0": {
 			"tag_id": 0,
+			"internal_name": "all",
+			"name": "All Routines",
+			"matching_routines": {
+				"0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3,
+				"4": 4,
+				"5": 5,
+				"6": 6,
+				"7": 7,
+				"8": 8,
+				"9": 9,
+				"10": 10,
+				"11": 11,
+				"12": 12,
+				"13": 13
+			}
+		},
+		"1": {
+			"tag_id": 1,
 			"internal_name": "public_speaking",
 			"name": "Public Speaking",
 			"matching_routines": {
 				"0": 0,
 				"1": 1,
 				"2": 2,
-				"3": 3
-			}
-		},
-		"1": {
-			"tag_id": 1,
-			"internal_name": "competition",
-			"name": "Competition",
-			"matching_routines": {
-				"0": 0,
-				"1": 1,
-				"2": 2,
-				"3": 3
+				"3": 3,
+				"7": 7
 			}
 		},
 		"2": {
 			"tag_id": 2,
-			"internal_name": "interview",
-			"name": "Interview",
-			"matching_routines": {
-				"0": 0,
-				"1": 1,
-				"2": 2,
-				"3": 3
-			}
-		},
-		"3": {
-			"tag_id": 3,
 			"internal_name": "test",
 			"name": "Test",
 			"matching_routines": {
@@ -231,10 +481,21 @@
 				"3": 3
 			}
 		},
+		"3": {
+			"tag_id": 3,
+			"internal_name": "interview",
+			"name": "Interview",
+			"matching_routines": {
+				"0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
 		"4": {
 			"tag_id": 4,
-			"internal_name": "networking",
-			"name": "Networking",
+			"internal_name": "performance",
+			"name": "Performance",
 			"matching_routines": {
 				"0": 0,
 				"1": 1,
@@ -244,6 +505,17 @@
 		},
 		"5": {
 			"tag_id": 5,
+			"internal_name": "competition",
+			"name": "Competition",
+			"matching_routines": {
+				"0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"6": {
+			"tag_id": 6,
 			"internal_name": "presentation",
 			"name": "Presentation",
 			"matching_routines": {
@@ -254,8 +526,19 @@
 				"4": 4
 			}
 		},
-		"6": {
-			"tag_id": 6,
+		"7": {
+			"tag_id": 7,
+			"internal_name": "networking",
+			"name": "Networking",
+			"matching_routines": {
+				"0": 0,
+				"1": 1,
+				"2": 2,
+				"3": 3
+			}
+		},
+		"8": {
+			"tag_id": 8,
 			"internal_name": "date",
 			"name": "Date",
 			"matching_routines": {

@@ -45,9 +45,9 @@ class TabBar extends Component {
           style={styles.tabBar}
           onSelect={el => this.changeTab(el)}>
 
-          <Tab name="Create" tabname="Create"></Tab>
-          <Tab name="Selections" tabname="Selections"></Tab>
-          <Tab name="InfoPage" tabname="Info"></Tab>
+          <Tab selectedIconStyle={styles.selectedTab} name="Create" tabname="Create"></Tab>
+          <Tab selectedIconStyle={styles.selectedTab} name="Selections" tabname="Selections"></Tab>
+          <Tab selectedIconStyle={styles.selectedTab} name="InfoPage" tabname="Info"></Tab>
         </Tabs>
     )
   }
@@ -92,6 +92,10 @@ const styles = StyleSheet.create({
   },
   tabIcon: {
     fontSize: 20
+  },
+  selectedTab: {
+    borderTopWidth: 2,
+    borderTopColor: 'white'
   }
 });
 

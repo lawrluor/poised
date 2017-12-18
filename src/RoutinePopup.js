@@ -8,7 +8,8 @@ import {
   TouchableWithoutFeedback,
   TouchableHighlight,
   TouchableOpacity,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
@@ -101,7 +102,9 @@ export default class RoutinePopup extends Component {
           </View>
 
           <View style={[styles.body, defaultStyles.outline]}>
-            <Text style={defaultStyles.paragraphText}>{description}</Text>
+            <ScrollView>
+              <Text style={defaultStyles.largerParagraphText}>{description}</Text>
+            </ScrollView>
           </View>
 
           <View style={[styles.footer, defaultStyles.outline]}>
