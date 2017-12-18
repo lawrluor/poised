@@ -90,11 +90,15 @@ class SelectionPage extends Component {
     return new Promise(resolve => {
       this.ref.child("tags").orderByChild("name").equalTo(tagName).on('value', (snap) => {
 
+
         // Only one tag should match. If no match found, tag is null and breaks
         snap.forEach((child) => {
+          // Extract all matching routines, cast to list and return them in random order (https://www.w3schools.com/js/js_array_sort.asp)
+          let matching_routines = Object.keys(child.val().matching_routines);
+          matching_routines.sort((a, b) => {return 0.5 - Math.random()});
           let tag = {
             name: child.val().name,
-            matching_routines: child.val().matching_routines,
+            matching_routines: matching_routines,
             _key: child.key,
           }
           resolve(tag);

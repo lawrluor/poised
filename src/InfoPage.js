@@ -30,7 +30,7 @@ class InfoPage extends Component {
     return(
       <View style={defaultStyles.container}>
         <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}>
-          <Text style={defaultStyles.titleText}>About Poise<Text style={defaultStyles.examineText}> (v0.9)</Text></Text>
+          <Text style={defaultStyles.titleText}>About Poise<Text style={defaultStyles.examineText}> (v1.0)</Text></Text>
           <Text style={defaultStyles.examineText}>Developer: Lawrence Luo</Text>
         </View>
 
@@ -82,7 +82,7 @@ class InfoPage extends Component {
               <Text style={defaultStyles.bodyText}>Special Thanks to:</Text>
               <Text style={defaultStyles.paragraphText}>-Ziba Cranmer, Chad Pytel, Paul Lightfoot</Text>
               <Text style={defaultStyles.paragraphText}>-Dr. Karin S. Hendricks</Text>
-              <Text style={defaultStyles.paragraphText}>-"Performance Anxiety Strategies" by Casey McGrath, Karin S. Hendricks, Tawnya D. Smith</Text>
+              <Text style={defaultStyles.paragraphText}>-"Performance Anxiety Strategies" by Casey McGrath, Karin S. Hendricks, Tawnya D. Smith for adapted routines and research</Text>
             </View>
           </ScrollView>
         </View>

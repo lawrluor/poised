@@ -6,7 +6,7 @@
 			"author": "Lawrence Luo",
 			"name": "Calm",
 			"preview": "This routine is designed to calm your mind and body through a guided breathing exercise.",
-			"description": "This routine is designed to calm your mind and body. Through a guided breathing exercise, it will return your breath to a normal rate. It will also eliminate intrusive anxious thoughts by instead focusing your attention intensely on a mental examination of an unrelated object.",
+			"description": "This routine is designed to calm your mind and body. Through a free breathing exercise, it will return your breath to a normal rate. A short physical exercise will reduce tension in the body. The routine will also eliminate intrusive anxious thoughts by instead focusing your attention intensely on a mental examination of an unrelated object.",
 			"actions": {
 				"0": {
 					"text": "Take a few deep breaths on your own time, inhaling and exhaling fully. A sound will play in 25 seconds when the next exercise begins.",
@@ -40,7 +40,7 @@
 			"user_id": 1,
 			"author": "Lawrence Luo",
 			"name": "App Presentation",
-			"preview": "When you're demoing an app, it can sometimes feel like anything that can go wrong will go wrong.",
+			"preview": "When you're demoing an app, it sometimes feels like anything that can go wrong will go wrong.",
 			"description": "Demoing an app or software project can be stressful. Sometimes, it can feel like anything that can go wrong will go wrong. Maybe an adapter is malfunctioning or your code suddenly fails to compile. Sometimes, the stakes are what make you jittery. Your presentation could be the deciding factor in winning a Hackathon, or winning over a potential investor. Even among friends, it can be embarassing to show a hastily constructed work-in-progress. This routine will help you focus on the present and the positives: why you enjoy being a developer and why you're excited to share your progress with your audience. It will also help you clear distracting thoughts that may be making you feel anxious. that can go wrong will go wrong. Maybe an adapter is malfunctioning or your code suddenly fails to compile. Sometimes, the stakes are what make you jittery. Your presentation could be the deciding factor in winning a Hackathon, or winning over a potential investor. Even among friends, it can be embarassing to show a hastily constructed work-in-progress. This routine will help you focus on the present and the positives: why you enjoy being a developer and why you're excited to share yo",
 			"actions": {
 				"0": {
@@ -52,7 +52,7 @@
 					"length": 30
 				},
 				"2": {
-					"text": "Think of a reason your audience is excited to learn about your project and values your presentation. (30 seconds)",
+					"text": "Think of a reason your audience is excited to learn about your project. (30 seconds)",
 					"length": 30
 				},
 				"3": {
@@ -70,24 +70,24 @@
 			"routine_id": 3,
 			"user_id": 0,
 			"author": "Lawrence Luo",
-			"name": "A Cappella Performance",
-			"preview": "This routine is designed to eliminate nervous jitters before an a cappella performance.",
-			"description": "This routine is designed to eliminate nervous jitters before an a cappella performance, and shift your focus from your current emotions to the emotion you wish to convey during your performance.",
+			"name": "Vocal Performance",
+			"preview": "This routine is designed to eliminate nervous jitters before an a vocal performance.",
+			"description": "This routine is designed to eliminate nervous jitters before an a vocal performance, and shift your focus from your current emotions to the emotion you wish to convey during your performance.",
 			"actions": {
 				"0": {
 					"text": "Take several deep breaths on your own time. A sound will play in 30 seconds, indicating that the next exercise has begun.",
 					"length": 30
 				},
 				"1": {
-					"text": "Release tension in your neck, shoulders, and jaw with a brief massage or shakeout. (30 seconds)",
+					"text": "Release tension in your neck, shoulders, and jaw with a brief massage. (30 seconds)",
 					"length": 30
 				},
 				"2": {
-					"text": "Identify and analyze a key emotion that you want to convey during your performance. (30 seconds)",
+					"text": "Identify and analyze a key emotion that you wish to convey during your performance. (30 seconds)",
 					"length": 30
 				},
 				"3": {
-					"text": "Visualize yourself performing with confidence, and imagine the positive reaction from your audience. (30 seconds)",
+					"text": "Visualize yourself performing with confidence. Then, imagine the positive reception from your audience. (30 seconds)",
 					"length": 30
 				}
 			},
@@ -102,11 +102,11 @@
 			"user_id": 1,
 			"author": "Tonic",
 			"name": "SSBM Tournament Match",
-			"preview": "I designed this routine to help prepare directly before a tournament match.",
-			"description": "I designed this routine to help prepare directly before a tournament match. This routine is designed for SSBM (Super Smash Bros. Melee) but may be applicable to other Smash games. It will help you identify your strengths going into the match and helps you establish a basic gameplan that you can adapt during the course of the match.",
+			"preview": "This routine helps prime SSBM competitors's mindsets for success directly before a tournament match.",
+			"description": "This routine helps prime SSBM competitors's mindsets for success directly before a tournament match. This routine is designed for SSBM (Super Smash Bros. Melee) but may be applicable to other Smash games. It will help you identify your strengths going into the match and helps you establish a basic gameplan that you can adapt during the course of the match.",
 			"actions": {
 				"0": {
-					"text": "Visualize your character and your opponent's character's positions just as the first match begins (20 seconds)",
+					"text": "Visualize your character and your opponent's character's positions just as the first match would begin. (20 seconds)",
 					"length": 20
 				},
 				"1": {
@@ -114,11 +114,11 @@
 					"length": 20
 				},
 				"2": {
-					"text": "Name a specific area in which you feel you can outperform your opponent in. (20 seconds)",
+					"text": "Name a specific area of the game in which you feel that you can outperform your opponent in. (20 seconds)",
 					"length": 20
 				},
 				"3": {
-					"text": "Name a specific tactic or technique you anticipate your opponent to use, and mentally execute a counter to that strategy. (20 seconds)",
+					"text": "Name a specific tactic or technique you anticipate your opponent will use, and mentally execute a counter to that strategy. (20 seconds)",
 					"length": 20
 				},
 				"4": {
@@ -138,7 +138,7 @@
 			"author": "Lawrence Luo",
 			"name": "Energize",
 			"preview": "Scientific research has shown that a heightened state of arousal will produce the best performances during certain tasks.",
-			"description": "Scientific research has found that different tasks require different levels of arousal for optimal performance (Yerkes-Dodson law). While very difficult or intellectually demanding tasks may require a lower level of arousal (to facilitate concentration), tasks demanding stamina or persistence may be performed better with higher levels of arousal (to increase motivation). Regardless of what type of task you end up performing, this routine will help amp up your mind and body to excite you for your upcoming performance. The goal of the routine is to help you find that energy, then bring it with you to your performance.",
+			"description": "Scientific research has found that different tasks require different levels of arousal for optimal performance (Yerkes-Dodson law). While very difficult or intellectually demanding tasks may require a lower level of arousal (to facilitate concentration), tasks demanding stamina or persistence may be performed better with higher levels of arousal (to increase motivation). Regardless of what type of task you end up performing, this routine will help amp up your mind and body before your upcoming performance. The goal of the routine is to help you generate energy, then bring it with you to your performance.",
 			"actions": {
 				"0": {
 					"text": "Stand up straight with your chest out, smile, then take a few deep breaths, exhaling sharply each time. (15 seconds)",
@@ -274,7 +274,7 @@
 			"author": "Lawrence Luo (adapted)",
 			"name": "Visualizing Greatness",
 			"preview": "An in-depth exercise to mentally prepare for your big moment.",
-			"description": "Mental practice is based on the psychoneuromuscular theory, which hypothesizes that imagining an action inspires the same physical responses in the body as the actual motion. This exercise will help you build a 'neural pathway to success' by forming a mental image of a successful performance. This routine will mentally practice for a specific upcoming performance as you imagine yourself producing the most desirable outcome. Please note: this is a supplement, not a substitute, to physical practice. Imagery will not directly improve knowledge or skill, but will help your ability to demonstrate them under pressure.",
+			"description": "Mental practice is based on the psychoneuromuscular theory, which hypothesizes that imagining an action inspires the same physical responses in the body as the actual motion. This exercise will help you build a 'neural pathway to success' by forming a mental image of a successful performance. This routine will mentally practice for a specific upcoming performance as you imagine yourself producing the most desirable outcome. Please note: this is a supplement, not a substitute, to physical practice. Imagery will not directly improve knowledge or skill, but will help your ability to demonstrate them under pressure. Routine adapted from 'Performance Anxiety Strategies' by Casey McGrath, Karin S. Hendricks, Tawnya D. Smith",
 			"actions": {
 				"0": {
 					"text": "Identify the upcoming performance and mentally explore the physical space the event is taking place in visual, audio, and tactile imagery. (30 seconds)",
@@ -313,7 +313,7 @@
 			"author": "Susan Jeffers (adapted)",
 			"name": "Five Truths About Fear",
 			"preview": "This exercise will help you rationalize the emotion of fear.",
-			"description": "We have all felt fear in our lives before or during a stressful event - sometimes rationally and sometimes irrationally. This routine will help you understand how to deal with fear, by acknowledging that fear cannot be abolished completely, but that it can be alleviated by facing them head on. This routine is adapted from the book 'Feel the Fear and Do It Anyway' by Susan Jeffers.",
+			"description": "We have all felt fear in our lives before or during a stressful event - sometimes rationally and sometimes irrationally. This routine will help you understand how to deal with fear, by acknowledging that fear cannot be abolished completely, but that it can be alleviated by facing them head on. This routine is adapted from the books 'Feel the Fear and Do It Anyway' by Susan Jeffers and 'Performance Anxiety Strategies' by Casey McGrath, Karin S. Hendricks, Tawnya D. Smith.",
 			"actions": {
 				"0": {
 					"text": "This routine involves reciting out loud several statements about fear and reflecting on them. (10 seconds)",
@@ -351,8 +351,8 @@
 			"user_id": 1,
 			"author": "Amy Cuddy (Adapted)",
 			"name": "Power Poses",
-			"preview": "'Your body language may shape who you are.' This famous talk and resulting exercise by Amy Cuddy his inspired millions to boost their confidence using power poses.",
-			"description": "Body language affects how others see us, but it may also change how we see ourselves. In 2012, social psychologist Amy Cuddy presented her research on the feedback effects of adopting powerful (i.e., expansive) versus powerless (i.e., contractive) postures. She proposed that what she called 'power poses' can boost feelings of confidence, and could have an impact on our chances for success. Since then, dozens of scientists and researchers have conducted experiments looking at the effects of 'power posing' on emotional, cognitive, behavioral and physiological outcomes. While additional studies have not replicated significant results in all of the outcomes, many people feel clear about at least this: power posing increases people's feelings of power and confidence. This short routine will use two of the aforementioned power poses to help you feel comfortable, confident, and poised for success. Description adapated from TED talk https://www.youtube.com/watch?v=Ks-_Mh1QhMc and TED website.",
+			"preview": "'Your body language may shape who you are.' Millions were inspired to boost their confidence using 'power poses,' made famous by social psychologist Amy Cuddy.",
+			"description": "'Your body language may shape who you are.' Millions were inspired to boost their confidence using 'power poses,' made famous by social psychologist Amy Cuddy. Body language affects how others see us, but it may also change how we see ourselves. In 2012, social psychologist Amy Cuddy presented her research on the feedback effects of adopting powerful (i.e., expansive) versus powerless (i.e., contractive) postures. She proposed that what she called 'power poses' can boost feelings of confidence, and could have an impact on our chances for success. Since then, dozens of scientists and researchers have conducted experiments looking at the effects of 'power posing' on emotional, cognitive, behavioral and physiological outcomes. While additional studies have not replicated significant results in all of the outcomes, many people feel clear about at least this: power posing increases people's feelings of power and confidence. This short routine will use two of the aforementioned power poses to help you feel comfortable, confident, and poised for success. Description adapated from TED talk https://www.youtube.com/watch?v=Ks-_Mh1QhMc and TED website.",
 			"actions": {
 				"0": {
 					"text": "This routine will require you to take both hands off your device. Place it securely where you can see the screen. In 20 seconds, a sound will play to notify you that the next exercise has begun.",
@@ -377,7 +377,7 @@
 			"routine_id": 12,
 			"user_id": 1,
 			"author": "Lawrence Luo",
-			"name": "Victory Psych-Up",
+			"name": "Winning Mindset",
 			"preview": "Oftentimes, the moments in which we feel the most stress are the ones that pit us in competition against others. This routine will help get you in a 'winning mindset' (literally) and empower you to win versus your opponent.",
 			"description": "Oftentimes, the moments in which we feel the most stress are the ones that pit us in competition against others. In these cases, it is not simply enough to perform at a level you want - you must also directly outperform your opponent(s). This routine will help get you in a 'winning mindset' (literally) and empower you to dispel negative and irrational thoughts about your ability, the opponent's superiority, or your chances of winning.",
 			"actions": {
@@ -413,9 +413,9 @@
 			"routine_id": 13,
 			"user_id": 0,
 			"author": "Weezer (Adapted)",
-			"name": "Frisbee",
-			"preview": "Do as the members of Weezer do during their pre-concert ritual: play frisbee for (at least) 10 minutes.",
-			"description": "This is a simple exercise that requires a frisbee. As Weezer frontman Rivers Cuomo stated in a popular Reddit 'Ask Me Anything' thread: 'Scott and I have to play frisbee for at least 10 minutes before every show. It helps warm up our hands, concentrate our minds, and get us in our own little world.' Please note: place your phone down during the duration of the exercise - the notification sound will alert you when your time is up.",
+			"name": "Frisbee Warmup",
+			"preview": "Do as the members of the band Weezer do during their pre-concert ritual: play frisbee for (at least) 10 minutes.",
+			"description": "This is a simple exercise that requires a frisbee. As Weezer frontman Rivers Cuomo stated in a popular Reddit thread: 'Scott and I have to play frisbee for at least 10 minutes before every show. It helps warm up our hands, concentrate our minds, and get us in our own little world.' Please note: place your phone down during the duration of the exercise - the notification sound will alert you when your time is up.",
 			"actions": {
 				"0": {
 					"text": "Procure a frisbee and a partner, then put your phone down in a secure place. A sound will play in 10 minutes indicating the exercise has finished.",
@@ -455,7 +455,6 @@
 			"internal_name": "all",
 			"name": "All Routines",
 			"matching_routines": {
-				"0": 0,
 				"1": 1,
 				"2": 2,
 				"3": 3,
@@ -476,11 +475,12 @@
 			"internal_name": "public_speaking",
 			"name": "Public Speaking",
 			"matching_routines": {
-				"0": 0,
 				"1": 1,
-				"2": 2,
-				"3": 3,
-				"7": 7
+				"5": 5,
+				"7": 7,
+				"9": 9,
+				"10": 10,
+				"11": 11
 			}
 		},
 		"2": {
@@ -488,10 +488,11 @@
 			"internal_name": "test",
 			"name": "Test",
 			"matching_routines": {
-				"0": 0,
 				"1": 1,
-				"2": 2,
-				"3": 3
+				"6": 6,
+				"7": 7,
+				"8": 8,
+				"11": 11
 			}
 		},
 		"3": {
@@ -499,10 +500,13 @@
 			"internal_name": "interview",
 			"name": "Interview",
 			"matching_routines": {
-				"0": 0,
 				"1": 1,
-				"2": 2,
-				"3": 3
+				"5": 5,
+				"6": 6,
+				"9": 9,
+				"10": 10,
+				"11": 11
+
 			}
 		},
 		"4": {
@@ -510,10 +514,12 @@
 			"internal_name": "performance",
 			"name": "Performance",
 			"matching_routines": {
-				"0": 0,
+				"3": 3,
+				"5": 5,
+				"7": 7,
 				"1": 1,
-				"2": 2,
-				"3": 3
+				"9": 9,
+				"10": 10
 			}
 		},
 		"5": {
@@ -521,10 +527,11 @@
 			"internal_name": "competition",
 			"name": "Competition",
 			"matching_routines": {
-				"0": 0,
 				"1": 1,
-				"2": 2,
-				"3": 3
+				"4": 4,
+				"9": 9,
+				"10": 10,
+				"12": 12
 			}
 		},
 		"6": {
@@ -532,11 +539,12 @@
 			"internal_name": "presentation",
 			"name": "Presentation",
 			"matching_routines": {
-				"0": 0,
 				"1": 1,
 				"2": 2,
-				"3": 3,
-				"4": 4
+				"5": 5,
+				"7": 7,
+				"9": 9,
+				"11": 11
 			}
 		},
 		"7": {
@@ -544,10 +552,10 @@
 			"internal_name": "networking",
 			"name": "Networking",
 			"matching_routines": {
-				"0": 0,
 				"1": 1,
-				"2": 2,
-				"3": 3
+				"5": 5,
+				"9": 9,
+				"12": 12
 			}
 		},
 		"8": {
@@ -555,10 +563,12 @@
 			"internal_name": "date",
 			"name": "Date",
 			"matching_routines": {
-				"0": 0,
 				"1": 1,
-				"2": 2,
-				"3": 3
+				"5": 5,
+				"8": 8,
+				"9": 9,
+				"10": 10,
+				"11": 11
 			}
 		}
 	}
