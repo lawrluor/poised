@@ -69,13 +69,20 @@ class InfoPage extends Component {
             </View>
 
             <View style={[styles.textBlock, defaultStyles.outline]}>
-              <Text style={defaultStyles.bodyText}>What is in the works?</Text>
+              <Text style={defaultStyles.bodyText}>What do potential updates include?</Text>
               <Text style={defaultStyles.paragraphText}>-Create your own routines</Text>
               <Text style={defaultStyles.paragraphText}>-View routines created by others</Text>
               <Text style={defaultStyles.paragraphText}>-Save and favorite routines</Text>
               <Text style={defaultStyles.paragraphText}>-Edit existing routines to fit your unique needs</Text>
               <Text style={defaultStyles.paragraphText}>-Personal settings page</Text>
               <Text style={defaultStyles.paragraphText}>-More music options and transition sound effects</Text>
+            </View>
+
+            <View style={[styles.textBlock, defaultStyles.outline]}>
+              <Text style={defaultStyles.bodyText}>Special Thanks to:</Text>
+              <Text style={defaultStyles.paragraphText}>-Ziba Cranmer, Chad Pytel, Paul Lightfoot</Text>
+              <Text style={defaultStyles.paragraphText}>-Dr. Karin S. Hendricks</Text>
+              <Text style={defaultStyles.paragraphText}>-"Performance Anxiety Strategies" by Casey McGrath, Karin S. Hendricks, Tawnya D. Smith</Text>
             </View>
           </ScrollView>
         </View>

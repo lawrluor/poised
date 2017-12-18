@@ -41,9 +41,11 @@
 		482FFB1F1FE60BF2006F4F19 /* libART.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 482FFB1B1FE60BC5006F4F19 /* libART.a */; };
 		482FFB201FE60C09006F4F19 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 482FFB111FE60B9C006F4F19 /* libRNSound.a */; };
 		482FFB211FE60C11006F4F19 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 482FFB141FE60B9C006F4F19 /* libRNVectorIcons.a */; };
-		482FFB271FE60E6C006F4F19 /* faure_pavane.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 482FFB261FE60E6B006F4F19 /* faure_pavane.mp3 */; };
 		482FFB291FE60E6F006F4F19 /* notification_direct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 482FFB281FE60E6F006F4F19 /* notification_direct.mp3 */; };
 		48AA13EE1FE60F7B006A9EDC /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		48EE6C8C1FE7D507008A989F /* pumped_up.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 48EE6C8A1FE7D507008A989F /* pumped_up.mp3 */; };
+		48EE6C8E1FE7D51D008A989F /* ambience_ocean.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 48EE6C8D1FE7D51D008A989F /* ambience_ocean.mp3 */; };
+		48EE6C901FE7D530008A989F /* faure_pavane.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 48EE6C8F1FE7D530008A989F /* faure_pavane.mp3 */; };
 		6F369D87CAFD4FE5BEBDD92D /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C13F11D12F24417C9B5E2EAC /* MaterialIcons.ttf */; };
 		7C0939D87E9E4DEC9ECB8944 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D52139C160164299BD8D7163 /* Ionicons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -357,8 +359,10 @@
 		2D02E4901E0B4A5D006451C7 /* Poise-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Poise-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3306A71126A04654A570A74E /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		482FFB151FE60BC5006F4F19 /* ART.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ART.xcodeproj; path = "../node_modules/react-native/Libraries/ART/ART.xcodeproj"; sourceTree = "<group>"; };
-		482FFB261FE60E6B006F4F19 /* faure_pavane.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = faure_pavane.mp3; path = ../android/app/src/main/res/raw/faure_pavane.mp3; sourceTree = "<group>"; };
 		482FFB281FE60E6F006F4F19 /* notification_direct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = notification_direct.mp3; path = ../android/app/src/main/res/raw/notification_direct.mp3; sourceTree = "<group>"; };
+		48EE6C8A1FE7D507008A989F /* pumped_up.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = pumped_up.mp3; path = ../android/app/src/main/res/raw/pumped_up.mp3; sourceTree = "<group>"; };
+		48EE6C8D1FE7D51D008A989F /* ambience_ocean.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = ambience_ocean.mp3; path = ../android/app/src/main/res/raw/ambience_ocean.mp3; sourceTree = "<group>"; };
+		48EE6C8F1FE7D530008A989F /* faure_pavane.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = faure_pavane.mp3; path = ../android/app/src/main/res/raw/faure_pavane.mp3; sourceTree = "<group>"; };
 		4A5576AE0CAB4DEF9154BFEF /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		5BDBF8DFC5F049A1A9140AA7 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
@@ -656,8 +660,10 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				48EE6C8F1FE7D530008A989F /* faure_pavane.mp3 */,
+				48EE6C8D1FE7D51D008A989F /* ambience_ocean.mp3 */,
+				48EE6C8A1FE7D507008A989F /* pumped_up.mp3 */,
 				482FFB281FE60E6F006F4F19 /* notification_direct.mp3 */,
-				482FFB261FE60E6B006F4F19 /* faure_pavane.mp3 */,
 				13B07FAE1A68108700A75B9A /* Poise */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* PoiseTests */,
@@ -1157,10 +1163,12 @@
 				F59EEBD936A54A5587A44A25 /* Feather.ttf in Resources */,
 				BD602FA0E86B40DC873C438A /* FontAwesome.ttf in Resources */,
 				0F7A7519E5734306877BB8FF /* Foundation.ttf in Resources */,
-				482FFB271FE60E6C006F4F19 /* faure_pavane.mp3 in Resources */,
 				7C0939D87E9E4DEC9ECB8944 /* Ionicons.ttf in Resources */,
 				CE6D9ECD08F3430D80236F22 /* MaterialCommunityIcons.ttf in Resources */,
+				48EE6C8C1FE7D507008A989F /* pumped_up.mp3 in Resources */,
+				48EE6C901FE7D530008A989F /* faure_pavane.mp3 in Resources */,
 				6F369D87CAFD4FE5BEBDD92D /* MaterialIcons.ttf in Resources */,
+				48EE6C8E1FE7D51D008A989F /* ambience_ocean.mp3 in Resources */,
 				CF2DAB7F681A406BB6EAEB89 /* Octicons.ttf in Resources */,
 				37C2121345D845DDA0E8D4FA /* SimpleLineIcons.ttf in Resources */,
 				068F88DC9ABE44E08955EFFC /* Zocial.ttf in Resources */,

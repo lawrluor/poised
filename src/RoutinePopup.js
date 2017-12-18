@@ -133,7 +133,8 @@ export default class RoutinePopup extends Component {
       routineDurations: routineDurations,
       routineRating: routine.overallRating,
       routineDownvotes: routine.downvotes,
-      routineKey: routine._key
+      routineKey: routine._key,
+      routineMusic: routine.music
     });
   }
 }

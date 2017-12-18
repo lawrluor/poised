@@ -32,7 +32,8 @@
 			"totalLength": 115,
 			"convertedLength": "2:05",
 			"overallRating": 4,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "faure_pavane.mp3"
 		},
 		"2": {
 			"routine_id": 2,
@@ -62,7 +63,8 @@
 			"totalLength": 120,
 			"convertedLength": "2:00",
 			"overallRating": 5,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "faure_pavane.mp3"
 		},
 		"3": {
 			"routine_id": 3,
@@ -92,7 +94,8 @@
 			"totalLength": 120,
 			"convertedLength": "2:00",
 			"overallRating": 4,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "faure_pavane.mp3"
 		},
 		"4" : {
 			"routine_id": 4,
@@ -126,7 +129,8 @@
 			"totalLength": 120,
 			"convertedLength": "2:00",
 			"overallRating": 3,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "faure_pavane.mp3"
 		},
 		"5": {
 			"routine_id": 5,
@@ -156,7 +160,8 @@
 			"totalLength": 60,
 			"convertedLength": "1:00",
 			"overallRating": 6,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "pumped_up.mp3"
 		},
 		"6": {
 			"routine_id": 6,
@@ -190,7 +195,8 @@
 			"totalLength": 165,
 			"convertedLength": "2:45",
 			"overallRating": 4,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "ambience_ocean.mp3"
 		},
 		"7": {
 			"routine_id": 7,
@@ -224,7 +230,8 @@
 			"totalLength": 150,
 			"convertedLength": "2:30",
 			"overallRating": 6,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "ambience_ocean.mp3"
 		},
 		"8" : {
 			"routine_id": 8,
@@ -258,7 +265,8 @@
 			"totalLength": 120,
 			"convertedLength": "2:00",
 			"overallRating": 4,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "ambience_ocean.mp3"
 		},
 		"9" : {
 			"routine_id": 9,
@@ -296,7 +304,8 @@
 			"totalLength": 180,
 			"convertedLength": "3:00",
 			"overallRating": 5,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "faure_pavane.mp3"
 		},
 		"10" : {
 			"routine_id": 10,
@@ -334,7 +343,8 @@
 			"totalLength": 160,
 			"convertedLength": "2:40",
 			"overallRating": 4,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "ambience_ocean.mp3"
 		},
 		"11" : {
 			"routine_id": 11,
@@ -360,7 +370,8 @@
 			"totalLength": 140,
 			"convertedLength": "2:20",
 			"overallRating": 4,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "pumped_up.mp3"
 		},
 		"12" : {
 			"routine_id": 12,
@@ -394,7 +405,8 @@
 			"totalLength": 180,
 			"convertedLength": "3:00",
 			"overallRating": 6,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "ambience_ocean.mp3"
 		},
 
 		"13": {
@@ -413,7 +425,8 @@
 			"totalLength": 600,
 			"convertedLength": "10:00",
 			"overallRating": 0,
-			"downvotes": 0
+			"downvotes": 0,
+			"music": "pumped_up.mp3"
 		}
 	},
 	"comments": {

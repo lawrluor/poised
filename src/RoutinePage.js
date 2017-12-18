@@ -34,7 +34,7 @@ class RoutinePage extends Component {
       routineRating: this.props.navigation.state.params.routineRating,
       routineKey: this.props.navigation.state.params.routineKey,
       exited: false,
-      music: this.playMusic(),
+      music: this.playMusic(this.props.navigation.state.params.routineMusic),
       notification: this.loadAudio('notification_direct.mp3', 0)
     }
   }
@@ -46,6 +46,7 @@ class RoutinePage extends Component {
   };
 
   componentDidMount() {
+    console.log('music', this.props.navigation.state.params.routineMusic);
     // Change this to load and play music using respective load & play functions
     // let music = await this.loadAudio('faure_pavane.mp3', 0);
     // let notification = await this.loadAudio('notification_direct.mp3', 0)
@@ -141,9 +142,9 @@ class RoutinePage extends Component {
   }
 
   // use react-native-sound to play audio
-  playMusic() {
+  playMusic(routineMusic) {
     // Load the sound file from the app bundle
-    let music = new Sound('faure_pavane.mp3', Sound.MAIN_BUNDLE, (error) => {
+    let music = new Sound(routineMusic, Sound.MAIN_BUNDLE, (error) => {
       if (error) {
         console.log('failed to load the sound', error);
         return;
