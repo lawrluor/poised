@@ -4,26 +4,24 @@ import { StackNavigator } from 'react-navigation';
 
 // Import Pages
 import LoginPage from './LoginPage.js';
-import Signup from './SignUp.js';
 import SelectionPage from './SelectionPage.js';
 import RoutinePage from './RoutinePage.js';
 import Feedback from './Feedback.js';
 import Results from './Results.js';
-import Search from './Search.js';
 import InfoPage from './InfoPage.js';
 import SplashScreen from './SplashScreen.js';
+import CreateRoutine from './CreateRoutine.js';
 import firebaseConfig from './Components/firebaseConfig.js';
 
 import * as firebase from 'firebase';
 
-// Redux (currently not being used)
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import { apiMiddleware, reducer } from './redux';
-
 // Firebase Config
-
 firebase.initializeApp(firebaseConfig);
+
+// Redux (currently not being used)
+// import { createStore, applyMiddleware } from 'redux';
+// import { Provider } from 'react-redux';
+// import { apiMiddleware, reducer } from './redux';
 
 // // Create Redux store
 // const store = createStore(reducer, {}, applyMiddleware(apiMiddleware));
@@ -32,13 +30,6 @@ firebase.initializeApp(firebaseConfig);
 // store.dispatch({type: 'GET_ROUTINE_DATA'});
 
 class App extends Component<{}> {
-  constructor() {
-    super();
-    this.state = {
-      user: firebase.auth().currentUser,
-    }
-  }
-
   componentWillMount() {
     // Initialize Firebase
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
@@ -46,10 +37,13 @@ class App extends Component<{}> {
 
   render() {
     return(
-      <Provider store={store}>
-        <RootNavigator></RootNavigator>
-      </Provider>
+      <RootNavigator></RootNavigator>
     )
+
+    // With Redux
+    // <Provider store={store}>
+    //   <RootNavigator></RootNavigator>
+    // </Provider>
   }
 }
 
@@ -62,14 +56,8 @@ export const RootNavigator = StackNavigator(
     LoginPage: {
       screen: LoginPage,
     },
-    Signup: {
-      screen: Signup,
-    },
     Selections: {
       screen: SelectionPage
-    },
-    Search: {
-      screen: Search
     },
     Routine: {
       screen: RoutinePage
@@ -82,6 +70,9 @@ export const RootNavigator = StackNavigator(
     },
     InfoPage: {
       screen: InfoPage
+    },
+    CreateRoutine: {
+      screen: CreateRoutine
     }
   }
 );

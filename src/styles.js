@@ -195,5 +195,11 @@ export const defaultStyles = {
     height: height,
     width: width,
     backgroundColor: 'transparent'
+  },
+  textContainer: {
+    width: width * 0.85,
+    padding: 10,
+    borderRadius: 10,
+    backgroundColor: 'rgba(119, 136, 153, 0.5)'
   }
 }

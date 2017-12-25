@@ -6,7 +6,8 @@ import {
   View,
   Navigator,
   TouchableOpacity,
-  Image
+  Image,
+  Alert
 } from 'react-native';
 
 import Sound from 'react-native-sound';
@@ -34,7 +35,7 @@ class RoutinePage extends Component {
       routineRating: this.props.navigation.state.params.routineRating,
       routineKey: this.props.navigation.state.params.routineKey,
       exited: false,
-      music: this.playMusic(this.props.navigation.state.params.routineMusic),
+      music: "",
       notification: this.loadAudio('notification_direct.mp3', 0)
     }
   }
@@ -46,6 +47,20 @@ class RoutinePage extends Component {
   };
 
   componentDidMount() {
+    // If no actions found for a routine, exit immediately
+    if (!this.state.routineActions || this.state.routineActions.length===0) {
+      this.props.navigation.navigate('Selections');
+      return Alert.alert(
+        "Error",
+        "No actions found for this routine.",
+        [
+          {text: "Ok", onPress: () => console.log('OK Pressed')},
+        ]
+      );
+    }
+
+    this.setState({music: this.playMusic(this.props.navigation.state.params.routineMusic)})
+
     console.log('music', this.props.navigation.state.params.routineMusic);
     // Change this to load and play music using respective load & play functions
     // let music = await this.loadAudio('faure_pavane.mp3', 0);

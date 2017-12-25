@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Dimensions,
   ScrollView,
   Linking,
   TouchableHighlight
@@ -15,8 +14,6 @@ import TabBar from './Components/TabBar.js';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import firebase from 'firebase';
-
-const { width, height } = Dimensions.get('window');
 
 class InfoPage extends Component {
   // App Header
@@ -51,7 +48,7 @@ class InfoPage extends Component {
         <View style={styles.scrollContainer}>
           <ScrollView
             contentContainerStyle={styles.scrollContent}
-            style={[styles.textContainer, defaultStyles.outline]}
+            style={[defaultStyles.textContainer, defaultStyles.outline]}
           >
 
             <View style={[styles.textBlock, defaultStyles.outline]}>
@@ -129,12 +126,6 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingVertical: 10
-  },
-  textContainer: {
-    width: width * 0.85,
-    padding: 10,
-    borderRadius: 10,
-    backgroundColor: 'rgba(119, 136, 153, 0.5)'
   },
   textBlock: {
     paddingBottom: 5

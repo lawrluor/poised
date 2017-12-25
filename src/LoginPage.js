@@ -25,8 +25,8 @@ class LoginPage extends Component {
   constructor() {
     super();
     this.state = {
-      email: "Email",
-      password: "Password",
+      email: "",
+      password: "",
       typing: false,
     }
 
@@ -219,7 +219,7 @@ class LoginPage extends Component {
               autoCorrect={false}
               maxLength={100}
               underlineColorAndroid={'transparent'}
-              placeholder={this.state.email}
+              placeholder={"Email"}
               onChangeText={(email) => this.setState({email})}
             />
 
@@ -230,7 +230,7 @@ class LoginPage extends Component {
               autoCorrect={false}
               maxLength={100}
               underlineColorAndroid={'transparent'}
-              placeholder={this.state.password}
+              placeholder={"Password"}
               secureTextEntry={true}
               onChangeText={(password) => this.setState({password})}
             />

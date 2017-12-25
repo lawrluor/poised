@@ -9,6 +9,8 @@ import {
 
 import { defaultStyles } from '../styles.js';
 
+import firebase from 'firebase';
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 // TabNavigator Documentation: https://github.com/aksonov/react-native-tabs
@@ -21,11 +23,11 @@ class TabBar extends Component {
   }
 
   changeTab(el) {
-    // Stop users from accessing the "Search" page
-    if (el.props.name === "Create") {
+    // Stop users from accessing the "Create" page if not logged in
+    if (el.props.name==="Create" && firebase.auth().currentUser===null) {
       return Alert.alert(
         "Please Note",
-        "The ability to create and edit routines has been disabled in the alpha version.",
+        "You must be signed in to create and edit routines.",
         [
           {text: "OK", onPress: () => console.log('OK Pressed')},
         ]
@@ -45,7 +47,7 @@ class TabBar extends Component {
           style={styles.tabBar}
           onSelect={el => this.changeTab(el)}>
 
-          <Tab selectedIconStyle={styles.selectedTab} name="Create" tabname="Create"></Tab>
+          <Tab selectedIconStyle={styles.selectedTab} name="CreateRoutine" tabname="Create"></Tab>
           <Tab selectedIconStyle={styles.selectedTab} name="Selections" tabname="Selections"></Tab>
           <Tab selectedIconStyle={styles.selectedTab} name="InfoPage" tabname="Info"></Tab>
         </Tabs>
