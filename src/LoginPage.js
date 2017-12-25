@@ -106,7 +106,7 @@ class LoginPage extends Component {
         .signInWithEmailAndPassword(email, pass)
 
       console.log("Logged In!");
-      this.navigateToMain(email);
+      this.navigateToMain();
     } catch (error) {
       return Alert.alert(
         'Error',
@@ -128,7 +128,7 @@ class LoginPage extends Component {
         .createUserWithEmailAndPassword(email, pass);
 
       console.log("Account created");
-      this.navigateToMain(email);
+      this.navigateToMain();
     } catch (error) {
       console.log(error.toString());
       return Alert.alert(
@@ -178,27 +178,13 @@ class LoginPage extends Component {
   }
 
   dismiss() {
-    console.log("dismissing keyboard");
     Keyboard.dismiss();
   }
 
-  // Navigate to main app after login/signup
-  navigateToMain(email) {
-    // firebase.auth().onAuthStateChanged(function(user) {
-    //   if (user) {
-    //     // User is signed in.
-    //     var displayName = user.displayName;
-    //     var email = user.email;
-    //     var emailVerified = user.emailVerified;
-    //     var photoURL = user.photoURL;
-    //     var isAnonymous = user.isAnonymous;
-    //     var uid = user.uid;
-    //     var providerData = user.providerData;
-    //     console.log(displayName, email, emailVerified, uid)
-    //   }
-    // });
-    Keyboard.dismiss();
-    // Automatically navigates to Main based on listener in onAuthStateChanged in SplashScreen
+  // Automatically navigates due to listener onAuthStateChanged
+  // Function wrapping dismiss for code readability
+  navigateToMain() {
+    this.dismiss();
   }
 
   // If user in the middle of typing, clears keyboard

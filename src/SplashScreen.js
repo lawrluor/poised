@@ -18,7 +18,7 @@ class SplashScreen extends Component {
 
     this.state = {
       user: firebase.auth().currentUser,
-      loading: true
+      // loading: true
     }
 
     this.backButtonListener = null;
