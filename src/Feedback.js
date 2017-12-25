@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
-import firebaseApp from './Components/Firebase.js';
+import firebase from 'firebase';
 
 class Feedback extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class Feedback extends Component {
 
   // Load routines reference, get and store path, current rating, and ref to state
   componentWillMount() {
-    let routinesRef = firebaseApp.database().ref('routines');
+    let routinesRef = firebase.database().ref('routines');
 
     // Query routine that matches key, store in this.state.routineRef to access later
     // orderByKey() indicates that key should equal value in equalTo()

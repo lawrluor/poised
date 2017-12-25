@@ -51,7 +51,7 @@ class GridDisplay extends Component {
       //     <Text style={[styles.name, styles.overlaidText]} numberOfLines={1}>{name}</Text>
       //   </ImageBackground>
 
-      <TouchableOpacity style={[styles.container, defaultStyles.outline]} onPress={() => onOpen(routine)}>
+      <TouchableOpacity style={[styles.container, defaultStyles.outline]} onPress={ () => onOpen(routine) }>
         <View style={[styles.imageContainer, defaultStyles.outline]}></View>
 
         <View style={styles.displayContainer}>
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     flex: 1,   // take up all available space
-    backgroundColor: 'rgba(119, 136, 153, 0.7)',
+    backgroundColor: 'rgba(119, 136, 153, 1.0)',
     borderRadius: 10
   },
   image: {

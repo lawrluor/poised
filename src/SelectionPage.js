@@ -9,9 +9,7 @@ import {
   ActivityIndicator,
   RefreshControl,
   TouchableHighlight,
-  BackHandler,
   ToastAndroid,
-  Platform
  } from 'react-native';
 
 import { defaultStyles } from './styles.js';
@@ -21,7 +19,7 @@ import TagButton from './Components/TagButton.js';
 import RoutinePopup from './RoutinePopup.js';
 
 // Import Firebase app config
-import firebaseApp from './Components/Firebase.js';
+import firebase from 'firebase';
 
 // Redux
 // import { connect } from 'react-redux';
@@ -52,7 +50,6 @@ class SelectionPage extends Component {
     }
 
     this.handler = this.handler.bind(this); // bind reference to parent in this to pass to child component
-    this.backButtonListener = null;
     this.ref = this.getRef();
   }
 
@@ -66,30 +63,17 @@ class SelectionPage extends Component {
   }
 
   componentDidMount() {
-    this.disableBackButton();
     this.getData(this.state.selectedTag);
   }
 
-  // Disables hardware back button on Android for duration of the app runtime
-  // Based on: https://github.com/react-community/react-navigation/issues/1819
-  disableBackButton() {
-    if (Platform.OS === 'android') {
-      this.backButtonListener = BackHandler.addEventListener('hardwareBackPress', () => {
-        ToastAndroid.show('Back button disabled for this action', ToastAndroid.SHORT);
-        return true;
-      });
-    }
-  }
-
   getRef() {
-    return firebaseApp.database().ref();
+    return firebase.database().ref();
   }
 
   // Helper function to query tag given tag name
   async getTag(tagName) {
     return new Promise(resolve => {
       this.ref.child("tags").orderByChild("name").equalTo(tagName).on('value', (snap) => {
-
 
         // Only one tag should match. If no match found, tag is null and breaks
         snap.forEach((child) => {

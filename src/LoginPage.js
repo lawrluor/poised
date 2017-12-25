@@ -8,17 +8,17 @@ import {
   TextInput,
   TouchableHighlight,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   Alert,
   Keyboard,
   KeyboardAvoidingView,
-  Animated
+  Animated,
+  Modal
  } from 'react-native';
 
+import firebase from 'firebase';
 import { defaultStyles } from './styles.js';
 import Center from './Components/Center.js';
-
-// Import Firebase app config
-import firebaseApp from './Components/Firebase.js';
 
 // Referenced from tutorial: https://medium.com/@jamesmarino/getting-started-with-react-native-and-firebase-ab1f396db549
 class LoginPage extends Component {
@@ -27,7 +27,7 @@ class LoginPage extends Component {
     this.state = {
       email: "Email",
       password: "Password",
-      typing: false
+      typing: false,
     }
 
     this.imageHeight = new Animated.Value(160);
@@ -102,7 +102,7 @@ class LoginPage extends Component {
   async login(email, pass) {
     try {
       Keyboard.dismiss();
-      await firebaseApp.auth()
+      await firebase.auth()
         .signInWithEmailAndPassword(email, pass)
 
       console.log("Logged In!");
@@ -118,19 +118,32 @@ class LoginPage extends Component {
     }
   }
 
-  // Logout method
-  async logout() {
+  // Sign up method
+  async signup(email, pass) {
+    Keyboard.dismiss();
+    console.log(email, pass);
+
     try {
-      await firebaseApp.auth().signOut();
-      // Navigate to login view
+      await firebase.auth()
+        .createUserWithEmailAndPassword(email, pass);
+
+      console.log("Account created");
+      this.navigateToMain(email);
     } catch (error) {
-      console.log(error);
+      console.log(error.toString());
+      return Alert.alert(
+        'Error',
+        error.toString(),
+        [
+          {text: "OK", onPress: () => console.log('OK Pressed')},
+        ]
+      );
     }
   }
 
   async resetPassword() {
     try {
-      await firebaseApp.auth()
+      await firebase.auth()
         .sendPasswordResetEmail(this.state.email);
 
       console.log("Password reset email sent")
@@ -164,13 +177,28 @@ class LoginPage extends Component {
     }
   }
 
+  dismiss() {
+    console.log("dismissing keyboard");
+    Keyboard.dismiss();
+  }
+
   // Navigate to main app after login/signup
   navigateToMain(email) {
-    Keyboard.dismiss()
-    this.props.navigation.navigate('Selections',
-    {
-      email: email
-    });
+    // firebase.auth().onAuthStateChanged(function(user) {
+    //   if (user) {
+    //     // User is signed in.
+    //     var displayName = user.displayName;
+    //     var email = user.email;
+    //     var emailVerified = user.emailVerified;
+    //     var photoURL = user.photoURL;
+    //     var isAnonymous = user.isAnonymous;
+    //     var uid = user.uid;
+    //     var providerData = user.providerData;
+    //     console.log(displayName, email, emailVerified, uid)
+    //   }
+    // });
+    Keyboard.dismiss();
+    // Automatically navigates to Main based on listener in onAuthStateChanged in SplashScreen
   }
 
   // If user in the middle of typing, clears keyboard
@@ -186,58 +214,61 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <KeyboardAvoidingView style={[defaultStyles.container, defaultStyles.outline]}>
-        <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}></View>
+      <TouchableWithoutFeedback onPress={ () => this.dismiss() }>
+        <KeyboardAvoidingView style={[defaultStyles.container, defaultStyles.outline]}>
 
-        <Animated.View style={[styles.titleContainer, defaultStyles.outline, {flex: this.titleFlex}]}>
+          <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}></View>
+
+          <Animated.View style={[styles.titleContainer, defaultStyles.outline, {flex: this.titleFlex}]}>
             <Animated.Image source={require('../static/img/center.png')} style={{height:this.imageHeight}}></Animated.Image>
             <Text style={defaultStyles.jumboText}>Poise</Text>
-        </Animated.View>
+          </Animated.View>
 
-        <Animated.View style={[styles.inputContainer, defaultStyles.outline, {flex:this.inputFlex}]}>
-          <TextInput
-            style={defaultStyles.input}
-            keyboardType={'email-address'}
-            editable={true}
-            autoCapitalize='none'
-            autoCorrect={false}
-            maxLength={100}
-            underlineColorAndroid={'transparent'}
-            placeholder={this.state.email}
-            onChangeText={(email) => this.setState({email})}
-          />
+          <Animated.View style={[styles.inputContainer, defaultStyles.outline, {flex:this.inputFlex}]}>
+            <TextInput
+              style={defaultStyles.input}
+              keyboardType={'email-address'}
+              editable={true}
+              autoCapitalize='none'
+              autoCorrect={false}
+              maxLength={100}
+              underlineColorAndroid={'transparent'}
+              placeholder={this.state.email}
+              onChangeText={(email) => this.setState({email})}
+            />
 
-          <TextInput
-            style={defaultStyles.input}
-            editable={true}
-            autoCapitalize='none'
-            autoCorrect={false}
-            maxLength={100}
-            underlineColorAndroid={'transparent'}
-            placeholder={this.state.password}
-            secureTextEntry={true}
-            onChangeText={(password) => this.setState({password})}
-          />
+            <TextInput
+              style={defaultStyles.input}
+              editable={true}
+              autoCapitalize='none'
+              autoCorrect={false}
+              maxLength={100}
+              underlineColorAndroid={'transparent'}
+              placeholder={this.state.password}
+              secureTextEntry={true}
+              onChangeText={(password) => this.setState({password})}
+            />
 
-          <TouchableHighlight underlayColor='rgba(28, 56, 79, 0.7)' style={defaultStyles.loginButton} onPress={() => this.login(this.state.email, this.state.password)}>
-            <Text style={[defaultStyles.bodyText]}>Login</Text>
-          </TouchableHighlight>
+            <TouchableHighlight underlayColor='rgba(28, 56, 79, 0.7)' style={defaultStyles.loginButton} onPress={() => this.login(this.state.email, this.state.password)}>
+              <Text style={[defaultStyles.bodyText]}>Login</Text>
+            </TouchableHighlight>
 
-          {this.state.typing ? null :
-            <View style={styles.hiddenContainer}>
-              <TouchableOpacity style={defaultStyles.secondaryButton} onPress={() => this.navigateToSignup()}>
-                <Text style={defaultStyles.bodyText}>Create Account</Text>
-              </TouchableOpacity>
+            <TouchableHighlight style={defaultStyles.loginButton} underlayColor='rgba(28, 56, 79, 0.7)' onPress={() => this.signup(this.state.email, this.state.password)}>
+              <Text style={[defaultStyles.bodyText]}>Sign Up</Text>
+            </TouchableHighlight>
 
-              <TouchableOpacity onPress={() => this.resetPassword()}>
-                <Text style={defaultStyles.linkText}>Forgot password?</Text>
-              </TouchableOpacity>
-            </View>
-           }
-        </Animated.View>
+            {this.state.typing ? null :
+              <View style={styles.hiddenContainer}>
+                <TouchableOpacity onPress={() => this.resetPassword()}>
+                  <Text style={defaultStyles.linkText}>Forgot password?</Text>
+                </TouchableOpacity>
+              </View>
+             }
+          </Animated.View>
 
-        <Animated.View style={[defaultStyles.footerWrapper, defaultStyles.outline, {flex: this.footerFlex}]}></Animated.View>
-      </KeyboardAvoidingView>
+          <Animated.View style={[defaultStyles.footerWrapper, defaultStyles.outline, {flex: this.footerFlex}]}></Animated.View>
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     )
   }
 }

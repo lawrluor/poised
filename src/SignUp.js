@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableHighlight,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   Alert,
   Keyboard,
   KeyboardAvoidingView,
@@ -15,9 +16,6 @@ import {
  } from 'react-native';
 
 import { defaultStyles } from './styles.js';
-
-// Import Firebase app config
-import firebaseApp from './Components/Firebase.js';
 
 // Referenced from tutorial: https://medium.com/@jamesmarino/getting-started-with-react-native-and-firebase-ab1f396db549
 class Signup extends Component {
@@ -109,6 +107,11 @@ class Signup extends Component {
     }
   }
 
+  dismiss() {
+    console.log("dismissing keyboard");
+    Keyboard.dismiss();
+  }
+
   // Navigate to main app after login/signup
   navigateToMain(email) {
     console.log("navigating");
@@ -133,6 +136,10 @@ class Signup extends Component {
   render() {
     return (
       <KeyboardAvoidingView style={[defaultStyles.container, defaultStyles.outline]}>
+        <TouchableWithoutFeedback onPress={ () => this.dismiss() }>
+          <View style={defaultStyles.backdrop}/>
+        </TouchableWithoutFeedback>
+
         <View style={[defaultStyles.headerWrapper, defaultStyles.outline]}></View>
 
         <Animated.View style={[styles.titleContainer, defaultStyles.outline, {flex: this.titleFlex}]}>

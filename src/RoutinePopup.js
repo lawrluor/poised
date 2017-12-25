@@ -148,13 +148,13 @@ const styles = StyleSheet.create({
   },
   // Semi-transparent background below popup
   backdrop: {
-    ...StyleSheet.absoluteFillObject,   // fill up all screen
+    ...defaultStyles.backdrop,
     backgroundColor: 'black',
     opacity: 0.5,
   },
   // Popup
   modal: {
-    height: (defaultStyles.screenDimensions.height * 0.66), // take 66% of screen height
+    height: (defaultStyles.screenDimensions.height * 0.75), // take 66% of screen height
     padding: 15,
     backgroundColor: 'rgba(119, 136, 153, 1.0)',
   },

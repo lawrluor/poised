@@ -5,13 +5,16 @@ import {
   View,
   Dimensions,
   ScrollView,
-  Linking
+  Linking,
+  TouchableHighlight
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
 import TabBar from './Components/TabBar.js';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+import firebase from 'firebase';
 
 const { width, height } = Dimensions.get('window');
 
@@ -24,6 +27,17 @@ class InfoPage extends Component {
   // Not being used currently
   openExternalLink(url) {
     return Linking.openURL(url).catch(err => console.error('An error occurred', err));
+  }
+
+  // Logout method
+  async logout() {
+    try {
+      await firebase.auth().signOut();
+      // Automatically navigates back to Login based on Auth state set in SplashScreen
+      // this.props.navigation.navigate('LoginPage');
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {
@@ -92,6 +106,10 @@ class InfoPage extends Component {
             <Icon.Button styles={this.socialButton} name="facebook" backgroundColor="#3b5998" onPress={ () => Linking.openURL('https://www.facebook.com/poisemobileapp/') }>
               <Text style={defaultStyles.paragraphText}>Follow</Text>
             </Icon.Button>
+
+            <TouchableHighlight style={defaultStyles.loginButton} underlayColor='rgba(28, 56, 79, 0.7)' onPress={() => this.logout()}>
+              <Text style={[defaultStyles.bodyText]}>Log out</Text>
+            </TouchableHighlight>
 
             <Icon.Button styles={this.socialButton} name="envelope" backgroundColor="#d14836" onPress={ () => Linking.openURL('mailto:luolawrence1@gmail.com') }>
               <Text style={defaultStyles.paragraphText}>Email</Text>

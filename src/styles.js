@@ -29,7 +29,7 @@ export const defaultStyles = {
     backgroundColor: '#87AECF',
   },
   outline: {
-    // borderWidth: 1
+    borderWidth: 1
   },
 
   // Text
@@ -189,4 +189,11 @@ export const defaultStyles = {
     justifyContent: 'center',
     alignItems: 'center'
   },
+  // Transparent TouchableWithoutFeedback that fills up entire screen, to call onPress when click anywhere.
+  backdrop: {
+    ...StyleSheet.absoluteFillObject,
+    height: height,
+    width: width,
+    backgroundColor: 'transparent'
+  }
 }

@@ -41,7 +41,7 @@
 			"author": "Lawrence Luo",
 			"name": "App Presentation",
 			"preview": "When you're demoing an app, it sometimes feels like anything that can go wrong will go wrong.",
-			"description": "Demoing an app or software project can be stressful. Sometimes, it can feel like anything that can go wrong will go wrong. Maybe an adapter is malfunctioning or your code suddenly fails to compile. Sometimes, the stakes are what make you jittery. Your presentation could be the deciding factor in winning a Hackathon, or winning over a potential investor. Even among friends, it can be embarassing to show a hastily constructed work-in-progress. This routine will help you focus on the present and the positives: why you enjoy being a developer and why you're excited to share your progress with your audience. It will also help you clear distracting thoughts that may be making you feel anxious. that can go wrong will go wrong. Maybe an adapter is malfunctioning or your code suddenly fails to compile. Sometimes, the stakes are what make you jittery. Your presentation could be the deciding factor in winning a Hackathon, or winning over a potential investor. Even among friends, it can be embarassing to show a hastily constructed work-in-progress. This routine will help you focus on the present and the positives: why you enjoy being a developer and why you're excited to share yo",
+			"description": "Demoing an app or software project can be stressful. Sometimes, it can feel like anything that can go wrong will go wrong. Maybe an adapter is malfunctioning or your code suddenly fails to compile. Sometimes, the stakes are what make you jittery. Your presentation could be the deciding factor in winning a Hackathon, or winning over a potential investor. Even among friends, it can be embarassing to show a hastily constructed work-in-progress. This routine will help you focus on the present and the positives: why you enjoy being a developer and why you're excited to share your progress with your audience. It will also help you clear distracting thoughts that may be making you feel anxious.",
 			"actions": {
 				"0": {
 					"text": "Name a few goals that you have for this presentation. (30 seconds)",
@@ -408,7 +408,6 @@
 			"downvotes": 0,
 			"music": "ambience_ocean.mp3"
 		},
-
 		"13": {
 			"routine_id": 13,
 			"user_id": 0,
@@ -424,6 +423,25 @@
 			},
 			"totalLength": 600,
 			"convertedLength": "10:00",
+			"overallRating": 0,
+			"downvotes": 0,
+			"music": "pumped_up.mp3"
+		},
+		"14": {
+			"routine_id": 14,
+			"user_id": 0,
+			"author": "Lawrence Luo",
+			"name": "Sprint",
+			"preview": "For testing purposes",
+			"description": "Test Routine",
+			"actions": {
+				"0": {
+					"text": "",
+					"length": 1
+				}
+			},
+			"totalLength": 1,
+			"convertedLength": "0:01",
 			"overallRating": 0,
 			"downvotes": 0,
 			"music": "pumped_up.mp3"

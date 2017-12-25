@@ -4,6 +4,7 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
+  TouchableWithoutFeedback,
   View,
   Keyboard,
   Animated,
@@ -11,7 +12,7 @@ import {
 } from 'react-native';
 
 import { defaultStyles } from './styles.js';
-import firebaseApp from './Components/Firebase.js';
+import firebase from 'firebase';
 
 class Results extends Component {
   constructor(props) {
@@ -19,8 +20,8 @@ class Results extends Component {
 
     this.state = {
       result: this.props.navigation.state.params.result,
-      commentsRef: firebaseApp.database().ref('comments'),
-      currentUser: firebaseApp.auth().currentUser.uid,
+      commentsRef: firebase.database().ref('comments'),
+      currentUser: firebase.auth().currentUser.uid,
       routineId: this.props.navigation.state.params.routineId,
       message: ""
     }
@@ -39,7 +40,7 @@ class Results extends Component {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
     this.setState({
-      commentsRef: firebaseApp.database().ref('comments')
+      commentsRef: firebase.database().ref('comments')
     });
   }
 
@@ -96,6 +97,11 @@ class Results extends Component {
     }
   }
 
+  dismiss() {
+    console.log("dismissing keyboard");
+    Keyboard.dismiss();
+  }
+
   // When user hits submit button, pushes comment to database
   submitComment() {
     Keyboard.dismiss();
@@ -142,40 +148,46 @@ class Results extends Component {
 
   render() {
     return (
-      <View style={[defaultStyles.container, defaultStyles.outline]}>
-        <View style={defaultStyles.headerWrapper}></View>
+      <TouchableWithoutFeedback onPress={ () => this.dismiss() }>
+        <View style={[defaultStyles.container, defaultStyles.outline]}>
+          <TouchableWithoutFeedback onPress={ () => { Keyboard.dismiss()} }>
+            <View style={defaultStyles.backdrop}/>
+          </TouchableWithoutFeedback>
 
-        <Animated.View style={[ {flex: this.bodyFlex}, defaultStyles.graphicLayoutBodyContainer, defaultStyles.outline]}>
-          <View style={[styles.feedbackWrapper, defaultStyles.outline]}>
-            <Text style={[ {fontSize: this.resultText}, defaultStyles.actionText ]}>
-              {this.showText(this.state.result)}
-            </Text>
+          <View style={defaultStyles.headerWrapper}></View>
 
-            <TextInput
-              style={styles.input}
-              autogrow={true}
-              multiline={true}
-              editable={true}
-              autoCapitalize='none'
-              autoCorrect={false}
-              maxLength={2000}
-              underlineColorAndroid={'transparent'}
-              placeholder="Being specific about what you liked, didn't like, and wish was in the app would be very much appreciated! Your feedback is crucial to help develop more useful routines and features."
-              onChangeText={(message) => this.setState({message: message})}
-            />
+          <Animated.View style={[ {flex: this.bodyFlex}, defaultStyles.graphicLayoutBodyContainer, defaultStyles.outline]}>
+            <View style={[styles.feedbackWrapper, defaultStyles.outline]}>
+              <Text style={[ {fontSize: this.resultText}, defaultStyles.actionText ]}>
+                {this.showText(this.state.result)}
+              </Text>
 
-            <TouchableHighlight underlayColor='rgba(28, 56, 79, 0.7)' style={defaultStyles.loginButton} onPress={() => this.submitComment()}>
-              <Text style={[defaultStyles.bodyText]}>Submit Feedback</Text>
-            </TouchableHighlight>
+              <TextInput
+                style={styles.input}
+                autogrow={true}
+                multiline={true}
+                editable={true}
+                autoCapitalize='none'
+                autoCorrect={false}
+                maxLength={2000}
+                underlineColorAndroid={'transparent'}
+                placeholder="Being specific about what you liked, didn't like, and wish was in the app would be very much appreciated! Your feedback is crucial to help develop more useful routines and features."
+                onChangeText={(message) => this.setState({message: message})}
+              />
 
-            <TouchableHighlight underlayColor='rgba(28, 56, 79, 0.7)' style={styles.noFeedbackButton} onPress={() => this.navigateToSelections()}>
-              <Text style={[defaultStyles.bodyText]}>I have no feedback</Text>
-            </TouchableHighlight>
-          </View>
-        </Animated.View>
+              <TouchableHighlight underlayColor='rgba(28, 56, 79, 0.7)' style={defaultStyles.loginButton} onPress={() => this.submitComment()}>
+                <Text style={[defaultStyles.bodyText]}>Submit Feedback</Text>
+              </TouchableHighlight>
 
-        <Animated.View style={[defaultStyles.footerWrapper, defaultStyles.outline, {flex: this.footerFlex}]}></Animated.View>
-      </View>
+              <TouchableHighlight underlayColor='rgba(28, 56, 79, 0.7)' style={styles.noFeedbackButton} onPress={() => this.navigateToSelections()}>
+                <Text style={[defaultStyles.bodyText]}>I have no feedback</Text>
+              </TouchableHighlight>
+            </View>
+          </Animated.View>
+
+          <Animated.View style={[defaultStyles.footerWrapper, defaultStyles.outline, {flex: this.footerFlex}]}></Animated.View>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 
