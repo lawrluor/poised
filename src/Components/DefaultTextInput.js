@@ -16,7 +16,7 @@ class DefaultTextInput extends Component {
         maxLength={this.props.maxLength}
         underlineColorAndroid={'transparent'}
         placeholder={this.props.inputType}
-        onChangeText={(text) => {this.props.handler(this.props.inputType, text)}}
+        onChangeText={(text) => {this.props.handler(this.props.inputType, text, this.props.index)}}
       />
     )
   }

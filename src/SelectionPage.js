@@ -154,7 +154,6 @@ class SelectionPage extends Component {
         routines: routines,
         loading: false
       });
-
     }
   }
 

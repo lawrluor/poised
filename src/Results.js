@@ -109,7 +109,7 @@ class Results extends Component {
     const validated = this.sanitizeData(this.state.message)[0];
     const alertMessage = this.sanitizeData(this.state.message)[1];
 
-    if (validated===true) {;
+    if (validated) {
       this.state.commentsRef.push({
         user_id: this.state.currentUser,
         routine_id: this.state.routineId,

@@ -14,14 +14,20 @@ class TagButton extends Component {
     if (this.props.selectedTag===this.props.name) {
       // return highlighted button
       return (
-        <TouchableHighlight underlayColor='rgba(28, 56, 79, 0.7)' style={styles.selectedTagButton} onPress={() => {this.props.handler(this.props.name)}}>
+        <TouchableHighlight
+          underlayColor='rgba(28, 56, 79, 0.7)'
+          style={styles.selectedTagButton}
+          onPress={() => {this.props.handler(this.props.name)}}>
           <Text style={defaultStyles.paragraphText}>{this.props.name}</Text>
         </TouchableHighlight>
       );
     } else {
       // return default button
       return (
-        <TouchableHighlight underlayColor='rgba(28, 56, 79, 0.7)' style={styles.tagButton} onPress={() => {this.props.handler(this.props.name)}}>
+        <TouchableHighlight
+          underlayColor='rgba(28, 56, 79, 0.7)'
+          style={styles.tagButton}
+          onPress={() => {this.props.handler(this.props.name)}}>
           <Text style={defaultStyles.paragraphText}>{this.props.name}</Text>
         </TouchableHighlight>
       );

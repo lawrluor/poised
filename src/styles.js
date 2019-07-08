@@ -29,7 +29,7 @@ export const defaultStyles = {
     backgroundColor: '#87AECF',
   },
   outline: {
-    // borderWidth: 1
+    borderWidth: 1
   },
 
   // Text
